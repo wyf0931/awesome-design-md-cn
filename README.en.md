@@ -1,6 +1,6 @@
 # Awesome Design MD CN
 
-[简体中文](README.md) · [English](README.en.md)
+[简体中文](README.md) · [English](README.en.md) · [Online Gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html)
 
 > A community-maintained, source-backed collection of DESIGN.md references for Chinese internet products.
 
@@ -31,29 +31,31 @@ The project is independent and is not affiliated with Google, the referenced bra
 
 ## Browse the gallery
 
-The repository includes a generated static gallery. Build and serve it locally with Node.js 18+ and Python 3:
+**Online preview:** [Open the gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html). Preview links in the platform table and gallery cards use the same HTML preview service for each checked-in `preview.html`.
+
+The gallery itself is static. For local development, build and serve it with Node.js 18+ and Python 3:
 
 ```sh
 node build.mjs
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000/gallery.html> in a browser. The gallery supports search, category filters, and iframe previews. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
+Open <http://localhost:8000/gallery.html> in a browser. The gallery supports search, category filters, and iframe previews; brand previews inside the iframe are rendered by a third-party HTML preview service. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
 
 ## First 20 candidate platforms
 
-This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Preview links point to the checked-in HTML files; use the local gallery to view the collection.
+This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Online Preview links use a third-party HTML preview service to render the checked-in `preview.html` files; you can also use the Gallery link above.
 
-| Platform | Website | DESIGN.md | Preview HTML | Status |
+| Platform | Website | DESIGN.md | Online Preview | Status |
 |---|---|---|---|---|
-| Alibaba Cloud Bailian (阿里云百炼) | [Model Marketplace](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
+| Alibaba Cloud Bailian (阿里云百炼) | [Model Marketplace](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
 | Baidu (百度) | [Baidu](https://www.baidu.com) | — | — | |
 | Xiaomi (小米) | [Xiaomi](https://www.mi.com) | — | — | |
 | Huawei (华为) | [Huawei](https://www.huawei.com) | — | — | |
 | Alibaba (阿里巴巴) | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | Tencent (腾讯) | [Tencent](https://www.tencent.com) | — | — | |
 | Zhihu (知乎) | [Zhihu](https://www.zhihu.com) | — | — | |
-| NetEase (网易) | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](design-md/netease/preview.html) | ✅ |
+| NetEase (网易) | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | DiDi (滴滴) | [DiDi](https://www.didiglobal.com) | — | — | |
 | Meituan (美团) | [Meituan](https://www.meituan.com) | — | — | |
 | Dianping (大众点评) | [Dianping](https://www.dianping.com) | — | — | |

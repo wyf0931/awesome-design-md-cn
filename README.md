@@ -1,6 +1,6 @@
 # Awesome Design MD CN
 
-[简体中文](README.md) · [English](README.en.md)
+[简体中文](README.md) · [English](README.en.md) · [在线 Gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html)
 
 > 面向中国互联网产品的可溯源 DESIGN.md 规范与预览集合。
 
@@ -31,29 +31,31 @@ cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
 
 ## 浏览画廊
 
-画廊是静态页面，需要在本地生成并启动 HTTP 服务。需要 Node.js 18+ 和 Python 3：
+**在线预览：** [打开 Gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html)。品牌表和 gallery 卡片中的 Preview 链接会通过同一 HTML 预览服务打开仓库里的 `preview.html`。
+
+画廊本身是静态页面。需要本地开发时，使用 Node.js 18+ 和 Python 3：
 
 ```sh
 node build.mjs
 python3 -m http.server 8000
 ```
 
-然后打开 <http://localhost:8000/gallery.html>。画廊支持搜索、分类筛选和 iframe 预览。卡片数据源是 `design-md/index.json`；请修改数据源后运行构建脚本，不要直接编辑生成文件 `gallery.html`。
+然后打开 <http://localhost:8000/gallery.html>。画廊支持搜索、分类筛选和 iframe 预览；iframe 中的品牌预览由第三方 HTML 预览服务渲染。卡片数据源是 `design-md/index.json`；请修改数据源后运行构建脚本，不要直接编辑生成文件 `gallery.html`。
 
 ## 首批 20 个候选平台
 
-✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。预览列链接到仓库内的 HTML 文件；使用上面的本地画廊可以直接查看效果。
+✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。在线 Preview 链接通过第三方 HTML 预览服务读取仓库里的 `preview.html`；也可以使用上面的 Gallery 入口查看。
 
-| 平台 | 网站 | DESIGN.md | 预览 HTML | 状态 |
+| 平台 | 网站 | DESIGN.md | 在线预览 | 状态 |
 |---|---|---|---|---|
-| 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
+| 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | — | |
 | 小米 | [Xiaomi](https://www.mi.com) | — | — | |
 | 华为 | [Huawei](https://www.huawei.com) | — | — | |
 | 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | 腾讯 | [Tencent](https://www.tencent.com) | — | — | |
 | 知乎 | [Zhihu](https://www.zhihu.com) | — | — | |
-| 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](design-md/netease/preview.html) | ✅ |
+| 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | 滴滴 | [DiDi](https://www.didiglobal.com) | — | — | |
 | 美团 | [Meituan](https://www.meituan.com) | — | — | |
 | 大众点评 | [Dianping](https://www.dianping.com) | — | — | |

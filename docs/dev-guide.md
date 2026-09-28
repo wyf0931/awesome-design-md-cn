@@ -51,6 +51,7 @@ awesome-design-md-cn/
 - 纯静态页面，可直接打开，也可部署到 GitHub Pages。
 - 搜索、分类筛选和原生 `<dialog>` 预览只在 gallery 自身使用脚本。
 - 每个品牌预览通过懒加载 iframe 显示，嵌入文档不得包含脚本。
+- Gallery 卡片 iframe、预览链接和中英文 README 的在线入口统一使用 `https://github-html-preview.dohyeon5626.com/?<GitHub blob URL>`；品牌 `DESIGN.md` 链接使用 GitHub blob 地址。保持这些入口与 `build.mjs` 同步。
 - 预览以 1440×900 内部视口缩放显示；重要信息放在页面上部。
 - 构建脚本校验 slug、分类、重复项和品牌必要文件，并对插入 HTML 的文本转义。
 

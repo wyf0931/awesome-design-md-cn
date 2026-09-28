@@ -4,6 +4,11 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
+const githubRepo = 'wyf0931/awesome-design-md-cn';
+const githubBranch = 'main';
+const htmlPreviewService = 'https://github-html-preview.dohyeon5626.com/?';
+const githubBlobUrl = (file) => `https://github.com/${githubRepo}/blob/${githubBranch}/${file}`;
+const githubHtmlPreviewUrl = (file) => `${htmlPreviewService}${githubBlobUrl(file)}`;
 const data = JSON.parse(readFileSync(resolve(root, 'design-md/index.json'), 'utf8'));
 const ids = new Set();
 for (const category of data.categories) {
@@ -35,14 +40,18 @@ const categories = data.categories.map(({ id, label }) =>
 
 const cards = data.brands.map((brand) => {
   const tags = (brand.tags ?? []).map((tag) => `<span class="tag">${esc(tag)}</span>`).join('');
+  const previewFile = `design-md/${brand.slug}/preview.html`;
+  const designFile = `design-md/${brand.slug}/DESIGN.md`;
+  const previewUrl = githubHtmlPreviewUrl(previewFile);
+  const designUrl = githubBlobUrl(designFile);
   const site = brand.url && /^https:\/\//.test(brand.url)
     ? `<a href="${esc(brand.url)}" target="_blank" rel="noopener noreferrer">官网 ↗</a>` : '';
   return `<article class="card" data-category="${esc(brand.category)}" data-name="${esc(`${brand.name} ${brand.categoryLabel ?? ''} ${brand.font ?? ''}`.toLowerCase())}">
-    <button class="preview" type="button" data-preview="design-md/${esc(brand.slug)}/preview.html" data-title="${esc(brand.name)}" aria-label="预览 ${esc(brand.name)}">
-      <iframe src="design-md/${esc(brand.slug)}/preview.html" title="${esc(brand.name)} 设计预览" loading="lazy" tabindex="-1"></iframe><span class="overlay">打开完整预览 ↗</span>
+    <button class="preview" type="button" data-preview="${esc(previewUrl)}" data-title="${esc(brand.name)}" aria-label="预览 ${esc(brand.name)}">
+      <iframe src="${esc(previewUrl)}" title="${esc(brand.name)} 设计预览" loading="lazy" tabindex="-1"></iframe><span class="overlay">打开完整预览 ↗</span>
     </button>
     <div class="card-body"><div><h2>${esc(brand.name)}</h2><p>${esc(brand.categoryLabel ?? '')}</p></div><div class="details"><span>${esc(brand.font ?? '字体待记录')}</span><div class="tags">${tags}</div></div></div>
-    <div class="links"><a href="design-md/${esc(brand.slug)}/DESIGN.md">DESIGN.md</a><a href="design-md/${esc(brand.slug)}/preview.html">独立预览</a>${site}</div>
+    <div class="links"><a href="${esc(designUrl)}" target="_blank" rel="noopener noreferrer">DESIGN.md</a><a href="${esc(previewUrl)}" target="_blank" rel="noopener noreferrer">在线预览 ↗</a>${site}</div>
   </article>`;
 }).join('\n');
 
@@ -73,7 +82,7 @@ const html = `<!doctype html>
   <section class="hero"><div class="eyebrow">Open design reference · 中文互联网</div><h1>把界面设计，<br>变成可读的规范。</h1><p>${esc(data.subtitle)}。从公开产品界面中提取可核实的设计规则，供设计师、开发者与 AI agent 参考。</p></section>
   <section class="toolbar" aria-label="品牌筛选"><div class="filters"><button class="filter active" type="button" data-filter="all">全部</button>${categories}</div><input class="search" type="search" placeholder="搜索品牌…" aria-label="搜索品牌"></section>
   ${empty}<section class="grid" id="grid">${cards}</section>
-  <footer class="footer"><span>由社区维护 · 数据以公开来源为准</span><span>DESIGN.md CN</span></footer>
+  <footer class="footer"><span>在线预览由 GitHub HTML Preview 服务渲染 · 源文件存放于本仓库</span><span>DESIGN.md CN</span></footer>
 </main>
 <dialog id="preview-dialog" aria-label="品牌预览"><div class="dialog-head"><span id="dialog-title"></span><button class="close" type="button" aria-label="关闭预览">×</button></div><iframe title="品牌设计预览"></iframe></dialog>
 <script>
