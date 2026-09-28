@@ -1,50 +1,50 @@
 # Awesome Design MD CN
 
-> A community-maintained, source-backed collection of DESIGN.md references for Chinese internet products.
->
-> 面向中文互联网产品的可溯源 DESIGN.md 规范与预览集合。
+[简体中文](README.md) · [English](README.en.md)
 
-[Gallery](#browse-the-gallery) · [Contribute](CONTRIBUTING.md) · [Extractor setup](docs/agent-guide.md) · [Open an issue](https://github.com/wyf0931/awesome-design-md-cn/issues)
+> 面向中国互联网产品的可溯源 DESIGN.md 规范与预览集合。
 
-## What is DESIGN.md?
+我们从公开网站和官方设计资料中整理设计规则，帮助设计师与 coding agent 更准确地理解、复现产品界面。
 
-`DESIGN.md` is a Markdown design brief that helps coding agents follow a product's visual language. The Google format supports optional YAML front matter for machine-readable tokens and Markdown sections for design rationale and usage guidance. See the [Google Stitch overview](https://stitch.withgoogle.com/docs/design-md/overview) and the [open format specification](https://github.com/google-labs-code/design.md).
+## DESIGN.md 是什么？
 
-| File | Role |
+`DESIGN.md` 是供 coding agent 阅读的设计说明，描述产品界面的视觉语言。Google 定义的格式允许在 Markdown 文档顶部加入 YAML front matter，提供机器可读的设计 token；正文则记录设计意图和用法。详见 [Google Stitch 介绍](https://stitch.withgoogle.com/docs/design-md/overview)和[格式规范](https://github.com/google-labs-code/design.md)。
+
+| 文件 | 用途 |
 |---|---|
-| `AGENTS.md` | Tells coding agents how to work in a repository |
-| `DESIGN.md` | Describes how the product UI should look and feel |
+| `AGENTS.md` | 告诉 coding agent 如何在仓库中工作 |
+| `DESIGN.md` | 告诉 coding agent 产品界面应有的视觉表现 |
 
-Copy a brand's `DESIGN.md` into your project, then ask your coding agent to use it as the visual specification while building a page:
+将某个品牌的 `DESIGN.md` 复制到自己的项目，再告诉 coding agent 按其中的视觉规则实现界面：
 
 ```sh
 cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
 ```
 
-For example, prompt your coding agent: “Build this page using the visual rules in `DESIGN.md`.” These files are design references; they do not replace implementation instructions in `AGENTS.md`.
+例如：“请按 `DESIGN.md` 中的视觉规则构建这个页面。”`DESIGN.md` 描述视觉规范，`AGENTS.md` 描述项目工作方式，两者各有用途。
 
-## About this collection
+## 项目介绍
 
-This project analyzes publicly visible Chinese product interfaces and records measured values, source pages, capture conditions, and uncertainty. It follows the [Google DESIGN.md format](https://github.com/google-labs-code/design.md), keeping its canonical eight-section order (omitting sections only when they do not apply) and expanding Typography for Chinese and CJK needs such as font fallback, line breaking, Chinese–Latin text, and Simplified/Traditional language variants. The upstream format is currently marked alpha, so we track its spec and validate entries with its linter. The Japanese collection below is a reference for CJK typography; its brand analyses are not copied here.
+本项目分析公开可见的中文产品界面，并记录实测值、来源页面、采集条件和不确定项。我们遵循 Google DESIGN.md 的八个标准章节顺序，并在 Typography 章节中扩展中文与 CJK 排版内容，包括字体回退、断行、中英文混排和简繁语言场景。上游格式目前标记为 alpha；本项目跟进其规范，并使用官方 linter 校验设计文件。日本版仓库为 CJK 排版提供了参考，我们不会复制其中的品牌分析。
 
-The project is independent and is not affiliated with Google, the referenced brands, or the referenced collections. Brand names and marks belong to their respective owners. Analysis is based on public pages and official design materials; we avoid copying marketing copy, logos, and product imagery.
+本项目由社区独立维护，与 Google、所收录品牌及相关参考项目均无隶属关系。品牌名称和标识归各自所有者所有。我们依据公开页面和官方设计资料分析，不复制营销文案、Logo 或产品图片。
 
-## Browse the gallery
+## 浏览画廊
 
-The repository includes a generated static gallery. Build and serve it locally with Node.js 18+ and Python 3:
+画廊是静态页面，需要在本地生成并启动 HTTP 服务。需要 Node.js 18+ 和 Python 3：
 
 ```sh
 node build.mjs
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000/gallery.html` in a browser. The gallery supports search, category filters, and iframe previews. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
+然后打开 <http://localhost:8000/gallery.html>。画廊支持搜索、分类筛选和 iframe 预览。卡片数据源是 `design-md/index.json`；请修改数据源后运行构建脚本，不要直接编辑生成文件 `gallery.html`。
 
-## First 20 candidate platforms
+## 首批 20 个候选平台
 
-This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Preview links point to the checked-in HTML files; use the local gallery to view the collection.
+✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。预览列链接到仓库内的 HTML 文件；使用上面的本地画廊可以直接查看效果。
 
-| Platform | Website | Preview HTML | Status |
+| 平台 | 网站 | 预览 HTML | 状态 |
 |---|---|---|---|
 | 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | |
@@ -67,29 +67,29 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | 京东 | [JD.com](https://www.jd.com) | — | |
 | 淘宝 | [Taobao](https://www.taobao.com) | — | |
 
-## Automatic extraction
+## 自动提取
 
-The repository provides a browser-backed extractor. It captures rendered DOM and computed CSS at desktop and mobile sizes, then asks Pi to create the brand spec, preview, metadata, README status, and gallery entry:
+仓库提供基于浏览器采集的自动化流程：先采集桌面和移动视口下的渲染 DOM 与 computed CSS，再由 Pi 生成设计规范、预览、索引和画廊条目。
 
 ```sh
 ./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian
 ```
 
-The workflow is documented for any coding agent in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). [docs/agent-guide.md](docs/agent-guide.md) covers macOS dependencies and the optional Chrome DevTools MCP fallback.
+跨 agent 的工作说明见 [AGENTS.md](AGENTS.md) 和[提取 skill](.agents/skills/design-md-cn-extractor/SKILL.md)。macOS 依赖安装及可选 Chrome DevTools MCP 配置见 [docs/agent-guide.md](docs/agent-guide.md)。
 
-## Contributing
+## 参与贡献
 
-Contributions are welcome. Before adding a brand, read [CONTRIBUTING.md](CONTRIBUTING.md) and the [development guide](docs/dev-guide.md). Use public sources, record capture conditions, distinguish measured values from inferences, and leave unknown values unspecified.
+欢迎通过 Pull Request 添加品牌或修正已有数据。请先阅读[贡献指南](CONTRIBUTING.md)和[开发指南](docs/dev-guide.md)。只使用公开来源，记录采集条件，区分实测值与推断；无法确认的值保持未知。
 
-## Related projects
+## 相关项目
 
-- [Google Stitch DESIGN.md overview](https://stitch.withgoogle.com/docs/design-md/overview) — introduction to the format.
-- [google-labs-code/design.md](https://github.com/google-labs-code/design.md) — format specification and reference linter.
-- [Google DESIGN.md agent skills](https://github.com/google-labs-code/design.md/tree/main/.agents/skills) — references for agent-oriented CLI design and workflows.
-- [Google Stitch `extract-design-md` skill](https://github.com/google-labs-code/stitch-skills/blob/main/plugins/stitch-design/skills/extract-design-md/SKILL.md) — a source-code extraction workflow; this project adapts its useful design dimensions to public-site evidence.
-- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — broad collection of website design references.
-- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — Japanese collection that extends the format with CJK typography guidance; a reference for this Chinese adaptation.
+- [Google Stitch DESIGN.md 介绍](https://stitch.withgoogle.com/docs/design-md/overview) — 格式介绍。
+- [google-labs-code/design.md](https://github.com/google-labs-code/design.md) — 格式规范与参考 linter。
+- [Google DESIGN.md agent skills](https://github.com/google-labs-code/design.md/tree/main/.agents/skills) — agent 优先的 CLI 和工作流参考。
+- [Google Stitch `extract-design-md` skill](https://github.com/google-labs-code/stitch-skills/blob/main/plugins/stitch-design/skills/extract-design-md/SKILL.md) — 面向本地前端源码的设计提取流程；本项目借鉴其中的设计维度，并针对公开网站证据调整。
+- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — 面向多类网站的设计规范集合。
+- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — 扩展 CJK 排版内容的日文集合，是本项目处理中文排版时的参考之一。
 
-## License
+## 许可证
 
-The repository is licensed under the [MIT License](LICENSE). Referenced names and marks remain the property of their respective owners; this project does not claim affiliation with them.
+本仓库采用 [MIT License](LICENSE)。引用的品牌名称和标识归各自所有者所有；本项目不代表或隶属于这些品牌及相关参考项目。
