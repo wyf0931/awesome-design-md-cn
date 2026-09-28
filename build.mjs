@@ -1,0 +1,110 @@
+#!/usr/bin/env node
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = dirname(fileURLToPath(import.meta.url));
+const data = JSON.parse(readFileSync(resolve(root, 'design-md/index.json'), 'utf8'));
+const ids = new Set();
+for (const category of data.categories) {
+  if (!category.id || ids.has(category.id)) throw new Error(`Invalid or duplicate category id: ${category.id}`);
+  ids.add(category.id);
+}
+
+const slugs = new Set();
+for (const brand of data.brands) {
+  if (!/^[a-z0-9-]+$/.test(brand.slug)) throw new Error(`Invalid slug: ${brand.slug}`);
+  if (slugs.has(brand.slug)) throw new Error(`Duplicate slug: ${brand.slug}`);
+  slugs.add(brand.slug);
+  if (!brand.name || !brand.category || !ids.has(brand.category)) throw new Error(`Invalid name/category for ${brand.slug}`);
+  if (!Array.isArray(brand.tags ?? []) || (brand.tags ?? []).length > 3) throw new Error(`Expected 0–3 tags for ${brand.slug}`);
+  const dir = resolve(root, 'design-md', brand.slug);
+  if (!dir.startsWith(resolve(root, 'design-md') + '/')) throw new Error(`Invalid path for ${brand.slug}`);
+  for (const file of ['DESIGN.md', 'preview.html']) {
+    if (!existsSync(resolve(dir, file))) throw new Error(`Missing design-md/${brand.slug}/${file}`);
+  }
+}
+
+const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+}[char]));
+
+const categories = data.categories.map(({ id, label }) =>
+  `<button class="filter" type="button" data-filter="${esc(id)}">${esc(label)}</button>`,
+).join('\n');
+
+const cards = data.brands.map((brand) => {
+  const tags = (brand.tags ?? []).map((tag) => `<span class="tag">${esc(tag)}</span>`).join('');
+  const site = brand.url && /^https:\/\//.test(brand.url)
+    ? `<a href="${esc(brand.url)}" target="_blank" rel="noopener noreferrer">官网 ↗</a>` : '';
+  return `<article class="card" data-category="${esc(brand.category)}" data-name="${esc(`${brand.name} ${brand.categoryLabel ?? ''} ${brand.font ?? ''}`.toLowerCase())}">
+    <button class="preview" type="button" data-preview="design-md/${esc(brand.slug)}/preview.html" data-title="${esc(brand.name)}" aria-label="预览 ${esc(brand.name)}">
+      <iframe src="design-md/${esc(brand.slug)}/preview.html" title="${esc(brand.name)} 设计预览" loading="lazy" tabindex="-1"></iframe><span class="overlay">打开完整预览 ↗</span>
+    </button>
+    <div class="card-body"><div><h2>${esc(brand.name)}</h2><p>${esc(brand.categoryLabel ?? '')}</p></div><div class="details"><span>${esc(brand.font ?? '字体待记录')}</span><div class="tags">${tags}</div></div></div>
+    <div class="links"><a href="design-md/${esc(brand.slug)}/DESIGN.md">DESIGN.md</a><a href="design-md/${esc(brand.slug)}/preview.html">独立预览</a>${site}</div>
+  </article>`;
+}).join('\n');
+
+const empty = data.brands.length ? '' : `<section class="empty"><span class="empty-mark">01 — 20</span><h2>画廊框架已就绪</h2><p>首批品牌设计规范正在规划中。此仓库目前不包含已提取的品牌数据。</p><a href="README.md#计划收录的平台">查看 20 个候选平台 →</a></section>`;
+
+const html = `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="${esc(data.subtitle)}">
+  <title>${esc(data.title)} — Gallery</title>
+  <style>
+    :root{color-scheme:light;--ink:#171923;--muted:#697080;--line:#e6e8ed;--paper:#f7f8fa;--accent:#315efb;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}.shell{max-width:1440px;margin:auto;padding:56px 64px 88px}.masthead{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{font-size:14px;font-weight:700;letter-spacing:-.02em}.top-note{font-size:12px;color:var(--muted)}
+    .hero{padding:72px 0 48px}.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}.hero h1{margin:18px 0 12px;font-size:clamp(42px,6vw,76px);line-height:1.04;letter-spacing:-.065em}.hero p{max-width:620px;margin:0;color:var(--muted);font-size:16px;line-height:1.8}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;border-top:1px solid var(--line)}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:99px;background:transparent;padding:9px 14px;color:var(--muted);font:inherit;font-size:12px;cursor:pointer}.filter.active{background:var(--ink);color:white;border-color:var(--ink)}.search{width:230px;padding:10px 13px;border:1px solid var(--line);border-radius:8px;background:white;font:inherit;font-size:13px;outline:none}.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px #315efb20}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--white);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);box-shadow:0 14px 36px #20283d12}.preview{position:relative;display:block;width:100%;height:300px;overflow:hidden;border:0;border-bottom:1px solid var(--line);background:#eef0f4;cursor:pointer;text-align:left}.preview iframe{width:1440px;height:900px;border:0;transform:scale(.31);transform-origin:top left;pointer-events:none}.overlay{position:absolute;inset:0;display:grid;place-items:center;background:#10182800;color:#fff;font-size:13px;opacity:0;transition:.2s}.preview:hover .overlay,.preview:focus-visible .overlay{background:#10182866;opacity:1}.card-body{display:flex;justify-content:space-between;gap:14px;padding:18px 18px 16px}.card-body h2{margin:0;font-size:16px}.card-body p,.details{margin:5px 0 0;color:var(--muted);font-size:11px}.details{text-align:right}.tags{display:flex;justify-content:flex-end;gap:5px;margin-top:8px}.tag{padding:4px 6px;border-radius:4px;background:#f0f2f6;color:#4b5565;font-size:10px}.links{display:flex;gap:16px;padding:12px 18px;border-top:1px solid var(--line);font-size:11px}.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--accent)}
+    .empty{min-height:280px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px dashed #cfd4de;border-radius:14px;background:#fff}.empty-mark{font-size:11px;letter-spacing:.14em;color:var(--accent)}.empty h2{margin:15px 0 6px;font-size:22px;letter-spacing:-.04em}.empty p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.empty a{margin-top:18px;color:var(--accent);font-size:12px;text-decoration:none}
+    .footer{display:flex;justify-content:space-between;margin-top:64px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+    dialog{width:min(1200px,94vw);height:min(90vh,900px);padding:0;border:0;border-radius:12px;box-shadow:0 24px 90px #0004}dialog::backdrop{background:#11182799}.dialog-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);font-size:13px}.close{border:0;background:none;font-size:23px;cursor:pointer;color:var(--muted)}dialog iframe{width:100%;height:calc(100% - 52px);border:0}
+    @media(max-width:900px){.shell{padding:32px 24px 60px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar{align-items:flex-start;flex-direction:column}.search{width:100%}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}.hero{padding:54px 0 36px}.hero h1{font-size:48px}.preview{height:260px}.footer{gap:12px;flex-direction:column}}
+  </style>
+</head>
+<body><main class="shell">
+  <header class="masthead"><div class="brand">${esc(data.title)}</div><div class="top-note">开放的中文设计规范集</div></header>
+  <section class="hero"><div class="eyebrow">Open design reference · 中文互联网</div><h1>把界面设计，<br>变成可读的规范。</h1><p>${esc(data.subtitle)}。从公开产品界面中提取可核实的设计规则，供设计师、开发者与 AI agent 参考。</p></section>
+  <section class="toolbar" aria-label="品牌筛选"><div class="filters"><button class="filter active" type="button" data-filter="all">全部</button>${categories}</div><input class="search" type="search" placeholder="搜索品牌…" aria-label="搜索品牌"></section>
+  ${empty}<section class="grid" id="grid">${cards}</section>
+  <footer class="footer"><span>由社区维护 · 数据以公开来源为准</span><span>DESIGN.md CN</span></footer>
+</main>
+<dialog id="preview-dialog" aria-label="品牌预览"><div class="dialog-head"><span id="dialog-title"></span><button class="close" type="button" aria-label="关闭预览">×</button></div><iframe title="品牌设计预览"></iframe></dialog>
+<script>
+  const cards = [...document.querySelectorAll('.card')];
+  let activeFilter = 'all';
+  const search = document.querySelector('.search');
+  function updateCards() {
+    const query = search.value.trim().toLocaleLowerCase('zh-CN');
+    for (const card of cards) {
+      card.hidden = !(activeFilter === 'all' || card.dataset.category === activeFilter) || !card.dataset.name.includes(query);
+    }
+  }
+  document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+    updateCards();
+  }));
+  search.addEventListener('input', updateCards);
+  const dialog = document.querySelector('#preview-dialog');
+  const frame = dialog.querySelector('iframe');
+  document.querySelectorAll('[data-preview]').forEach(button => button.addEventListener('click', () => {
+    document.querySelector('#dialog-title').textContent = button.dataset.title;
+    frame.src = button.dataset.preview;
+    dialog.showModal();
+  }));
+  function closeDialog() { dialog.close(); frame.src = ''; }
+  dialog.querySelector('.close').addEventListener('click', closeDialog);
+  dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+  dialog.addEventListener('close', () => { frame.src = ''; });
+</script>
+</body></html>`;
+
+writeFileSync(resolve(root, 'gallery.html'), html);
+console.log(`gallery.html generated (${data.brands.length} brands)`);
