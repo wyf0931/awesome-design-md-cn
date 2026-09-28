@@ -1,14 +1,50 @@
 # Awesome Design MD CN
 
-中文互联网产品的 DESIGN.md 设计规范与预览画廊。项目沿用 [Google DESIGN.md 格式](https://github.com/google-labs-code/design.md)，并收录从公开网站和官方设计资料中核实的规则，帮助设计师与 AI agent 更准确地复现中文界面。
+> A community-maintained, source-backed collection of DESIGN.md references for Chinese internet products.
+>
+> 面向中文互联网产品的可溯源 DESIGN.md 规范与预览集合。
 
-> 候选清单用于规划后续收录。只有带 ✅ 且链接可用的条目才表示已完成提取。
+[Gallery](#browse-the-gallery) · [Contribute](CONTRIBUTING.md) · [Extractor setup](docs/agent-guide.md) · [Open an issue](https://github.com/wyf0931/awesome-design-md-cn/issues)
 
-## 首批候选平台
+## What is DESIGN.md?
 
-按公开产品覆盖和设计风格多样性整理的 20 个候选。预览列链接到该品牌的预览页；“✅”表示规范与预览已提取并进入 gallery。
+`DESIGN.md` is a Markdown design brief that helps coding agents follow a product's visual language. The Google format supports optional YAML front matter for machine-readable tokens and Markdown sections for design rationale and usage guidance. See the [Google Stitch overview](https://stitch.withgoogle.com/docs/design-md/overview) and the [open format specification](https://github.com/google-labs-code/design.md).
 
-| 平台 | 站点 | Preview | 进度 |
+| File | Role |
+|---|---|
+| `AGENTS.md` | Tells coding agents how to work in a repository |
+| `DESIGN.md` | Describes how the product UI should look and feel |
+
+Copy a brand's `DESIGN.md` into your project, then ask your coding agent to use it as the visual specification while building a page:
+
+```sh
+cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
+```
+
+For example, prompt your coding agent: “Build this page using the visual rules in `DESIGN.md`.” These files are design references; they do not replace implementation instructions in `AGENTS.md`.
+
+## About this collection
+
+This project analyzes publicly visible Chinese product interfaces and records measured values, source pages, capture conditions, and uncertainty. It follows the [Google DESIGN.md format](https://github.com/google-labs-code/design.md), keeping its canonical eight-section order (omitting sections only when they do not apply) and expanding Typography for Chinese and CJK needs such as font fallback, line breaking, Chinese–Latin text, and Simplified/Traditional language variants. The upstream format is currently marked alpha, so we track its spec and validate entries with its linter. The Japanese collection below is a reference for CJK typography; its brand analyses are not copied here.
+
+The project is independent and is not affiliated with Google, the referenced brands, or the referenced collections. Brand names and marks belong to their respective owners. Analysis is based on public pages and official design materials; we avoid copying marketing copy, logos, and product imagery.
+
+## Browse the gallery
+
+The repository includes a generated static gallery. Build and serve it locally with Node.js 18+ and Python 3:
+
+```sh
+node build.mjs
+python3 -m http.server 8000
+```
+
+Open `http://localhost:8000/gallery.html` in a browser. The gallery supports search, category filters, and iframe previews. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
+
+## First 20 candidate platforms
+
+This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Preview links point to the checked-in HTML files; use the local gallery to view the collection.
+
+| Platform | Website | Preview HTML | Status |
 |---|---|---|---|
 | 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | |
@@ -31,52 +67,29 @@
 | 京东 | [JD.com](https://www.jd.com) | — | |
 | 淘宝 | [Taobao](https://www.taobao.com) | — | |
 
-## 浏览画廊
+## Automatic extraction
 
-打开 [gallery.html](./gallery.html) 查看已收录品牌的预览。
-
-## 自动提取 Agent
-
-仓库自带跨 agent 的采集流程和 Pi 入口：
+The repository provides a browser-backed extractor. It captures rendered DOM and computed CSS at desktop and mobile sizes, then asks Pi to create the brand spec, preview, metadata, README status, and gallery entry:
 
 ```sh
 ./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian
 ```
 
-Agent 指引位于 [AGENTS.md](./AGENTS.md) 和 [提取 Skill](./.agents/skills/design-md-cn-extractor/SKILL.md)，macOS 安装与可选 Chrome DevTools MCP 配置见 [docs/agent-guide.md](./docs/agent-guide.md)。
+The workflow is documented for any coding agent in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). [docs/agent-guide.md](docs/agent-guide.md) covers macOS dependencies and the optional Chrome DevTools MCP fallback.
 
-## 项目结构
+## Contributing
 
-```text
-template/DESIGN.md       中文 DESIGN.md 规范模板
-template/preview.html    品牌预览页模板
-design-md/index.json     品牌元数据与分类数据源
-design-md/<slug>/        每个品牌的 DESIGN.md 和 preview.html
-build.mjs                零依赖静态画廊构建脚本
-gallery.html             生成的画廊页面，请勿手动编辑
-AGENTS.md                通用 coding agent 指引
-bin/agent.sh             Pi 一次性提取入口
-docs/dev-guide.md        项目结构与贡献工作流
-docs/agent-guide.md      Agent 与 macOS 依赖安装指南
-```
+Contributions are welcome. Before adding a brand, read [CONTRIBUTING.md](CONTRIBUTING.md) and the [development guide](docs/dev-guide.md). Use public sources, record capture conditions, distinguish measured values from inferences, and leave unknown values unspecified.
 
-## 本地构建
+## Related projects
 
-需要 Node.js 18 或更高版本，无需安装依赖：
-
-```sh
-node build.mjs
-```
-
-之后在浏览器打开 `gallery.html`。贡献方式见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
-
-## 采集原则
-
-- 记录公开网站可观察到的设计规则，并注明具体页面、来源和采集日期。
-- 区分直接测量值、官方设计 token 与推断；无法确认的值保持未知，不猜测填充。
-- 设计规范描述视觉系统，不复制品牌文案、图片或专有插画。
-- 所有提交遵循各品牌商标与公开资料的适用条款。
+- [Google Stitch DESIGN.md overview](https://stitch.withgoogle.com/docs/design-md/overview) — introduction to the format.
+- [google-labs-code/design.md](https://github.com/google-labs-code/design.md) — format specification and reference linter.
+- [Google DESIGN.md agent skills](https://github.com/google-labs-code/design.md/tree/main/.agents/skills) — references for agent-oriented CLI design and workflows.
+- [Google Stitch `extract-design-md` skill](https://github.com/google-labs-code/stitch-skills/blob/main/plugins/stitch-design/skills/extract-design-md/SKILL.md) — a source-code extraction workflow; this project adapts its useful design dimensions to public-site evidence.
+- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — broad collection of website design references.
+- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — Japanese collection that extends the format with CJK typography guidance; a reference for this Chinese adaptation.
 
 ## License
 
-MIT
+The repository is licensed under the [MIT License](LICENSE). Referenced names and marks remain the property of their respective owners; this project does not claim affiliation with them.
