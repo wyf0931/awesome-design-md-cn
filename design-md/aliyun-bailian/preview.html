@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阿里云百炼 — Design Preview</title>
+  <style>
+    :root{
+      --primary:#2564f8;
+      --primary-hover:#4f8aff;
+      --primary-active:#1547d1;
+      --ink:#14151c;
+      --text-main:rgba(20,21,28,.9);
+      --muted:#14151c99;
+      --faint:#14151c66;
+      --line:#e9e9ed;
+      --canvas:#f2f2f4;
+      --surface:#ffffff;
+      --black:#000000;
+      --white:#ffffff;
+      --success:#52c41a;
+      --warning:#faad14;
+      --error:#ff4d4f;
+      --radius:6px;
+      --pill:99px;
+      --card-radius:20px;
+      --app-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      --cn-font:"PingFang SC",sans-serif;
+      --shadow-feature:0 3px 17px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--canvas);color:var(--ink);font:14px/22px var(--app-font);-webkit-font-smoothing:antialiased}
+    .app{width:1440px;min-height:1080px;margin:auto;background:var(--canvas)}
+    .topbar{height:72px;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 36px;color:var(--text-main)}
+    .brand-row{display:flex;align-items:center;gap:36px}
+    .wordmark{font-weight:600;color:var(--ink)}
+    .topnav{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+    .top-actions{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--muted)}
+    .login{height:32px;display:inline-flex;align-items:center;padding:0 12px;border-radius:var(--pill);background:var(--black);color:var(--white);font-size:14px;font-weight:500}
+    .layout{display:grid;grid-template-columns:214px 1fr;min-height:1008px}
+    .sidebar{background:var(--surface);border-right:1px solid var(--line);padding:24px 18px}
+    .side-title{color:var(--faint);font-size:12px;letter-spacing:.04em;margin:18px 0 8px;padding:0 10px}
+    .nav-item{height:38px;display:flex;align-items:center;border-radius:var(--radius);padding:0 12px;color:var(--text-main);font-size:14px}
+    .nav-item.active{background:rgba(37,100,248,.08);color:var(--primary);font-weight:500}
+    .main{padding:32px 36px 56px;background:var(--canvas)}
+    .breadcrumb{color:var(--faint);font-size:12px;margin-bottom:22px}
+    .page-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+    .page-head h1{margin:0;font-family:var(--cn-font);font-size:28px;line-height:40px;font-weight:500;letter-spacing:normal;color:var(--ink)}
+    .search{width:388px;height:48px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:var(--muted);font-size:16px}
+    .hero{height:116px;background:var(--surface);border:1px solid var(--line);border-radius:var(--card-radius);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;box-shadow:var(--shadow-feature)}
+    .hero h2{margin:0;font-family:var(--cn-font);font-size:23.33px;line-height:35px;font-weight:500;color:var(--ink)}
+    .hero p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:20px}
+    .primary-action{height:36px;display:inline-flex;align-items:center;padding:0 16px;background:var(--primary);border-radius:var(--radius);color:var(--white);font-weight:500}
+    .section{margin-top:24px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .section-head h2{margin:0;font-family:var(--cn-font);font-size:20px;line-height:28px;font-weight:500;color:var(--ink)}
+    .section-head span{font-size:12px;color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--card-radius);padding:20px;min-height:154px;box-shadow:none}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .card strong{font-size:16px;line-height:24px;font-weight:600;color:var(--ink)}
+    .tag{font-size:12px;line-height:20px;color:var(--primary);background:rgba(37,100,248,.08);border-radius:4px;padding:0 8px}
+    .card p{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:20px}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .metric{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    .metric b{display:block;font-size:24px;line-height:32px;color:var(--primary);font-weight:500}
+    .metric span{display:block;margin-top:6px;color:var(--muted);font-size:12px}
+    .tokens{margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .token{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .swatch{height:70px;background:var(--primary)}
+    .token:nth-child(2) .swatch{background:var(--ink)}
+    .token:nth-child(3) .swatch{background:var(--muted)}
+    .token:nth-child(4) .swatch{background:var(--line)}
+    .token:nth-child(5) .swatch{background:var(--canvas)}
+    .token-info{padding:12px;display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+    .footer{margin-top:28px;color:var(--faint);font-size:12px;line-height:18px}
+  </style>
+</head>
+<body>
+  <main class="app" aria-label="阿里云百炼设计预览">
+    <header class="topbar">
+      <div class="brand-row"><div class="wordmark">阿里云百炼</div><nav class="topnav"><span>模型</span><span>Agent</span><span>TokenPlan</span><span>CLI</span><span>文档</span></nav></div>
+      <div class="top-actions"><span>华北 2（北京）</span><span class="login">登录</span></div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-title">模型服务</div>
+        <div class="nav-item active">模型广场</div>
+        <div class="nav-item">体验中心</div>
+        <div class="nav-item">模型推理</div>
+        <div class="nav-item">模型训练</div>
+        <div class="side-title">管理及费用</div>
+        <div class="nav-item">运维管理</div>
+        <div class="nav-item">资产中心</div>
+        <div class="nav-item">费用用量</div>
+      </aside>
+      <section class="main">
+        <div class="breadcrumb">模型 / 模型广场</div>
+        <div class="page-head"><h1>模型</h1><div class="search"><span>搜索模型名称</span><span>筛选</span></div></div>
+        <div class="hero">
+          <div><h2>模型发现</h2><p>展示公开页面的主标题、首推区域和控制台层级。</p></div>
+          <span class="primary-action">主要操作</span>
+        </div>
+        <div class="section">
+          <div class="section-head"><h2>首推模型</h2><span>探索更多 →</span></div>
+          <div class="cards">
+            <article class="card"><div class="card-top"><strong>模型 A</strong><span class="tag">文本</span></div><p>示例卡片，用于展示标题、标签和说明文本层级。</p></article>
+            <article class="card"><div class="card-top"><strong>模型 B</strong><span class="tag">视觉</span></div><p>示例卡片，用于展示白色卡片、浅灰描边和大圆角。</p></article>
+            <article class="card"><div class="card-top"><strong>模型 C</strong><span class="tag">多模态</span></div><p>示例卡片，用于展示次级文本和克制的信息密度。</p></article>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-head"><h2>基础度量</h2><span>来自页面 CSS 变量与 computed styles</span></div>
+          <div class="metrics">
+            <div class="metric"><b>14px</b><span>基础字号</span></div>
+            <div class="metric"><b>36px</b><span>标准控件高度</span></div>
+            <div class="metric"><b>6px</b><span>控件圆角</span></div>
+          </div>
+        </div>
+        <div class="tokens" aria-label="颜色样本">
+          <div class="token"><div class="swatch"></div><div class="token-info"><span>Primary</span><code>#2564f8</code></div></div>
+          <div class="token"><div class="swatch"></div><div class="token-info"><span>Ink</span><code>#14151c</code></div></div>
+          <div class="token"><div class="swatch"></div><div class="token-info"><span>Muted</span><code>#14151c99</code></div></div>
+          <div class="token"><div class="swatch"></div><div class="token-info"><span>Line</span><code>#e9e9ed</code></div></div>
+          <div class="token"><div class="swatch"></div><div class="token-info"><span>Canvas</span><code>#f2f2f4</code></div></div>
+        </div>
+        <p class="footer">来源：阿里云百炼模型广场公开页面 · 采集日期：2026-09-28 · 未登录状态 · 仅用于设计规则描述</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,65 +1,71 @@
-# DESIGN.md — [品牌 / 产品名]
-
-> 面向设计师与 AI agent 的可执行界面规范。章节标题使用英文以保持跨语言工具兼容，说明和示例使用中文。请依据目标产品的公开页面或官方资料填写；不要把此模板中的通用建议误写为品牌实测值。
-
-**采集范围**：[网站 / 页面 / 端]
-**来源**：[公开 URL 或官方设计文档]
-**采集日期**：[YYYY-MM-DD]
-**证据说明**：[实测 / 官方 token / 推断；说明浏览器、视口或其他限制]
-
+---
+version: alpha
+name: "[Brand / Product name]"
+description: "Template only: replace every placeholder with values supported by cited evidence."
+colors: {}
+typography: {}
+spacing: {}
+rounded: {}
+components: {}
 ---
 
-## 1. Visual Theme & Atmosphere
+# DESIGN.md — [品牌 / 产品名]
 
-- **视觉方向**：[简洁描述]
-- **信息密度**：[低 / 中 / 高，并说明]
-- **关键词**：[3–5 个]
-- **证据与差异**：[哪些观察支持以上描述]
+> 本文件遵循 Google DESIGN.md 的 YAML token + Markdown 说明格式。Front matter 中的 token 是规范值；正文记录来源、测量范围和中文使用规则。复制后请替换名称、描述与空 token map，只填写有证据支持的值。
 
-## 2. Color Palette & Roles
+**目标站点**：[URL]
+**采集范围**：[页面、端、地区、登录状态]
+**采集日期**：[YYYY-MM-DD]
+**证据环境**：[浏览器 / 视口 / 系统]
 
-记录 CSS 颜色值及使用上下文。多个主题或页面存在差异时分别说明。
+## Overview
 
-| Token / Role | Value | 用途 / 状态 | 证据 |
+- **视觉气质**：[基于观察的描述]
+- **目标用户 / 场景**：[有来源支持时填写]
+- **信息密度**：[观察值与证据]
+- **设计关键词**：[3–5 个]
+
+## Colors
+
+颜色 token 仅记录观察到的 CSS、自有设计 token 或官方文档值。明确区分品牌主色、文本、背景、语义色和交互状态；同一颜色在不同区域有差异时保留差异。
+
+| Token | Value | 用途 / 状态 | 来源与证据 |
 |---|---|---|---|
-| Primary | `[hex / 未确认]` | [CTA、链接等] | [URL / token 名] |
-| Primary Hover | `[hex / 未确认]` | [悬停状态] | [来源] |
-| Text Primary | `[hex / 未确认]` | [正文] | [来源] |
-| Text Secondary | `[hex / 未确认]` | [次级信息] | [来源] |
-| Background | `[hex / 未确认]` | [页面背景] | [来源] |
-| Surface | `[hex / 未确认]` | [卡片、弹层] | [来源] |
-| Border | `[hex / 未确认]` | [分隔线、边框] | [来源] |
-| Success / Warning / Danger | `[逐项记录或未确认]` | [语义状态] | [来源] |
+| `primary` | — | 主要操作 / 链接 | — |
+| `text-primary` | — | 主文本 | — |
+| `text-secondary` | — | 次级文本 | — |
+| `background` | — | 页面底色 | — |
+| `surface` | — | 卡片 / 浮层 | — |
+| `border` | — | 分隔线 / 控件边框 | — |
+| `success` / `warning` / `error` | — | 语义状态 | — |
 
-## 3. Typography Rules
+## Typography
 
-字体回退受操作系统、浏览器、语言标签和已安装字库影响。分别记录实际 CSS 声明和观察环境。
+### 3.1 中文字体与字形
 
-### 3.1 中文字体
+- **简体中文**：[已观测字体栈和平台]
+- **繁体中文**：[若支持，记录 `zh-TW` / `zh-HK` 等具体场景]
+- **实际渲染字体**：[仅当通过浏览器 / 系统确认]
+- **缺字回退**：[实测行为或未确认]
 
-- **简体字形**：[实际字体及证据]
-- **繁体字形**：[若支持，记录 TC / HK 等目标与证据]
-- **中文衬线字体**：[若使用]
-- **缺字回退**：[观察到的策略或未确认]
-
-不要将某个系统字体名称视为所有设备都有，也不要仅凭字体栈推断实际渲染字体。
+不要只凭 CSS 字体栈断言最终渲染字体；系统安装情况、语言标签和浏览器都会影响字体回退。
 
 ### 3.2 西文字体
 
-- **无衬线**：[字体 / 未确认]
-- **衬线**：[字体 / 未确认]
-- **等宽**：[字体 / 未确认]
+- **无衬线**：[字体及用途]
+- **衬线**：[字体及用途]
+- **等宽**：[字体及用途]
 
-### 3.3 `font-family` 声明
+### 3.3 `font-family` 回退链
 
 ```css
-/* 按目标站点实际 CSS 记录；未知部分标注，不臆造 */
-font-family: [完整字体栈];
+/* 按实际 CSS 原样摘录；没有公开声明时标注“未确认” */
+font-family: [完整声明或未确认];
 ```
 
 ### 3.4 字号与字重层级
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | 证据 / 用途 |
+| Role | Font | Size | Weight | Line Height | Letter Spacing | 用途 / 来源 |
 |---|---|---:|---:|---:|---:|---|
 | Display | — | — | — | — | — | — |
 | Heading 1 | — | — | — | — | — | — |
@@ -70,26 +76,27 @@ font-family: [完整字体栈];
 
 ### 3.5 行距与字距
 
-- **正文行高**：[实测值及页面]
-- **标题行高**：[实测值及页面]
+- **正文 / 标题行高**：[实测值及对应元素]
 - **正文 / 标题字距**：[实测值；区分中文和西文如适用]
-- **对齐方式**：[左对齐 / 两端对齐等]
+- **混排中的字距表现**：[有证据时记录]
+- **段落与列表间距**：[实测值]
 
-### 3.6 中文断行与标点
+### 3.6 中文断行与标点禁则
 
-- **`lang` 语义**：[页面或组件实际使用的语言标签]
-- **断行 CSS**：[实测到的 `line-break`、`word-break`、`overflow-wrap` 等；未知时不推断]
-- **禁则与标点**：[观察到的行首、行末标点处理]
-- **长 URL / 英文单词**：[实际换行策略]
-- **浏览器差异**：[若验证过，注明环境]
+- **HTML `lang`**：[实测值]
+- **断行相关 CSS**：[`line-break`、`word-break`、`overflow-wrap` 等实测声明]
+- **标点避头尾**：[观察到的中英文标点规则]
+- **长英文、URL、数字**：[实际换行策略]
+- **浏览器差异**：[仅填写已验证差异]
 
-不要默认使用 `word-break: break-all`：它可能切断英文单词、URL 和数字。优先记录产品真实行为，再按组件需求说明取舍。
+不要默认给中文正文套用 `word-break: break-all`；它会改变英文单词、数字和 URL 的断行行为。以目标站点实际 CSS 和渲染结果为准。
 
-### 3.7 OpenType 与数字
+### 3.7 OpenType 与数字排版
 
-- **OpenType 特性**：[如 `tnum`、`kern`；仅记录有证据的配置]
-- **中西文宽度处理**：[全角 / 比例宽度行为或未确认]
-- **数字、金额、日期**：[数字对齐及格式规则]
+- **OpenType 特性**：[如 `tnum`、`kern`，注明目标元素和来源]
+- **全角 / 比例宽度**：[实测声明或未确认]
+- **数字、货币、日期**：[记录展示规则]
+- 仅列出该字体实际支持且页面确实使用的特性，不将日文字体特性推断为中文行为。
 
 ### 3.8 竖排（如适用）
 
@@ -98,105 +105,62 @@ writing-mode: vertical-rl;
 text-orientation: mixed;
 ```
 
-仅在产品确实提供竖排内容时填写；记录标点、数字和拉丁文字的实测呈现。
+仅当产品页面实际使用竖排时填写，并记录标点、数字和拉丁文字的实测表现；否则注明“不适用”。
 
 ### 3.9 中英文混排
 
-- **中英文及数字间距**：[记录产品真实规则；不要将编辑规范当作 CSS 实测值]
-- **全角 / 半角标点**：[场景和例子]
-- **品牌名、产品名例外**：[例子]
-- **实现方式**：[空格、CSS 或内容规范；注明证据]
+- **汉字与西文 / 数字间距**：[记录产品实际规则，不混淆内容编辑规范和界面 CSS]
+- **全角 / 半角标点**：[实际使用场景]
+- **品牌名 / 产品名例外**：[具体例子]
+- **实现方式**：[内容空格、CSS 或组件处理；注明来源]
 
-### 3.10 简繁体与语言切换
+### 3.10 简繁与地区语言切换
 
-- **支持语言 / 地区**：[例如 `zh-CN`、`zh-TW`、`zh-HK`，以产品实际支持为准]
-- **切换方式**：[路由、用户设置或其他实际机制]
-- **字体与字形策略**：[实测或官方说明]
-- **内容差异**：[仅当有证据时描述]
+- **支持的语言标签**：[实测值，如 `zh-CN`、`zh-TW`]
+- **切换入口与行为**：[路由 / 用户设置 / 服务端协商]
+- **字体和字形选择**：[实测或官方说明]
+- **不同地区的组件 / 文案差异**：[有证据时填写]
 
-## 4. Component Stylings
+## Layout
 
-### Buttons
+- **内容最大宽度 / 页面边距**：[实测尺寸]
+- **栅格 / 列数 / 间距**：[实测值]
+- **Spacing token**：[与 front matter `spacing` 一致]
+- **桌面 / 平板 / 手机布局变化**：[断点及证据]
 
-| Variant / State | Background | Text | Border | Radius | Padding / Height | Typography |
+## Elevation & Depth
+
+- **层级策略**：[阴影、边框、色面或组合]
+- **Surface 层次**：[背景、卡片、浮层的关系]
+- **实测阴影**：[完整 CSS 值、目标组件]
+
+## Shapes
+
+- **圆角语言**：[统一 / 分层规则]
+- **圆角 token**：[与 front matter `rounded` 一致]
+- **边框宽度 / 线型**：[实测值]
+
+## Components
+
+| Component / State | Background | Text | Border | Radius | Size / Spacing | Source |
 |---|---|---|---|---|---|---|
-| Primary | — | — | — | — | — | — |
-| Secondary | — | — | — | — | — | — |
-| Disabled / Focus | — | — | — | — | — | — |
+| Button primary | — | — | — | — | — | — |
+| Button secondary | — | — | — | — | — | — |
+| Input default / focus / error | — | — | — | — | — | — |
+| Card | — | — | — | — | — | — |
 
-### Inputs
+补充导航、标签、弹窗、空状态等目标站点的重要组件；front matter `components` 中的值应与此处一致。
 
-- **背景 / 边框 / 圆角**：[实测值]
-- **Focus / Error / Disabled**：[实测状态]
-- **高度 / 内边距 / 字体**：[实测值]
+## Do's and Don'ts
 
-### Cards and Other Components
+只写能由品牌页面或官方资料支持的品牌特有规则。
 
-[记录卡片、导航、标签、弹层等核心组件；标注状态、尺寸和证据。]
-
-## 5. Layout Principles
-
-| Token / Element | Value | 证据 / 场景 |
-|---|---|---|
-| Spacing scale | — | — |
-| Content max width | — | — |
-| Page gutter | — | — |
-| Grid columns / gap | — | — |
-
-## 6. Depth & Elevation
-
-| Level / Component | Shadow / Effect | 用途 / 证据 |
-|---|---|---|
-| Flat | — | — |
-| Card | — | — |
-| Popover / Dialog | — | — |
-
-## 7. Do's and Don'ts
-
-仅写由品牌页面或设计资料支持的具体约束，并注明依据。
-
-### Do
-
-- [品牌特有的做法与证据]
-
-### Don't
-
-- [品牌特有的避免事项与证据]
-
-## 8. Responsive Behavior
-
-| Breakpoint / State | Width | Layout change | 证据 |
-|---|---|---|---|
-| Mobile | — | — | — |
-| Tablet | — | — | — |
-| Desktop | — | — | — |
-
-- **触控与可访问性**：[观察到的目标尺寸、焦点、对比度等；未验证项明确标注]
-- **移动端字体与密度**：[实测变化]
-
-## 9. Agent Prompt Guide
-
-### Quick Reference
-
-```text
-Primary: [value / unknown]
-Text: [value / unknown]
-Background: [value / unknown]
-Font: [actual CSS font stack / unknown]
-Body size: [value / unknown]
-Line height: [value / unknown]
-Evidence: [source URL and date]
-```
-
-### Prompt
-
-```text
-请依据本文件中有来源支持的设计规则实现界面。保持记录的字体栈、色彩、字号层级和组件状态。
-遇到标记为未知的值时，不要将猜测描述为品牌规范；请使用中性可访问的默认值，并将其作为实现选择说明。
-```
+- **Do**：[品牌特有做法与证据]
+- **Don't**：[品牌特有禁忌与证据]
+- **Accessibility**：[已观察 / 验证的键盘、对比度、触控行为；未验证项明确标记]
 
 ## Sources and Notes
 
-- [页面标题](URL) — [访问 / 采集日期、视口及观察内容]
-- [官方设计文档](URL) — [对应 token 或规则]
-- **限制**：[地区、登录状态、动态内容、A/B 版本、设备等]
+- [页面或官方设计文档](URL) — [访问日期、页面状态、视口、发现]
+- **采集限制**：[登录状态、地区、动态内容、网络失败、AB 版本等]
+- **推断项**：[列出推断和依据，与实测 token 明确区分]

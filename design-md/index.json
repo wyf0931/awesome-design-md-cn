@@ -4,10 +4,20 @@
   "categories": [
     { "id": "platform", "label": "平台与社交" },
     { "id": "commerce", "label": "电商与生活服务" },
-    { "id": "technology", "label": "科技与硬件" },
+    { "id": "technology", "label": "科技与云服务" },
     { "id": "content", "label": "内容与媒体" },
     { "id": "travel", "label": "出行与旅行" },
     { "id": "finance", "label": "金融与支付" }
   ],
-  "brands": []
+  "brands": [
+    {
+      "slug": "aliyun-bailian",
+      "name": "阿里云百炼",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "PingFang SC",
+      "tags": ["#2564f8", "radius:6px", "14px base"],
+      "url": "https://bailian.console.aliyun.com/cn-beijing/model/market"
+    }
+  ]
 }

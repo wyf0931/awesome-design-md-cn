@@ -1,6 +1,6 @@
 # 贡献指南
 
-欢迎贡献中国互联网产品的 DESIGN.md 规范。当前仓库处于初始化阶段，暂不包含已完成的品牌提取。
+欢迎贡献中国互联网产品的 DESIGN.md 规范。仓库使用与 Google DESIGN.md 一致的 front matter token 格式，并扩展中文排版说明。
 
 ## 添加品牌
 

@@ -19,9 +19,12 @@
 awesome-design-md-cn/
 ├── README.md
 ├── CONTRIBUTING.md
+├── AGENTS.md
 ├── build.mjs
 ├── gallery.html
 ├── docs/dev-guide.md
+├── docs/agent-guide.md
+├── .agents/skills/design-md-cn-extractor/SKILL.md
 ├── design-md/
 │   ├── index.json
 │   └── <slug>/
@@ -40,6 +43,8 @@ awesome-design-md-cn/
 4. 更新 `preview.html` 的 token 和展示内容。预览需自包含，不能包含脚本、外链 JS 或大图。
 5. 在 `design-md/index.json` 的 `brands` 数组追加元信息，slug 与目录名一致，分类 ID 必须已定义。
 6. 运行 `node build.mjs`，将更新后的 `gallery.html` 一并提交。
+
+自动提取方式与 macOS 依赖安装见 [agent-guide.md](./agent-guide.md)。所有 agent 的通用流程写在根目录 `AGENTS.md` 和仓库 skill 中；Pi 入口为 `./bin/agent.sh describe <url> [slug]`。
 
 ## Gallery 行为与约束
 
