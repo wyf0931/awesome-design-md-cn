@@ -44,32 +44,32 @@ python3 -m http.server 8000
 
 ✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。预览列链接到仓库内的 HTML 文件；使用上面的本地画廊可以直接查看效果。
 
-| 平台 | 网站 | 预览 HTML | 状态 |
-|---|---|---|---|
-| 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
-| 百度 | [Baidu](https://www.baidu.com) | — | |
-| 小米 | [Xiaomi](https://www.mi.com) | — | |
-| 华为 | [Huawei](https://www.huawei.com) | — | |
-| 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | |
-| 腾讯 | [Tencent](https://www.tencent.com) | — | |
-| 知乎 | [Zhihu](https://www.zhihu.com) | — | |
-| 网易 | [NetEase](https://www.163.com) | — | |
-| 滴滴 | [DiDi](https://www.didiglobal.com) | — | |
-| 美团 | [Meituan](https://www.meituan.com) | — | |
-| 大众点评 | [Dianping](https://www.dianping.com) | — | |
-| 支付宝 | [Alipay](https://www.alipay.com) | — | |
-| 携程 | [Trip.com](https://www.trip.com) | — | |
-| 小红书 | [Xiaohongshu](https://www.xiaohongshu.com) | — | |
-| 哔哩哔哩 | [bilibili](https://www.bilibili.com) | — | |
-| 新浪 | [Sina](https://www.sina.com.cn) | — | |
-| 抖音 | [Douyin](https://www.douyin.com) | — | |
-| 微信 | [WeChat](https://weixin.qq.com) | — | |
-| 京东 | [JD.com](https://www.jd.com) | — | |
-| 淘宝 | [Taobao](https://www.taobao.com) | — | |
+| 平台 | 网站 | DESIGN.md | 预览 HTML | 状态 |
+|---|---|---|---|---|
+| 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](design-md/aliyun-bailian/preview.html) | ✅ |
+| 百度 | [Baidu](https://www.baidu.com) | — | — | |
+| 小米 | [Xiaomi](https://www.mi.com) | — | — | |
+| 华为 | [Huawei](https://www.huawei.com) | — | — | |
+| 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | — | |
+| 腾讯 | [Tencent](https://www.tencent.com) | — | — | |
+| 知乎 | [Zhihu](https://www.zhihu.com) | — | — | |
+| 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](design-md/netease/preview.html) | ✅ |
+| 滴滴 | [DiDi](https://www.didiglobal.com) | — | — | |
+| 美团 | [Meituan](https://www.meituan.com) | — | — | |
+| 大众点评 | [Dianping](https://www.dianping.com) | — | — | |
+| 支付宝 | [Alipay](https://www.alipay.com) | — | — | |
+| 携程 | [Trip.com](https://www.trip.com) | — | — | |
+| 小红书 | [Xiaohongshu](https://www.xiaohongshu.com) | — | — | |
+| 哔哩哔哩 | [bilibili](https://www.bilibili.com) | — | — | |
+| 新浪 | [Sina](https://www.sina.com.cn) | — | — | |
+| 抖音 | [Douyin](https://www.douyin.com) | — | — | |
+| 微信 | [WeChat](https://weixin.qq.com) | — | — | |
+| 京东 | [JD.com](https://www.jd.com) | — | — | |
+| 淘宝 | [Taobao](https://www.taobao.com) | — | — | |
 
 ## 自动提取
 
-仓库提供基于浏览器采集的自动化流程：先采集桌面和移动视口下的渲染 DOM 与 computed CSS，再由 Pi 生成设计规范、预览、索引和画廊条目。
+仓库提供基于浏览器采集的自动化流程：先采集桌面和移动视口下的渲染 DOM 与 computed CSS，再由 Pi 生成设计规范、预览、索引和画廊条目，并同步更新中英文 README 的进度表。
 
 ```sh
 ./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian

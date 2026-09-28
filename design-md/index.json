@@ -2,12 +2,30 @@
   "title": "Awesome Design MD CN",
   "subtitle": "中文互联网产品设计规范与预览",
   "categories": [
-    { "id": "platform", "label": "平台与社交" },
-    { "id": "commerce", "label": "电商与生活服务" },
-    { "id": "technology", "label": "科技与云服务" },
-    { "id": "content", "label": "内容与媒体" },
-    { "id": "travel", "label": "出行与旅行" },
-    { "id": "finance", "label": "金融与支付" }
+    {
+      "id": "platform",
+      "label": "平台与社交"
+    },
+    {
+      "id": "commerce",
+      "label": "电商与生活服务"
+    },
+    {
+      "id": "technology",
+      "label": "科技与云服务"
+    },
+    {
+      "id": "content",
+      "label": "内容与媒体"
+    },
+    {
+      "id": "travel",
+      "label": "出行与旅行"
+    },
+    {
+      "id": "finance",
+      "label": "金融与支付"
+    }
   ],
   "brands": [
     {
@@ -15,9 +33,26 @@
       "name": "阿里云百炼",
       "category": "technology",
       "categoryLabel": "科技与云服务",
-      "font": "PingFang SC",
-      "tags": ["#2564f8", "radius:6px", "14px base"],
+      "font": "PingFang SC / 宋体 / Microsoft Yahei",
+      "tags": [
+        "#2564f8",
+        "radius:6px",
+        "14px base"
+      ],
       "url": "https://bailian.console.aliyun.com/cn-beijing/model/market"
+    },
+    {
+      "slug": "netease",
+      "name": "网易",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "PingFang SC / 宋体 / Microsoft Yahei",
+      "tags": [
+        "#d60000",
+        "radius:4px",
+        "12px base"
+      ],
+      "url": "https://www.163.com/"
     }
   ]
 }

@@ -38,7 +38,14 @@ The slug is derived from the hostname (`bailian`); pass an explicit slug if a ho
 ./bin/agent.sh describe https://example.com/product example-product
 ```
 
-The Pi wrapper runs in one-shot print mode with low thinking effort, does not save a session, disables discovered skills and extensions, then loads only this repository's extractor skill. It limits tools to file operations and shell; `AGENTS.md` remains available as project-wide instructions. The agent writes the brand spec, static preview and index entry, updates the README tracker, and the wrapper verifies those references before rebuilding `gallery.html`.
+The Pi wrapper runs in one-shot print mode with low thinking effort by default, does not save a session, disables discovered skills and extensions, then loads only this repository's extractor skill. It limits tools to file operations and shell; `AGENTS.md` remains available as project-wide instructions. The agent writes the brand spec, static preview and index entry, updates both README language versions, and the wrapper verifies those references before rebuilding `gallery.html`.
+
+Override the model and thinking level through `PI_MODEL` and `PI_THINKING`; the wrapper forwards them to Pi's `--model` and `--thinking` flags:
+
+```sh
+PI_MODEL=sensenova/sensenova-6.8-flash-lite PI_THINKING=high \
+  ./bin/agent.sh describe https://www.163.com/ netease
+```
 
 To enable Chrome DevTools MCP for a SPA:
 

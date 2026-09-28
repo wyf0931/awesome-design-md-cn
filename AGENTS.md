@@ -6,5 +6,5 @@ When a task asks to extract, describe, or add a product's Chinese interface desi
 - Use only pages accessible without bypassing authentication, paywalls, bot checks, or other access controls.
 - Keep source URLs, access date, viewport, and login state in the output.
 - Add the brand's `DESIGN.md` and script-free `preview.html`, update `design-md/index.json`, then regenerate `gallery.html` with `node build.mjs`.
-- Mark the README row complete only after the output is built and linked.
+- Add the new brand's `DESIGN.md` and preview links to both `README.md` and `README.en.md`; mark both rows complete only after the output is built and linked.
 - Follow the Google DESIGN.md front matter and section order documented in `template/DESIGN.md`.

@@ -134,6 +134,18 @@ async page => {
         return { label, ancestors };
       });
     });
+    const typeCandidates = allElements
+      .map(element => ({ element, text: (element.innerText || '').trim(), rect: element.getBoundingClientRect() }))
+      .filter(({ element, text, rect }) => text.length >= 2 && text.length <= 100 && rect.width > 0 && rect.height > 0 && getComputedStyle(element).visibility !== 'hidden')
+      .map(({ element, text }) => measure(element, 'typography'))
+      .sort((a, b) => parseFloat(b.fontSize) - parseFloat(a.fontSize));
+    const seenTypeStyles = new Set();
+    const typeScale = typeCandidates.filter(sample => {
+      const key = [sample.fontFamily, sample.fontSize, sample.fontWeight, sample.lineHeight, sample.color, sample.letterSpacing].join('|');
+      if (seenTypeStyles.has(key)) return false;
+      seenTypeStyles.add(key);
+      return true;
+    }).slice(0, 32);
     const seenVariables = new Set();
     const cssVariables = properties.filter(([name]) => {
       if (seenVariables.has(name)) return false;
@@ -145,6 +157,12 @@ async page => {
       title: document.title,
       lang: document.documentElement.lang,
       viewport: { width: innerWidth, height: innerHeight },
+      documentMetrics: {
+        documentWidth: document.documentElement.scrollWidth,
+        documentHeight: document.documentElement.scrollHeight,
+        bodyWidth: document.body.scrollWidth,
+        bodyHeight: document.body.scrollHeight,
+      },
       bodyText: document.body.innerText.slice(0, 3500),
       bodyComputed: {
         fontFamily: getComputedStyle(document.body).fontFamily,
@@ -157,6 +175,7 @@ async page => {
       cards,
       inputs,
       anchorNodes,
+      typeScale,
     };
   };
   const desktop = await page.evaluate(inspect);
