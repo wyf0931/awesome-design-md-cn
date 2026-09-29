@@ -57,7 +57,7 @@ python3 -m http.server 8000
 | 飞书 | [Feishu](https://www.feishu.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/preview.html) | ✅ |
 | 知乎 | [Zhihu](https://www.zhihu.com) | — | — | |
 | 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
-| 滴滴 | [DiDi](https://www.didiglobal.com) | — | — | |
+| 滴滴 | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | 美团 | [Meituan](https://www.meituan.com) | — | — | |
 | 大众点评 | [Dianping](https://www.dianping.com) | — | — | |
 | 支付宝 | [Alipay](https://www.alipay.com) | — | — | |
