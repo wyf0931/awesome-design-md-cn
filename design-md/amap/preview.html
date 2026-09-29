@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>高德开放平台 — Design System</title>
+  <style>
+    :root {
+      --primary: #1a66ff;
+      --primary-light: #2b99ff;
+      --primary-button: #387aff;
+      --primary-deep: #083da6;
+      --accent-highlight: #2b71ff;
+      --ink: rgba(0, 0, 0, 0.9);
+      --text-title: #232425;
+      --text-nav: #363638;
+      --text-muted: #5e5f63;
+      --text-faint: #909298;
+      --canvas: #ffffff;
+      --surface: #ffffff;
+      --surface-section: #f9f9f9;
+      --surface-footer: #f8f9fa;
+      --line: #eceef1;
+      --header-glass: rgba(255, 255, 255, 0.3);
+      --pagination-glass: rgba(227, 230, 238, 0.5);
+      --card-shadow: rgba(8, 36, 92, 0.1) 0px 6px 15px 0px;
+      --card-shadow-strong: rgba(8, 36, 92, 0.2) 0px 4px 15px 0px;
+      --blue-shadow: rgba(56, 122, 255, 0.22) 0 6px 16px 0;
+      --grad-cta: linear-gradient(115deg, #2b99ff 9%, #387aff);
+      --grad-tag: linear-gradient(120deg, #2b99ff 9%, #1a66ff);
+      --grad-icon: linear-gradient(150deg, #2b99ff 9%, #1a66ff);
+      --grad-num: linear-gradient(90deg, #083da6, #2b71ff);
+      --radius-card: 8px;
+      --radius-pill: 16px;
+      --radius-chip: 14px;
+      --radius-circle: 32px;
+      --font-cjk: PingFangSC-Regular, "Microsoft YaHei", "Open Sans", Arial, "Hiragino Sans GB", 微软雅黑, STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+      --font-content: -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "PingFang SC", "Microsoft YaHei";
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font: 14px/1.5 var(--font-cjk); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1280px; min-height: 1080px; margin: 0 auto; padding: 44px 68px 48px; }
+
+    .masthead { display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 8px; border-bottom: 1px solid var(--line); background: var(--surface-footer); border-radius: var(--radius-card); }
+    .brand { display: flex; align-items: center; gap: 10px; font: 500 18px/1 var(--font-cjk); color: var(--primary); }
+    .brand-mark { width: 24px; height: 24px; border-radius: 8px; background: var(--grad-icon); display: inline-flex; align-items: center; justify-content: center; color: #fff; font: 600 12px/1 var(--font-content); }
+    .brand small { color: var(--text-muted); font: 400 12px/1 var(--font-content); margin-left: 4px; letter-spacing: 0.5px; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; }
+    .context span { padding: 5px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 500 34px/51px var(--font-content); color: var(--accent-highlight); padding-bottom: 6px; }
+    h1 .rule { display: inline-block; width: 84px; height: 8px; margin: 12px 0 0; border-radius: 2px; background: var(--grad-num); vertical-align: middle; }
+    .summary { max-width: 640px; margin: 14px 0 0; color: var(--text-muted); font: 400 14px/1.7 var(--font-content); }
+    .source-language { min-width: 320px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--card-shadow); }
+    .source-language strong { display: block; margin-bottom: 6px; font: 600 13px/1.5 var(--font-content); color: var(--text-title); }
+    .source-language span { color: var(--text-muted); font-size: 11px; line-height: 1.6; display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 500 22px/1.4 var(--font-content); color: var(--text-title); }
+    .section-note { color: var(--text-muted); font-size: 11px; }
+
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+    .color { height: 62px; background: var(--sample); }
+    .swatch-copy { min-height: 48px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--text-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 148px 1fr 156px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--text-muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--radius-card); background: var(--surface-section); color: var(--text-muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--text-title); font: 500 22px/1.55 var(--font-content); }
+    .cjk-note { margin: 0; color: var(--text-muted); font-size: 11px; line-height: 1.6; }
+
+    .specimens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .component { min-height: 130px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--card-shadow); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--text-muted); font-size: 10px; }
+
+    /* Frosted header mock */
+    .frosted-mock { position: relative; padding: 22px 20px; border-radius: var(--radius-card); background: linear-gradient(135deg, #dfe6f5 0%, #cfdcf3 60%, #e4ecf7 100%); overflow: hidden; }
+    .frosted-mock > .frosted-bar { position: relative; background: var(--header-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-card); height: 56px; display: flex; align-items: center; padding: 0 18px; color: var(--text-nav); font: 400 14px/1 var(--font-cjk); box-shadow: 0 1px 0 rgba(8, 36, 92, 0.06); }
+    .frosted-mock .fm-logo { color: var(--primary); font-weight: 600; margin-right: 26px; font-size: 15px; }
+    .frosted-mock .fm-nav { display: flex; gap: 22px; font-size: 14px; }
+    .frosted-mock .fm-nav span + span::before { content: ""; display: inline-block; width: 1px; height: 12px; background: rgba(0, 0, 0, 0.08); margin: 0 12px -1px 0; }
+    .frosted-mock .fm-right { margin-left: auto; display: flex; align-items: center; gap: 14px; font-size: 13px; }
+    .frosted-mock .fm-search { width: 40px; height: 28px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-nav); }
+    .frosted-mock .fm-search::before { content: ""; width: 10px; height: 10px; border: 2px solid currentColor; border-radius: 50%; position: relative; box-shadow: 4px 4px 0 -1px currentColor; }
+    .frosted-mock .fm-sign-up { background: var(--grad-cta); color: #fff; border-radius: 18px; padding: 0 14px 0 16px; height: 32px; display: inline-flex; align-items: center; font: 500 14px/32px var(--font-content); box-shadow: var(--blue-shadow); }
+
+    /* Buttons row */
+    .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .row + .row { margin-top: 12px; }
+    .btn-cta { height: 32px; padding: 0 14px 0 16px; border-radius: var(--radius-pill); background: var(--grad-cta); color: #fff; font: 500 14px/32px var(--font-content); border: 0; box-shadow: none; }
+    .btn-cta-outline { height: 32px; padding: 0 15px 0 20px; border-radius: var(--radius-pill); border: 1px solid var(--primary); color: var(--primary); background: transparent; font: 600 14px/30px var(--font-content); display: inline-flex; align-items: center; }
+    .btn-signup { height: 36px; padding: 0 14px 0 16px; border-radius: 18px; background: var(--grad-cta); color: #fff; font: 500 16px/36px var(--font-content); box-shadow: var(--blue-shadow); display: inline-flex; align-items: center; }
+    .play-btn { width: 32px; height: 32px; border-radius: 16px; border: 1px solid var(--primary); background: transparent; display: inline-flex; align-items: center; justify-content: center; }
+    .play-btn-inner { width: 26px; height: 26px; border-radius: 13px; background: #757d8b; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; line-height: 1; }
+
+    /* Product card */
+    .product-mock { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+    .product-mock .card { border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--card-shadow); padding: 16px; min-height: 96px; position: relative; }
+    .product-mock .card.big { grid-column: span 2; min-height: 128px; background: linear-gradient(140deg, #eef4ff 0%, #ffffff 60%); }
+    .product-mock .card strong { color: var(--accent-highlight); font: 500 20px/1.15 var(--font-content); display: block; margin-bottom: 8px; }
+    .product-mock .card p { color: var(--text-title); font: 400 13px/1.6 var(--font-content); margin: 0 0 12px; }
+    .product-mock .card .cta { background: var(--grad-cta); color: #fff; border-radius: var(--radius-pill); padding: 0 12px; height: 26px; display: inline-flex; align-items: center; font: 500 12px/26px var(--font-content); }
+
+    /* Tag chip */
+    .chip { display: inline-flex; align-items: center; min-height: 14px; padding: 0 6px; margin-left: 6px; border-radius: var(--radius-chip); background: var(--grad-tag); color: #fff; font: 500 14px/14px var(--font-content); vertical-align: 3px; }
+    .columns-mock { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 6px; }
+    .columns-mock .col-title { color: var(--primary); font: 500 18px/1.4 var(--font-content); margin-bottom: 12px; }
+    .columns-mock .col-desc { color: var(--text-nav); font: 500 14px/1.4 var(--font-content); margin-bottom: 8px; display: flex; align-items: center; }
+    .columns-mock .col-links { display: flex; flex-wrap: wrap; gap: 2px 6px; margin-top: 4px; }
+    .columns-mock .col-links a { color: var(--primary); font: 400 12px/1.4 var(--font-content); text-decoration: none; }
+
+    /* Data number */
+    .data-mock { display: flex; gap: 24px; margin-top: 6px; }
+    .data-mock .num { color: var(--accent-highlight); background: var(--grad-num); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font: 500 34px/48px var(--font-content); padding-bottom: 6px; }
+    .data-mock .num-caption { color: var(--text-title); font: 400 12px/1.6 var(--font-content); margin-top: -2px; }
+
+    /* Swiper pagination + arrows */
+    .swiper-mock { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .sw-arrow { width: 44px; height: 44px; border-radius: var(--radius-circle); background: var(--pagination-glass); backdrop-filter: saturate(1.8) blur(4px); color: rgba(0, 122, 255, 1); display: inline-flex; align-items: center; justify-content: center; font: 600 16px/1 var(--font-content); }
+    .sw-dots { display: inline-flex; gap: 20px; align-items: center; padding: 0 12px; }
+    .sw-dot { display: inline-block; width: 60px; height: 8px; border-radius: 5px; background: #dfe1e6; }
+    .sw-dot.active { background: #000; }
+    .sw-lbl { color: var(--text-faint); font: 400 12px/1 var(--font-content); }
+
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 14px; }
+    .measure { padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 10px; color: var(--text-muted); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .scale { display: flex; align-items: end; gap: 8px; height: 30px; }
+    .scale i { display: block; width: var(--w); height: 6px; border-radius: 999px; background: var(--primary); opacity: .8; }
+    .radius-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .radius-chip { width: 44px; height: 32px; border: 1px solid var(--line); background: var(--surface-section); border-radius: var(--r); display: inline-flex; align-items: center; justify-content: center; font: 10px/1 ui-monospace, SFMono-Regular, Menle, monospace; color: var(--text-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .shadow-chip { width: 60px; height: 30px; border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--card-shadow); }
+    .shadow-chip.strong { box-shadow: var(--card-shadow-strong); }
+    .shadow-chip.blue { box-shadow: var(--blue-shadow); }
+    .measure-values { color: var(--ink); font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; margin-top: 6px; }
+    .grad-mock { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .grad-mock > i { display: block; width: 80px; height: 22px; border-radius: 6px; background: var(--grad-cta); }
+    .grad-mock > i.tag { background: var(--grad-tag); }
+    .grad-mock > i.num { background: var(--grad-num); }
+    .grad-mock > i.icon { background: var(--grad-icon); }
+
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--text-muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+
+    @media (max-width: 1000px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 640px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { flex-direction: column; align-items: flex-start; gap: 10px; height: auto; padding: 12px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 96px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 18px; }
+      h1 { font-size: 26px; }
+      .product-mock { grid-template-columns: 1fr; }
+      .product-mock .card.big { grid-column: span 1; }
+      .columns-mock { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand-mark">A</span>
+        高德开放平台 <small>LBS · 高德地图 API</small>
+      </div>
+      <div class="context">
+        <span>科技与云服务</span>
+        <span>简体中文</span>
+        <span>HTML lang: 未记录</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本<span class="rule"></span></h1>
+        <p class="summary">基于高德开放平台（lbs.amap.com）公开页面中可核实的颜色、文字、控件与圆角语汇。样例用于展示设计 token，不复刻官网的信息结构或产品文案。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>Header / 页脚：PingFangSC-Regular 优先</span>
+        <span>内容 / 卡片：-apple-system + PingFang SC</span>
+        <span>图标：iconfont（自研）</span>
+        <span>未观察到 @font-face 声明</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#1a66ff"></div><div class="swatch-copy"><span class="swatch-name">品牌主色 primary</span><code class="swatch-value">#1a66ff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#2b99ff"></div><div class="swatch-copy"><span class="swatch-name">渐变亮端</span><code class="swatch-value">#2b99ff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#387aff"></div><div class="swatch-copy"><span class="swatch-name">CTA 渐变暗端</span><code class="swatch-value">#387aff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#083da6"></div><div class="swatch-copy"><span class="swatch-name">装饰深端</span><code class="swatch-value">#083da6</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#2b71ff"></div><div class="swatch-copy"><span class="swatch-name">装饰亮端 accent</span><code class="swatch-value">#2b71ff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#232425"></div><div class="swatch-copy"><span class="swatch-name">标题 text-title</span><code class="swatch-value">#232425</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#363638"></div><div class="swatch-copy"><span class="swatch-name">导航 text-nav</span><code class="swatch-value">#363638</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#5e5f63"></div><div class="swatch-copy"><span class="swatch-name">副标 text-muted</span><code class="swatch-value">#5e5f63</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#909298"></div><div class="swatch-copy"><span class="swatch-name">页脚 text-faint</span><code class="swatch-value">#909298</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff;border-bottom:1px solid var(--line)"></div><div class="swatch-copy"><span class="swatch-name">白卡 surface</span><code class="swatch-value">#ffffff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f9f9f9"></div><div class="swatch-copy"><span class="swatch-name">Banner 轨道</span><code class="swatch-value">#f9f9f9</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f8f9fa"></div><div class="swatch-copy"><span class="swatch-name">页脚底色</span><code class="swatch-value">#f8f9fa</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(255,255,255,0.3);background-image:linear-gradient(135deg,#c9d4ea,#e6ecf6)"></div><div class="swatch-copy"><span class="swatch-name">玻璃头部</span><code class="swatch-value">rgba(255,255,255,.3)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(227,230,238,0.5);background-image:linear-gradient(135deg,#c9d4ea,#e6ecf6)"></div><div class="swatch-copy"><span class="swatch-name">轮播箭头玻璃</span><code class="swatch-value">rgba(227,230,238,.5)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:linear-gradient(115deg,#2b99ff 9%,#387aff)"></div><div class="swatch-copy"><span class="swatch-name">CTA 渐变</span><code class="swatch-value">115deg #2b99ff→#387aff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:linear-gradient(120deg,#2b99ff 9%,#1a66ff)"></div><div class="swatch-copy"><span class="swatch-name">标签渐变</span><code class="swatch-value">120deg #2b99ff→#1a66ff</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">Banner 标题</span><strong class="type-sample" style="font:500 34px/51px var(--font-content);color:var(--accent-highlight)">轻量版地图SDK破茧新生</strong><span class="type-value">34px / 500 / 51px</span></div>
+          <div class="type-row"><span class="type-role">分区标题</span><strong class="type-sample" style="font:500 32px/42px var(--font-content);color:var(--text-title)">热门产品</strong><span class="type-value">32px / 500 / 42px</span></div>
+          <div class="type-row"><span class="type-role">卡片大标题</span><strong class="type-sample" style="font:500 30px/30px var(--font-content);color:var(--accent-highlight)">3D 地图</strong><span class="type-value">30px / 500 / 30px</span></div>
+          <div class="type-row"><span class="type-role">数据大字</span><strong class="type-sample" style="font:500 34px/48px var(--font-content);background:var(--grad-num);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1000 亿</strong><span class="type-value">34px / 500 / 48px</span></div>
+          <div class="type-row"><span class="type-role">列标题（下拉）</span><strong class="type-sample" style="font:500 18px/1.4 var(--font-content);color:var(--primary)">搜索定位</strong><span class="type-value">18px / 500 / normal</span></div>
+          <div class="type-row"><span class="type-role">顶部导航</span><strong class="type-sample" style="font:400 16px/64px var(--font-cjk);color:var(--text-nav);line-height:1">产品介绍</strong><span class="type-value">16px / 400 / 64px</span></div>
+          <div class="type-row"><span class="type-role">卡片描述</span><strong class="type-sample" style="font:400 16px/26px var(--font-content);color:var(--text-title)">海量地图位置数据</strong><span class="type-value">16px / 400 / 26px</span></div>
+          <div class="type-row"><span class="type-role">列链接</span><strong class="type-sample" style="font:400 12px/1.4 var(--font-content);color:var(--primary)">API · JS · Android · iOS</strong><span class="type-value">12px / 400 / 12px</span></div>
+          <div class="type-row"><span class="type-role">页脚小字</span><strong class="type-sample" style="font:200 12px/22px var(--font-cjk);color:var(--text-faint)">新手入门 · 产品与服务</strong><span class="type-value">12px / 200 / 22px</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">中文优先栈（Header / 页脚）：<br>PingFangSC-Regular, "Microsoft YaHei",<br>"Open Sans", Arial, "Hiragino Sans GB", 微软雅黑, STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif<br><br>英文优先栈（内容 / 卡片）：<br>-apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif,<br>"Apple Color Emoji", "Segoe UI Emoji", "PingFang SC", "Microsoft YaHei"</div>
+          <p class="cjk-line">1M 体积极限缩包 · 1000 亿次定位（¥ 128.00）</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源官网采用了这句文案或额外的混排规则。原站 HTML lang 属性为空字符串。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">玻璃吸顶头部（1280×64 · 30% 白色 + backdrop-filter blur(10px)）</span>
+          <div class="frosted-mock">
+            <div class="frosted-bar">
+              <span class="fm-logo">高德开放平台</span>
+              <span class="fm-nav"><span>产品介绍</span><span>解决方案</span><span>开发文档</span></span>
+              <span class="fm-right">
+                <span class="fm-search" aria-hidden="true"></span>
+                <span>登录</span>
+                <span class="fm-sign-up">注册</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">按钮 · CTA 家族（16px 圆角 + 蓝色渐变）</span>
+          <div class="row">
+            <button class="btn-cta">立即使用</button>
+            <button class="btn-cta">了解详情</button>
+            <button class="btn-cta-outline">查看全部文档</button>
+          </div>
+          <div class="row">
+            <button class="btn-signup">注册</button>
+            <span class="play-btn"><span class="play-btn-inner">▶</span></span>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">标签 · HOT / NEW（14px 圆角 + 蓝色渐变）</span>
+          <div class="row">
+            <span class="columns-mock-inline" style="display:inline-flex;align-items:center;gap:2px">
+              <strong style="font:500 14px/1.4 var(--font-content);color:var(--text-nav)">鸿蒙星河版定位SDK</strong>
+              <span class="chip">HOT</span>
+            </span>
+          </div>
+          <div class="row">
+            <span style="display:inline-flex;align-items:center;gap:2px">
+              <strong style="font:500 14px/1.4 var(--font-content);color:var(--text-nav)">鸿蒙星河版导航SDK</strong>
+              <span class="chip">NEW</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">产品卡片（8px 圆角 + 阴影 rgba(8,36,92,.1) 0 6px 15px）</span>
+          <div class="product-mock">
+            <div class="card big">
+              <strong>3D 地图</strong>
+              <p>多种交互支持 · 真实 3D 地图的展示与配置</p>
+              <span class="cta">立即使用</span>
+            </div>
+            <div class="card">
+              <strong>搜索</strong>
+              <p>海量地图位置数据</p>
+              <span class="cta">了解详情</span>
+            </div>
+            <div class="card">
+              <strong>高德地图小程序</strong>
+              <p>高德 App 内置外勤管理工具</p>
+              <span class="cta">了解详情</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">下拉 Columns（列标题 + 列链接 + HOT 标签）</span>
+          <div class="columns-mock">
+            <div>
+              <div class="col-title">搜索定位</div>
+              <div class="col-desc">鸿蒙星河版定位SDK <span class="chip">HOT</span></div>
+              <div class="col-desc">搜索 <span class="chip">HOT</span></div>
+              <div class="col-links"><a href="#">API</a><a href="#">JS</a><a href="#">Android</a><a href="#">iOS</a></div>
+            </div>
+            <div>
+              <div class="col-title">路线导航</div>
+              <div class="col-desc">导航 <span class="chip">HOT</span></div>
+              <div class="col-desc">路线规划 <span class="chip">HOT</span></div>
+              <div class="col-links"><a href="#">API</a><a href="#">Android</a><a href="#">iOS</a></div>
+            </div>
+            <div>
+              <div class="col-title">地图产品</div>
+              <div class="col-desc">JS API 地图</div>
+              <div class="col-desc">自定义地图</div>
+              <div class="col-links"><a href="#">API</a><a href="#">JS</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">优势数据大字 + 装饰横条（linear-gradient 90deg）</span>
+          <div style="font:500 30px/51px var(--font-content);color:var(--text-title);background:var(--grad-num);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-bottom:6px">海量数据</div>
+          <div class="data-mock">
+            <div>
+              <div class="num">1000 亿</div>
+              <div class="num-caption">日均处理定位与路线规划请求</div>
+            </div>
+            <div>
+              <div class="num">7000 万</div>
+              <div class="num-caption">覆盖中国 POI 数据</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>轮播与几何</h2><span class="section-note">Swiper 分页 · 翻页箭头 · 圆角与阴影</span></div>
+      <div class="specimens">
+        <div class="component" style="grid-column: span 2">
+          <span class="component-label">Swiper 分页 + 圆形翻页箭头（32px 玻璃圆）</span>
+          <div class="swiper-mock">
+            <span class="sw-arrow">‹</span>
+            <span class="sw-dot active"></span>
+            <span class="sw-dot"></span>
+            <span class="sw-dot"></span>
+            <span class="sw-lbl">搜索定位</span>
+            <span class="sw-dot"></span>
+            <span class="sw-dot"></span>
+            <span class="sw-arrow">›</span>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">品牌渐变家族（CTA / 标签 / 装饰 / 图标）</span>
+          <div class="grad-mock">
+            <i></i><i class="tag"></i><i class="num"></i><i class="icon"></i>
+          </div>
+          <div class="measure-values" style="margin-top:8px">115deg · 120deg · 90deg · 150deg</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing</span>
+          <div class="scale"><i style="--w:8px"></i><i style="--w:14px"></i><i style="--w:15px"></i><i style="--w:20px"></i><i style="--w:24px"></i><i style="--w:25px"></i><i style="--w:40px"></i><i style="--w:48px"></i><i style="--w:60px"></i><i style="--w:80px"></i></div>
+          <div class="measure-values">8 · 14 · 15 · 20 · 24 · 25 · 40 · 48 · 60 · 80 px；header 64 + content 960 × margin 160</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <i class="radius-chip" style="--r:5px">5</i>
+            <i class="radius-chip" style="--r:8px">8</i>
+            <i class="radius-chip" style="--r:14px">14</i>
+            <i class="radius-chip" style="--r:16px">16</i>
+            <i class="radius-chip" style="--r:18px">18</i>
+            <i class="radius-chip" style="--r:32px">32</i>
+          </div>
+          <div class="measure-values">卡片 8 · 按钮 16 · 标签 14 · 圆形箭头 32 · 注册胶囊 18</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div class="radius-row">
+            <i class="shadow-chip"></i>
+            <i class="shadow-chip strong"></i>
+            <i class="shadow-chip blue"></i>
+          </div>
+          <div class="measure-values">卡片: 0 6 15 rgba(8,36,92,.1) · 强阴影 .2 / 0 4 15<br>注册按钮: 0 6 16 rgba(56,122,255,.22)</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://lbs.amap.com/">https://lbs.amap.com/</a> · 2026-09-29 · 中国大陆 · 未登录 · HTML lang 为空</span>
+      <span>桌面 1280×720 · 移动 390×844 · Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>
