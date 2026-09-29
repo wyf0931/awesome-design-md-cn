@@ -59,7 +59,7 @@ python3 -m http.server 8000
 | 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | 滴滴 | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | 商汤科技 | [SenseTime](https://www.sensetime.com/cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/preview.html) | ✅ |
-| 美团 | [Meituan](https://www.meituan.com) | — | — | |
+| 美团 | [Meituan](https://www.meituan.com) | [DESIGN.md](design-md/meituan/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/meituan/preview.html) | ✅ |
 | 大众点评 | [Dianping](https://www.dianping.com) | — | — | |
 | 支付宝 | [Alipay](https://www.alipay.com) | — | — | |
 | 携程 | [Trip.com](https://www.trip.com) | — | — | |

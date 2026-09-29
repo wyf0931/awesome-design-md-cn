@@ -59,7 +59,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | NetEase (网易) | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | DiDi (滴滴) | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | SenseTime (商汤科技) | [SenseTime](https://www.sensetime.com/cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/preview.html) | ✅ |
-| Meituan (美团) | [Meituan](https://www.meituan.com) | — | — | |
+| Meituan (美团) | [Meituan](https://www.meituan.com) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/meituan/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/meituan/preview.html) | ✅ |
 | Dianping (大众点评) | [Dianping](https://www.dianping.com) | — | — | |
 | Alipay (支付宝) | [Alipay](https://www.alipay.com) | — | — | |
 | Trip.com / Ctrip (携程) | [Trip.com](https://www.trip.com) | — | — | |
