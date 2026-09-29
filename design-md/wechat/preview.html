@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>微信开放平台 — Design System</title>
+  <style>
+    :root { --green:#07c160; --ink:#222222; --muted:#888888; --line:#e8e8e8; --paper:#ffffff; --code:#f9f9fa; --nav:#f7f7f7; --link:#576b95; --font:-apple-system,"system-ui","SF UI Text","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif; --mono:Consolas,"Liberation Mono",Menlo,Courier,monospace; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#fff; color:var(--ink); font:14px/22.4px var(--font); }
+    main { max-width:1080px; margin:auto; padding:42px 44px 36px; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:var(--nav); }
+    .wordmark { font-size:16px; font-weight:600; }
+    .active { padding:0 16px; background:var(--green); color:#fff; line-height:40px; }
+    .eyebrow { margin:34px 0 8px; color:var(--muted); font-size:12px; }
+    h1 { margin:0; font-size:20px; line-height:32px; font-weight:600; }
+    .lede { max-width:720px; margin:12px 0 30px; color:var(--muted); }
+    section { margin-top:24px; }
+    h2 { margin:0 0 14px; font-size:18px; line-height:28.8px; font-weight:600; }
+    h3 { margin:20px 0 8px; font-size:16px; line-height:25.6px; font-weight:600; }
+    .palette { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+    .swatch { border:1px solid var(--line); }
+    .color { height:48px; background:var(--color); }
+    .label { padding:8px 9px; font-size:12px; }
+    .label code { display:block; color:var(--muted); font:11px/18px var(--mono); }
+    .columns { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+    .type-sample { border-top:1px solid var(--line); padding:10px 0; }
+    .type-sample small { display:block; color:var(--muted); font-size:11px; }
+    .title-sample { font-size:20px; line-height:32px; font-weight:600; }
+    .body-sample { font-size:14px; line-height:22.4px; }
+    .mixed { margin:14px 0; font-size:18px; line-height:28px; }
+    .code { margin:14px 0; padding:22px 24px; background:var(--code); border-radius:4px; font:14px/22.4px var(--mono); overflow-wrap:anywhere; }
+    .link { color:var(--green); font-weight:600; }
+    .secondary { color:var(--link); }
+    table { width:100%; border-collapse:collapse; text-align:left; }
+    th { padding:10px 16px 10px 0; color:var(--muted); font-weight:600; }
+    td { padding:12px 16px 12px 0; color:#353535; border-top:1px solid var(--line); }
+    .notes { color:var(--muted); font-size:12px; }
+    footer { display:flex; justify-content:space-between; gap:16px; margin-top:34px; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
+    a { color:inherit; }
+    @media(max-width:700px) { main { padding:20px 16px; } header { padding:8px; } .palette { grid-template-columns:repeat(2,1fr); } .columns { grid-template-columns:1fr; gap:16px; } footer { flex-direction:column; } }
+  </style>
+</head>
+<body>
+<main>
+  <header><span class="wordmark">微信开放平台</span><span class="active">当前项</span></header>
+  <p class="eyebrow">DESIGN SYSTEM SPECIMEN · 中文界面</p>
+  <h1>文档界面样本</h1>
+  <p class="lede">呈现公开指南中可测量的颜色、文字、代码和表格样式。来源页 HTML lang 为 <code>cn</code>；本预览使用简体中文。</p>
+  <section>
+    <h2>颜色角色</h2>
+    <div class="palette">
+      <div class="swatch"><div class="color" style="--color:#07c160"></div><div class="label">强调绿<code>#07c160</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#222222"></div><div class="label">主文字<code>#222222</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#888888"></div><div class="label">次级文字<code>#888888</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#f9f9fa"></div><div class="label">代码区域<code>#f9f9fa</code></div></div>
+      <div class="swatch"><div class="color" style="--color:#f7f7f7"></div><div class="label">导航底色<code>#f7f7f7</code></div></div>
+    </div>
+  </section>
+  <section class="columns">
+    <div><h2>文字层级</h2>
+      <div class="type-sample"><div class="title-sample">主标题示例</div><small>20px · 600 · 32px</small></div>
+      <div class="type-sample"><strong style="font-size:18px;line-height:28.8px">章节标题</strong><small>18px · 600 · 28.8px</small></div>
+      <div class="type-sample"><div class="body-sample">正文文字与 <span class="link">活动链接</span> 的样式。</div><small>14px · 400 · 22.4px</small></div>
+      <p class="mixed">中文与 PC OpenSDK · token_01</p>
+      <p class="notes">CSS 声明了系统优先中文字体栈；最终渲染字体未单独确认。</p>
+    </div>
+    <div><h2>代码与表格</h2>
+      <pre class="code">const status = "ready";
+openGuide(status);</pre>
+      <table><thead><tr><th>字段</th><th>类型</th><th>状态</th></tr></thead><tbody><tr><td>sample_key</td><td>string</td><td>已配置</td></tr><tr><td>sample_mode</td><td>boolean</td><td>启用</td></tr></tbody></table>
+    </div>
+  </section>
+  <section><h2>界面细节</h2><h3>选中导航与正文链接</h3><p>导航选中态使用微信绿背景和白色文字。普通正文链接使用 <span class="secondary">蓝灰色</span>；活动导航链接使用 <span class="link">绿色文字</span>。</p></section>
+  <footer><span>来源：<a href="https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html">PC OpenSDK 接入指南</a> · 2026-09-29 · 中国大陆 / 未登录</span><span>桌面 1280×720 · 移动 390×844</span></footer>
+</main>
+</body>
+</html>
