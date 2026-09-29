@@ -162,6 +162,21 @@
         "glass"
       ],
       "url": "https://www.sensetime.com/cn/"
+    },
+    {
+      "slug": "xiaomi",
+      "name": "小米",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "MiSans / MI Lan Pro / serif · vw+rem 双单位响应式",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#ff6900",
+        "radius:0",
+        "MiSans"
+      ],
+      "url": "https://www.mi.com/"
     }
   ]
 }
