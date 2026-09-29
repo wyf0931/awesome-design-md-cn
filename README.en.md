@@ -72,6 +72,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Taobao (淘宝) | [Taobao](https://www.taobao.com) | — | — | |
 | DeepSeek | [DeepSeek](https://www.deepseek.com/) | [DESIGN.md](design-md/deepseek/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/deepseek/preview.html) | ✅ |
 | Amap LBS (高德开放平台) | [Amap LBS](https://lbs.amap.com/) | [DESIGN.md](design-md/amap/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/amap/preview.html) | ✅ |
+| Lenovo (联想) | [Lenovo](https://www.lenovo.com.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/preview.html) | ✅ |
 
 ## Automatic extraction
 
