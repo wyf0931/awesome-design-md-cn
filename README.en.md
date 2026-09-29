@@ -51,7 +51,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Alibaba Cloud Bailian (阿里云百炼) | [Model Marketplace](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
 | Baidu (百度) | [Baidu](https://www.baidu.com) | — | — | |
 | Xiaomi (小米) | [Xiaomi](https://www.mi.com) | — | — | |
-| Huawei (华为) | [Huawei](https://www.huawei.com) | — | — | |
+| Huawei (华为) | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |
 | Alibaba (阿里巴巴) | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | Tencent (腾讯) | [Tencent](https://www.tencent.com) | — | — | |
 | Zhihu (知乎) | [Zhihu](https://www.zhihu.com) | — | — | |
