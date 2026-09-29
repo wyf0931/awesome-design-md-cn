@@ -1,165 +1,120 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>网易 — Design Preview</title>
+  <link rel="icon" href="data:,">
+  <title>网易 — Design System</title>
   <style>
     :root {
-      --nav-bg: #333333;
-      --brand-red: #d60000;
-      --search-red: #ff3333;
-      --emphasis-red: #e10000;
+      /* Replace values only with evidence recorded in DESIGN.md. */
+      --primary: #d60000;
+      --action: #ff3333;
       --ink: #404040;
-      --headline: #4e4e4e;
-      --secondary: #585858;
+      --body-text: #404040;
       --muted: #888888;
-      --paper: #ffffff;
       --line: #eeeeee;
-      --placeholder: #f1f2f3;
-      --body-font: -apple-system, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft Yahei";
-      --nav-font: "宋体", sans-serif;
-      --small-link-font: "Sim sun", sans-serif;
-      --search-font: -apple-system-font, system-ui, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+      --canvas: #ffffff;
+      --surface: #ffffff;
+      --soft: #f1f2f3;
+      --control-radius: 5px;
+      --card-radius: 0px;
+      --card-shadow: none;
+      --font-body: -apple-system, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft Yahei";
+      --font-cjk: -apple-system, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft Yahei";
+      --font-nav: "宋体", sans-serif;
     }
     * { box-sizing: border-box; }
-    html, body { min-width: 1220px; margin: 0; background: var(--paper); color: var(--ink); }
-    body { font: 12px/18px var(--body-font); -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    .page { width: 100%; max-width: 1280px; min-width: 1220px; margin: 0 auto; background: var(--paper); }
-    .site-width { width: 1200px; margin: 0 auto; }
-
-    .navbar.topbar { display: block; width: 100%; height: 45px; min-height: 45px; padding: 0; background: var(--nav-bg); color: #ffffff; font: 12px/44px var(--nav-font); }
-    .topbar-inner { width: 1200px; height: 44px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .topbar-start, .topbar-end { display: flex; align-items: center; height: 44px; gap: 0; }
-    .topbar a { display: inline-block; height: 44px; padding: 0 9px; white-space: nowrap; }
-    .topbar a:first-child { padding-left: 0; }
-    .topbar-end .quick-label { padding: 0 10px; color: #ffffff; }
-    .btn.login { width: 70px; height: 48px; min-height: 48px; margin-top: 2px; padding: 0; border: 0; border-radius: 0; background: var(--brand-red); color: #ffffff; font: 12px/44px var(--nav-font); box-shadow: none; }
-    .signup { padding-left: 10px !important; }
-
-    .brand-row { height: 66px; border-bottom: 2px solid var(--brand-red); display: flex; align-items: center; justify-content: space-between; }
-    .wordmark-sample { color: var(--headline); font: 600 18px/24px var(--body-font); letter-spacing: .02em; }
-    .mark-note { margin-left: 10px; color: var(--muted); font: 12px/18px var(--body-font); }
-    .placeholder-ad { width: 146px; height: 34px; border: 1px solid var(--line); background: #fafafa; display: grid; place-items: center; color: var(--muted); font-size: 11px; }
-
-    .menu.menu-horizontal.channel-nav { width: 1200px; min-height: 42px; height: 42px; margin: 0 auto; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; overflow: hidden; border-bottom: 1px solid var(--line); border-radius: 0; background: var(--paper); font: 14px/20px var(--body-font); }
-    .channel-nav li { display: block; flex: 0 0 auto; }
-    .channel-nav li > a { min-height: 0; padding: 0; border-radius: 0; background: transparent; color: var(--headline); white-space: nowrap; }
-    .channel-nav li > a:hover { background: transparent; color: var(--brand-red); }
-
-    /* The source page has a large advertising/feature slot. Artwork and copy are replaced with neutral placeholders. */
-    .banner-slot { height: 126px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; overflow: hidden; background: #f3f6f7; }
-    .banner-copy { display: flex; flex-direction: column; gap: 9px; color: var(--secondary); }
-    .banner-kicker { color: var(--muted); font: 12px/18px var(--body-font); }
-    .banner-line { width: 390px; height: 18px; background: #dfe4e6; }
-    .banner-line.short { width: 230px; height: 13px; background: #e8ebec; }
-    .banner-art { width: 190px; height: 88px; margin-right: 44px; border: 1px solid #e1e5e6; background: #e9edef; }
-    .banner-cta { height: 38px; padding: 0 18px; display: inline-flex; align-items: center; border: 0; border-radius: 0; background: var(--brand-red); color: #ffffff; font: 14px/20px var(--body-font); }
-    .promo-links { min-height: 60px; padding: 9px 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px 20px; border-bottom: 1px solid var(--line); color: var(--secondary); font: 12px/22px var(--body-font); }
-    .promo-links span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-
-    .content-grid { margin: 18px auto 0; display: grid; grid-template-columns: 860px 300px; gap: 40px; align-items: start; }
-    .lead-headline { margin: 0; color: var(--ink); font: 600 18px/30px var(--body-font); }
-    .lead-secondary { margin: 0; color: var(--headline); font: 700 18px/30px var(--body-font); }
-    .lead-story-grid { margin-top: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .story-list { margin: 0; padding: 0; list-style: none; color: var(--ink); font: 400 16px/28px var(--body-font); }
-    .story-list li { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    .story-list li.strong { font-weight: 600; line-height: 30px; }
-
-    .image-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .card.image-card { position: relative; width: 280px; height: 140px; min-height: 140px; padding: 0; overflow: hidden; border: 0; border-radius: 0; background: var(--placeholder); box-shadow: none; }
-    .image-placeholder { position: absolute; inset: 0; background: #e7e9ea; }
-    .image-placeholder::before, .image-placeholder::after { content: ""; position: absolute; background: #dadddf; }
-    .image-placeholder::before { width: 90px; height: 90px; left: 34px; top: 24px; border-radius: 50%; }
-    .image-placeholder::after { width: 150px; height: 64px; right: 18px; bottom: 18px; transform: skew(-18deg); }
-    .image-title { position: absolute; left: 0; right: 0; bottom: 0; min-height: 46px; padding: 14px 8px 0; overflow: hidden; background: rgba(0,0,0,.62); color: #ffffff; font: 600 12px/32px var(--body-font); white-space: nowrap; text-overflow: ellipsis; }
-
-    .right-rail { display: flex; flex-direction: column; gap: 14px; }
-    .join.search-form { width: 300px; height: 36px; display: flex; align-items: stretch; }
-    .input.join-item.search-input { width: 240px; height: 34px; min-height: 34px; margin-top: 1px; padding: 0 14px; border: 0; border-radius: 0; outline: 1px solid var(--line); outline-offset: -1px; background: transparent; color: var(--muted); font: 400 14px/34px var(--search-font); box-shadow: none; }
-    .btn.btn-primary.join-item.search-button { width: 58px; height: 36px; min-height: 36px; padding: 0; border: 0; border-radius: 0 5px 5px 0; background: var(--search-red); color: #ffffff; font: 400 14px/36px var(--search-font); box-shadow: none; }
-    .quick-apps { padding: 10px 6px 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; border-bottom: 1px solid var(--line); }
-    .quick-app { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--muted); font: 12px/18px var(--body-font); }
-    .quick-app-icon { width: 36px; height: 36px; border: 1px solid #e5e5e5; background: #f7f7f7; }
-    .side-module { padding: 2px 10px 10px; border: 1px solid var(--line); border-radius: 8px; }
-    .side-module h2 { margin: 0; padding: 9px 0; border-bottom: 1px solid var(--line); color: var(--ink); font: 700 18px/26px var(--body-font); }
-    .side-module ul { margin: 0; padding: 8px 0 0; list-style: none; color: var(--headline); font: 14px/24px var(--body-font); }
-    .side-module li { padding: 7px 0; border-bottom: 1px solid var(--line); }
-    .side-module li:last-child { border-bottom: 0; }
-    .expert-sample { width: 410px; min-height: 96px; margin: 22px 0 0; padding-top: 8px; display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; color: var(--ink); }
-    .avatar-placeholder { width: 42px; height: 42px; border: 1px solid var(--line); background: #f7f7f7; }
-    .expert-name { color: var(--headline); font: 600 16px/20px var(--body-font); }
-    .expert-meta { margin-top: 6px; display: flex; align-items: center; gap: 8px; color: var(--muted); font: 400 12px/14px var(--body-font); }
-    .badge.label { height: 16px; padding: 0 2px; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--muted); font: 400 12px/14px var(--body-font); }
-    .badge.label.strong { border-color: var(--emphasis-red); color: var(--emphasis-red); }
-
-    .token-strip { width: 1200px; margin: 22px auto; padding: 12px 0; display: flex; gap: 24px; align-items: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font: 12px/18px var(--body-font); }
-    .token-strip span { display: inline-flex; gap: 6px; align-items: center; }
-    .swatch { width: 14px; height: 14px; border: 1px solid #e5e5e5; }
-    .swatch.primary { background: var(--brand-red); }
-    .swatch.action { background: var(--search-red); }
-    .swatch.emphasis { background: var(--emphasis-red); }
-    .swatch.ink { background: var(--ink); }
-    .footer { width: 1200px; margin: 0 auto; padding: 12px 0 24px; border-top: 1px solid var(--line); color: var(--muted); font: 12px/18px var(--body-font); }
+    body { margin: 0; background: var(--canvas); color: var(--body-text); font: 14px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 22px; line-height: 1.3; font-weight: 650; letter-spacing: -.025em; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label, .section-kicker { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 600 18px/30px var(--font-body); }
+    .summary { max-width: 620px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 250px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .source-language strong { display: block; margin-bottom: 5px; font-size: 12px; }
+    .source-language span { color: var(--muted); font-size: 11px; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 650; }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
+    .color { height: 66px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 120px 1fr 164px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 21px/1.55 var(--font-cjk); }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 112px; padding: 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 8px; }
+    .button { min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); color: var(--ink); font: 500 12px/1 var(--font-body); }
+    .button.primary { border-color: var(--primary); background: var(--primary); color: #fff; }
+    .button.alt { border-color: var(--action); background: var(--action); color: #fff; }
+    .field { height: 36px; display: flex; align-items: center; padding: 0 11px; border: 1px solid var(--line); border-radius: var(--control-radius); color: var(--muted); font-size: 12px; }
+    .tag { display: inline-flex; align-items: center; min-height: 23px; padding: 0 8px; border-radius: 4px; background: var(--soft); color: var(--primary); font-size: 10px; }
+    .surface-sample { min-height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); box-shadow: var(--card-shadow); font-size: 11px; }
+    .surface-sample small { color: var(--muted); font-size: 10px; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .75; }
+    .radius-row { display: flex; align-items: center; gap: 7px; }
+    .radius-chip { width: 32px; height: 23px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .shadow-chip { width: 52px; height: 25px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); box-shadow: var(--card-shadow); }
+    .measure-values { color: var(--ink); font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="navbar topbar">
-      <div class="topbar-inner">
-        <nav class="navbar-start topbar-start" aria-label="工具导航">
-          <a href="#content">网易首页</a><a href="#content">应用</a><a href="#content">无障碍浏览</a><a href="#content">进入关怀版</a>
-        </nav>
-        <div class="navbar-end topbar-end"><span class="quick-label">快速导航</span><a class="btn btn-primary login" href="#content">登录</a><a class="signup" href="#content">注册免费邮箱</a></div>
-      </div>
-    </header>
-
-    <div class="site-width">
-      <section class="brand-row" aria-label="品牌栏示例">
-        <div><span class="wordmark-sample">网易</span><span class="mark-note">品牌标识位置示例</span></div>
-        <div class="placeholder-ad">信息公示位</div>
-      </section>
-      <nav aria-label="频道导航">
-        <ul class="menu menu-horizontal channel-nav">
-          <li><a href="#content">新闻</a></li><li><a href="#content">体育</a></li><li><a href="#content">财经</a></li><li><a href="#content">科技</a></li><li><a href="#content">娱乐</a></li><li><a href="#content">文化</a></li><li><a href="#content">直播</a></li><li><a href="#content">教育</a></li><li><a href="#content">房产</a></li><li><a href="#content">汽车</a></li><li><a href="#content">健康</a></li><li><a href="#content">更多</a></li>
-        </ul>
-      </nav>
-      <section class="banner-slot" aria-label="横幅展示位">
-        <div class="banner-copy"><span class="banner-kicker">横幅内容示例 · 非原站广告</span><span class="banner-line"></span><span class="banner-line short"></span></div>
-        <div class="banner-art" aria-hidden="true"></div><span class="banner-cta">查看内容</span>
-      </section>
-      <section class="promo-links" aria-label="推荐链接示例">
-        <span>推荐内容示例</span><span>分类入口示例</span><span>服务链接示例</span><span>专题入口示例</span><span>信息卡片示例</span><span>更多内容</span>
-      </section>
-
-      <div id="content" class="content-grid">
-        <section aria-label="新闻内容示例">
-          <h1 class="lead-headline">首页焦点标题示例，18px 中粗字重与 30px 行高</h1>
-          <div class="lead-story-grid">
-            <ul class="story-list"><li>一条主新闻摘要示例，展示多栏门户列表的排版节奏</li><li>另一条新闻摘要示例，使用常规字重与紧凑行距</li><li class="strong">重点新闻示例，稍加强字重但保持同一字号</li><li>更多列表文本示例，维持密集的信息浏览节奏</li></ul>
-            <ul class="story-list"><li>第二列新闻摘要示例，构成双栏内容区</li><li class="strong">强调标题示例，实测字重为 600</li><li>专题内容摘要示例，保留中文标点和数字</li><li>列表中的补充新闻示例</li></ul>
-          </div>
-          <div class="image-grid" aria-label="图片新闻位置示例">
-            <article class="card image-card"><div class="image-placeholder"></div><div class="image-title">图片内容占位标题</div></article>
-            <article class="card image-card"><div class="image-placeholder"></div><div class="image-title">图片内容占位标题</div></article>
-            <article class="card image-card"><div class="image-placeholder"></div><div class="image-title">图片内容占位标题</div></article>
-          </div>
-          <article class="expert-sample" aria-label="卡片信息样式示例">
-            <div class="avatar-placeholder" aria-hidden="true"></div><div><div class="expert-name">卡片标题示例</div><div class="expert-meta"><span>辅助信息</span><span class="badge label">普通标签</span><span class="badge label strong">重点标签</span></div></div>
-          </article>
-        </section>
-
-        <aside class="right-rail" aria-label="右侧工具与信息栏示例">
-          <form class="join join-horizontal search-form" role="search"><input class="input join-item search-input" type="search" placeholder="搜索关键词" aria-label="搜索关键词"><button class="btn btn-primary join-item search-button" type="button">搜索</button></form>
-          <div class="quick-apps" aria-label="快捷入口示例"><div class="quick-app"><span class="quick-app-icon"></span><span>服务入口</span></div><div class="quick-app"><span class="quick-app-icon"></span><span>工具入口</span></div><div class="quick-app"><span class="quick-app-icon"></span><span>内容入口</span></div><div class="quick-app"><span class="quick-app-icon"></span><span>更多</span></div></div>
-          <section class="side-module"><h2>侧栏信息模块</h2><ul><li>侧栏消息示例，最多两行文本</li><li>另一条信息示例，使用 14px 正文</li><li>补充说明示例与轻量分隔线</li></ul></section>
-        </aside>
-      </div>
-
-      <section class="token-strip" aria-label="测得的颜色 token"><strong>实测颜色</strong><span><i class="swatch primary"></i>#d60000</span><span><i class="swatch action"></i>#ff3333</span><span><i class="swatch emphasis"></i>#e10000</span><span><i class="swatch ink"></i>#404040</span><span>基础文本 12px / 18px</span></section>
-      <footer class="footer">网易首页公开页面 · 采集日期 2026-09-28 · 部分图片与广告位使用中性占位内容 · 桌面布局证据为 1280×720</footer>
-    </div>
+  <main class="sheet">
+    <header class="masthead"><div class="brand">网易</div><div class="context"><span>内容与媒体</span><span>简体中文</span><span>HTML lang: 未记录</span></div></header>
+    <section class="intro"><div><p class="intro-label">Design language / 中文界面</p><h1>视觉系统样本</h1><p class="summary">以高密度文字层级、轻分隔线和多档红色强调构成内容界面的视觉层次。</p></div><aside class="source-language"><strong>中文排版</strong><span>页面正文使用系统与中文字体回退栈；顶栏声明宋体。来源捕获未记录 HTML lang。</span></aside></section>
+    <section class="section"><div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div><div class="swatches"><div class="swatch"><div class="color" style="--sample:#d60000"></div><div class="swatch-copy"><span class="swatch-name">品牌红</span><code class="swatch-value">#d60000</code></div></div><div class="swatch"><div class="color" style="--sample:#ff3333"></div><div class="swatch-copy"><span class="swatch-name">搜索动作</span><code class="swatch-value">#ff3333</code></div></div><div class="swatch"><div class="color" style="--sample:#e10000"></div><div class="swatch-copy"><span class="swatch-name">强调红</span><code class="swatch-value">#e10000</code></div></div><div class="swatch"><div class="color" style="--sample:#333333"></div><div class="swatch-copy"><span class="swatch-name">顶栏</span><code class="swatch-value">#333333</code></div></div><div class="swatch"><div class="color" style="--sample:#404040"></div><div class="swatch-copy"><span class="swatch-name">主文字</span><code class="swatch-value">#404040</code></div></div><div class="swatch"><div class="color" style="--sample:#585858"></div><div class="swatch-copy"><span class="swatch-name">次级文字</span><code class="swatch-value">#585858</code></div></div><div class="swatch"><div class="color" style="--sample:#888888"></div><div class="swatch-copy"><span class="swatch-name">弱化文字</span><code class="swatch-value">#888888</code></div></div><div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">画布</span><code class="swatch-value">#ffffff</code></div></div></div></section>
+    <section class="section foundations">
+      <article class="panel"><div class="panel-head"><h2>文字层级</h2></div><div class="panel-body"><div class="type-row"><span class="type-role">焦点标题</span><strong class="type-sample" style="font:600 18px/30px var(--font-body)">重点标题样本</strong><span class="type-value">18px / 600 / 30px</span></div><div class="type-row"><span class="type-role">模块标题</span><strong class="type-sample" style="font:700 18px/26px var(--font-body)">内容模块标题</strong><span class="type-value">18px / 700 / 26px</span></div><div class="type-row"><span class="type-role">正文</span><strong class="type-sample" style="font:400 14px/30px var(--font-body)">正文样本：中文与数字 2026</strong><span class="type-value">14px / 400 / 30px</span></div><div class="type-row"><span class="type-role">密集文字</span><strong class="type-sample" style="font:400 12px/18px var(--font-body)">列表与导航样本</strong><span class="type-value">12px / 400 / 18px</span></div><div class="type-row"><span class="type-role">顶栏导航</span><strong class="type-sample" style="font:400 12px/44px var(--font-nav)">一级导航 / 次级入口</strong><span class="type-value">12px / 400 / 44px</span></div></div></article>
+      <article class="panel"><div class="panel-head"><h2>简体中文与中西文混排</h2></div><div class="panel-body"><div class="cjk-stack">中文字体： -apple-system, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft Yahei"<br>西文 / 正文： -apple-system, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft Yahei"</div><p class="cjk-line">中文设计 System UI · 2026 年 9 月（¥ 128.00）</p><p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。</p></div></article>
+    </section>
+    <section class="section"><div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div><div class="specimens"><div class="component"><span class="component-label">大尺寸按钮 · 70×48px</span><div class="button-row"><button class="button primary" style="height:48px;border-radius:0;padding:0 22px">主要操作</button></div></div><div class="component"><span class="component-label">搜索 · 36px 高</span><div class="button-row"><div class="field" style="border-radius:0">搜索关键词</div><button class="button alt" style="border-radius:0 5px 5px 0">搜索</button></div></div><div class="component"><span class="component-label">文字卡片 / 轻分隔</span><div class="surface-sample"><span>标题与辅助信息样本</span><small>无阴影</small></div></div></div></section>
+    <section class="section"><div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div><div class="measurements"><div class="measure"><span class="measure-title">Spacing</span><div class="scale"><i style="--w:6px"></i><i style="--w:8px"></i><i style="--w:12px"></i><i style="--w:30px"></i></div><div class="measure-values">6 · 8 · 12 · 30 px</div></div><div class="measure"><span class="measure-title">Radius</span><div class="radius-row"><i class="radius-chip" style="--r:0px"></i><i class="radius-chip" style="--r:4px"></i><i class="radius-chip" style="--r:5px"></i></div><div class="measure-values">0px · 4px · 5px</div></div><div class="measure"><span class="measure-title">Elevation</span><div class="shadow-chip"></div><div class="measure-values">代表性样本：none</div></div></div></section>
+    <footer class="footer"><span>来源：<a href="https://www.163.com/">https://www.163.com/</a> · 2026-09-28 · 公开访问 · 未登录</span><span>桌面 1280×720 · 移动 390×844 · document width 1220px，存在横向溢出</span></footer>
   </main>
 </body>
 </html>

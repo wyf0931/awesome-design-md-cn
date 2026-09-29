@@ -1,132 +1,119 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>阿里云百炼 — Design Preview</title>
+  <link rel="icon" href="data:,">
+  <title>阿里云百炼 — Design System</title>
   <style>
-    :root{
-      --primary:#2564f8;
-      --primary-hover:#4f8aff;
-      --primary-active:#1547d1;
-      --ink:#14151c;
-      --text-main:rgba(20,21,28,.9);
-      --muted:#14151c99;
-      --faint:#14151c66;
-      --line:#e9e9ed;
-      --canvas:#f2f2f4;
-      --surface:#ffffff;
-      --black:#000000;
-      --white:#ffffff;
-      --success:#52c41a;
-      --warning:#faad14;
-      --error:#ff4d4f;
-      --radius:6px;
-      --pill:99px;
-      --card-radius:20px;
-      --app-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-      --cn-font:"PingFang SC",sans-serif;
-      --shadow-feature:0 3px 17px rgba(0,0,0,.25);
+    :root {
+      /* Replace values only with evidence recorded in DESIGN.md. */
+      --primary: #2564f8;
+      --ink: #14151c;
+      --body-text: rgba(20,21,28,.90);
+      --muted: rgba(20,21,28,.60);
+      --line: #e9e9ed;
+      --canvas: #f2f2f4;
+      --surface: #ffffff;
+      --soft: #f2f2f4;
+      --control-radius: 6px;
+      --card-radius: 20px;
+      --card-shadow: none;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --font-cjk: "PingFang SC", sans-serif;
+      --font-nav: inherit;
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--canvas);color:var(--ink);font:14px/22px var(--app-font);-webkit-font-smoothing:antialiased}
-    .app{width:1440px;min-height:1080px;margin:auto;background:var(--canvas)}
-    .topbar{height:72px;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 36px;color:var(--text-main)}
-    .brand-row{display:flex;align-items:center;gap:36px}
-    .wordmark{font-weight:600;color:var(--ink)}
-    .topnav{display:flex;gap:28px;font-size:14px;color:var(--muted)}
-    .top-actions{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--muted)}
-    .login{height:32px;display:inline-flex;align-items:center;padding:0 12px;border-radius:var(--pill);background:var(--black);color:var(--white);font-size:14px;font-weight:500}
-    .layout{display:grid;grid-template-columns:214px 1fr;min-height:1008px}
-    .sidebar{background:var(--surface);border-right:1px solid var(--line);padding:24px 18px}
-    .side-title{color:var(--faint);font-size:12px;letter-spacing:.04em;margin:18px 0 8px;padding:0 10px}
-    .nav-item{height:38px;display:flex;align-items:center;border-radius:var(--radius);padding:0 12px;color:var(--text-main);font-size:14px}
-    .nav-item.active{background:rgba(37,100,248,.08);color:var(--primary);font-weight:500}
-    .main{padding:32px 36px 56px;background:var(--canvas)}
-    .breadcrumb{color:var(--faint);font-size:12px;margin-bottom:22px}
-    .page-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-    .page-head h1{margin:0;font-family:var(--cn-font);font-size:28px;line-height:40px;font-weight:500;letter-spacing:normal;color:var(--ink)}
-    .search{width:388px;height:48px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:var(--muted);font-size:16px}
-    .hero{height:116px;background:var(--surface);border:1px solid var(--line);border-radius:var(--card-radius);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;box-shadow:var(--shadow-feature)}
-    .hero h2{margin:0;font-family:var(--cn-font);font-size:23.33px;line-height:35px;font-weight:500;color:var(--ink)}
-    .hero p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:20px}
-    .primary-action{height:36px;display:inline-flex;align-items:center;padding:0 16px;background:var(--primary);border-radius:var(--radius);color:var(--white);font-weight:500}
-    .section{margin-top:24px}
-    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-    .section-head h2{margin:0;font-family:var(--cn-font);font-size:20px;line-height:28px;font-weight:500;color:var(--ink)}
-    .section-head span{font-size:12px;color:var(--muted)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--card-radius);padding:20px;min-height:154px;box-shadow:none}
-    .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .card strong{font-size:16px;line-height:24px;font-weight:600;color:var(--ink)}
-    .tag{font-size:12px;line-height:20px;color:var(--primary);background:rgba(37,100,248,.08);border-radius:4px;padding:0 8px}
-    .card p{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:20px}
-    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .metric{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-    .metric b{display:block;font-size:24px;line-height:32px;color:var(--primary);font-weight:500}
-    .metric span{display:block;margin-top:6px;color:var(--muted);font-size:12px}
-    .tokens{margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .token{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-    .swatch{height:70px;background:var(--primary)}
-    .token:nth-child(2) .swatch{background:var(--ink)}
-    .token:nth-child(3) .swatch{background:var(--muted)}
-    .token:nth-child(4) .swatch{background:var(--line)}
-    .token:nth-child(5) .swatch{background:var(--canvas)}
-    .token-info{padding:12px;display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
-    .footer{margin-top:28px;color:var(--faint);font-size:12px;line-height:18px}
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--body-text); font: 14px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 22px; line-height: 1.3; font-weight: 650; letter-spacing: -.025em; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label, .section-kicker { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 500 28px/40px var(--font-cjk); }
+    .summary { max-width: 620px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 250px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .source-language strong { display: block; margin-bottom: 5px; font-size: 12px; }
+    .source-language span { color: var(--muted); font-size: 11px; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 650; }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
+    .color { height: 66px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 120px 1fr 164px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 21px/1.55 var(--font-cjk); }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 112px; padding: 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 8px; }
+    .button { min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); color: var(--ink); font: 500 12px/1 var(--font-body); }
+    .button.primary { border-color: var(--primary); background: var(--primary); color: #fff; }
+    .button.alt { border-color: var(--action); background: var(--action); color: #fff; }
+    .field { height: 36px; display: flex; align-items: center; padding: 0 11px; border: 1px solid var(--line); border-radius: var(--control-radius); color: var(--muted); font-size: 12px; }
+    .tag { display: inline-flex; align-items: center; min-height: 23px; padding: 0 8px; border-radius: 4px; background: var(--soft); color: var(--primary); font-size: 10px; }
+    .surface-sample { min-height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); box-shadow: var(--card-shadow); font-size: 11px; }
+    .surface-sample small { color: var(--muted); font-size: 10px; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .75; }
+    .radius-row { display: flex; align-items: center; gap: 7px; }
+    .radius-chip { width: 32px; height: 23px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .shadow-chip { width: 52px; height: 25px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); box-shadow: var(--card-shadow); }
+    .measure-values { color: var(--ink); font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
-  <main class="app" aria-label="阿里云百炼设计预览">
-    <header class="topbar">
-      <div class="brand-row"><div class="wordmark">阿里云百炼</div><nav class="topnav"><span>模型</span><span>Agent</span><span>TokenPlan</span><span>CLI</span><span>文档</span></nav></div>
-      <div class="top-actions"><span>华北 2（北京）</span><span class="login">登录</span></div>
-    </header>
-    <div class="layout">
-      <aside class="sidebar">
-        <div class="side-title">模型服务</div>
-        <div class="nav-item active">模型广场</div>
-        <div class="nav-item">体验中心</div>
-        <div class="nav-item">模型推理</div>
-        <div class="nav-item">模型训练</div>
-        <div class="side-title">管理及费用</div>
-        <div class="nav-item">运维管理</div>
-        <div class="nav-item">资产中心</div>
-        <div class="nav-item">费用用量</div>
-      </aside>
-      <section class="main">
-        <div class="breadcrumb">模型 / 模型广场</div>
-        <div class="page-head"><h1>模型</h1><div class="search"><span>搜索模型名称</span><span>筛选</span></div></div>
-        <div class="hero">
-          <div><h2>模型发现</h2><p>展示公开页面的主标题、首推区域和控制台层级。</p></div>
-          <span class="primary-action">主要操作</span>
-        </div>
-        <div class="section">
-          <div class="section-head"><h2>首推模型</h2><span>探索更多 →</span></div>
-          <div class="cards">
-            <article class="card"><div class="card-top"><strong>模型 A</strong><span class="tag">文本</span></div><p>示例卡片，用于展示标题、标签和说明文本层级。</p></article>
-            <article class="card"><div class="card-top"><strong>模型 B</strong><span class="tag">视觉</span></div><p>示例卡片，用于展示白色卡片、浅灰描边和大圆角。</p></article>
-            <article class="card"><div class="card-top"><strong>模型 C</strong><span class="tag">多模态</span></div><p>示例卡片，用于展示次级文本和克制的信息密度。</p></article>
-          </div>
-        </div>
-        <div class="section">
-          <div class="section-head"><h2>基础度量</h2><span>来自页面 CSS 变量与 computed styles</span></div>
-          <div class="metrics">
-            <div class="metric"><b>14px</b><span>基础字号</span></div>
-            <div class="metric"><b>36px</b><span>标准控件高度</span></div>
-            <div class="metric"><b>6px</b><span>控件圆角</span></div>
-          </div>
-        </div>
-        <div class="tokens" aria-label="颜色样本">
-          <div class="token"><div class="swatch"></div><div class="token-info"><span>Primary</span><code>#2564f8</code></div></div>
-          <div class="token"><div class="swatch"></div><div class="token-info"><span>Ink</span><code>#14151c</code></div></div>
-          <div class="token"><div class="swatch"></div><div class="token-info"><span>Muted</span><code>#14151c99</code></div></div>
-          <div class="token"><div class="swatch"></div><div class="token-info"><span>Line</span><code>#e9e9ed</code></div></div>
-          <div class="token"><div class="swatch"></div><div class="token-info"><span>Canvas</span><code>#f2f2f4</code></div></div>
-        </div>
-        <p class="footer">来源：阿里云百炼模型广场公开页面 · 采集日期：2026-09-28 · 未登录状态 · 仅用于设计规则描述</p>
-      </section>
-    </div>
+  <main class="sheet">
+    <header class="masthead"><div class="brand">阿里云百炼</div><div class="context"><span>科技与云服务</span><span>简体中文</span><span>HTML lang: zh</span></div></header>
+      <section class="intro"><div><p class="intro-label">Design language / 中文界面</p><h1>视觉系统样本</h1><p class="summary">以浅灰工作区承载白色内容面，用克制的蓝色作为主要交互色。</p></div><aside class="source-language"><strong>中文排版</strong><span>标题使用 PingFang SC；应用正文使用系统字体回退栈。来源页 HTML lang 为 zh。</span></aside></section>
+    <section class="section"><div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div><div class="swatches"><div class="swatch"><div class="color" style="--sample:#2564f8"></div><div class="swatch-copy"><span class="swatch-name">主要操作</span><code class="swatch-value">#2564f8</code></div></div><div class="swatch"><div class="color" style="--sample:#1547d1"></div><div class="swatch-copy"><span class="swatch-name">按下状态</span><code class="swatch-value">#1547d1</code></div></div><div class="swatch"><div class="color" style="--sample:#14151c"></div><div class="swatch-copy"><span class="swatch-name">主文字</span><code class="swatch-value">#14151c</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(20,21,28,.60)"></div><div class="swatch-copy"><span class="swatch-name">次级文字</span><code class="swatch-value">rgba(20,21,28,.60)</code></div></div><div class="swatch"><div class="color" style="--sample:#f2f2f4"></div><div class="swatch-copy"><span class="swatch-name">工作区</span><code class="swatch-value">#f2f2f4</code></div></div><div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">内容面</span><code class="swatch-value">#ffffff</code></div></div><div class="swatch"><div class="color" style="--sample:#e9e9ed"></div><div class="swatch-copy"><span class="swatch-name">边框</span><code class="swatch-value">#e9e9ed</code></div></div><div class="swatch"><div class="color" style="--sample:#ff4d4f"></div><div class="swatch-copy"><span class="swatch-name">错误状态</span><code class="swatch-value">#ff4d4f</code></div></div></div></section>
+    <section class="section foundations">
+      <article class="panel"><div class="panel-head"><h2>文字层级</h2></div><div class="panel-body"><div class="type-row"><span class="type-role">页面标题</span><strong class="type-sample" style="font:500 28px/40px var(--font-cjk)">界面标题样本</strong><span class="type-value">28px / 500 / 40px</span></div><div class="type-row"><span class="type-role">区块标题</span><strong class="type-sample" style="font:500 23.33px/35px var(--font-cjk)">内容区标题</strong><span class="type-value">23.33px / 500 / 35px</span></div><div class="type-row"><span class="type-role">基础正文</span><strong class="type-sample" style="font:400 14px/22px var(--font-body)">中文正文 Sample 2026</strong><span class="type-value">14px / 400 / 22px</span></div><div class="type-row"><span class="type-role">登录控件</span><strong class="type-sample" style="font:500 14px/normal var(--font-body)">登录</strong><span class="type-value">14px / 500 / normal</span></div></div></article>
+      <article class="panel"><div class="panel-head"><h2>简体中文与中西文混排</h2></div><div class="panel-body"><div class="cjk-stack">中文字体： "PingFang SC", sans-serif<br>西文 / 正文： -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif</div><p class="cjk-line">中文设计 System UI · 2026 年 9 月（¥ 128.00）</p><p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。</p></div></article>
+    </section>
+    <section class="section"><div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div><div class="specimens"><div class="component"><span class="component-label">按钮 / 主要与次要层级</span><div class="button-row"><button class="button primary">主要操作</button><button class="button">次要操作</button></div></div><div class="component"><span class="component-label">输入控件 / 标签</span><div class="button-row"><div class="field">输入关键词</div><span class="tag">筛选</span></div></div><div class="component"><span class="component-label">卡片表面样式</span><div class="surface-sample"><span>内容卡片样本</span><small>描边 · 无阴影</small></div></div></div></section>
+    <section class="section"><div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div><div class="measurements"><div class="measure"><span class="measure-title">Spacing</span><div class="scale"><i style="--w:8px"></i><i style="--w:12px"></i><i style="--w:20px"></i></div><div class="measure-values">8 · 12 · 20 px</div></div><div class="measure"><span class="measure-title">Radius</span><div class="radius-row"><i class="radius-chip" style="--r:6px"></i><i class="radius-chip" style="--r:20px"></i><i class="radius-chip" style="--r:99px"></i></div><div class="measure-values">6px · 20px · 99px</div></div><div class="measure"><span class="measure-title">Elevation</span><div class="shadow-chip"></div><div class="measure-values">采样卡片：none；另有未启用的 CSS 阴影 token。</div></div></div></section>
+    <footer class="footer"><span>来源：<a href="https://bailian.console.aliyun.com/cn-beijing/model/market">https://bailian.console.aliyun.com/cn-beijing/model/market</a> · 2026-09-28 · 华北 2（北京） · 未登录</span><span>桌面 1280×720 · 移动 390×844 · 未见横向溢出</span></footer>
   </main>
 </body>
 </html>
