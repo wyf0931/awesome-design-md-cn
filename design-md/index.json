@@ -72,6 +72,21 @@
         "PC OpenSDK 文档"
       ],
       "url": "https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html"
+    },
+    {
+      "slug": "huawei",
+      "name": "华为",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "Microsoft YaHei / Arial / Helvetica",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#c7000b",
+        "radius:16px",
+        "16px base"
+      ],
+      "url": "https://www.huawei.com/cn/"
     }
   ]
 }
