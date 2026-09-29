@@ -69,6 +69,7 @@ python3 -m http.server 8000
 | 微信开放平台 | [PC OpenSDK 接入指南](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html) | [DESIGN.md](design-md/wechat/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/wechat/preview.html) | ✅ |
 | 京东 | [JD.com](https://www.jd.com) | — | — | |
 | 淘宝 | [Taobao](https://www.taobao.com) | — | — | |
+| DeepSeek | [DeepSeek](https://www.deepseek.com/) | [DESIGN.md](design-md/deepseek/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/deepseek/preview.html) | ✅ |
 
 ## 自动提取
 

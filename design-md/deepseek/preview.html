@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>DeepSeek — Design System</title>
+  <style>
+    :root {
+      /* Values measured from https://www.deepseek.com/ on 2026-09-30. */
+      --brand: #4d6bfe;
+      --brand-deep: #3a65c2;
+      --brand-reverse: #4176e6;
+      --brand-light-reverse: #73a3d2;
+      --ink: #1e232c;
+      --ink-bluish: #152443;
+      --link-blue: #234792;
+      --secondary: rgba(0,0,0,.7);
+      --description: rgba(0,0,0,.65);
+      --inverse: #fff;
+      --placeholder: #8691a1;
+      --canvas: #f9f8f8;
+      --overlay: #fff;
+      --hero-cta: hsla(0,0%,100%,.38);
+      --hero-join: #2e609f;
+      --surface-raised: hsla(0,0%,100%,.45);
+      --input-hover: hsla(0,0%,100%,.36);
+      --dark: #1a1615;
+      --bg-code: rgba(0,0,0,.05);
+      --bg-hover: rgba(0,0,0,.04);
+      --border-input: hsla(0,0%,100%,.2);
+      --border-input-focus: hsla(0,0%,100%,.25);
+      --border-subtle: rgba(0,0,0,.06);
+      --border-default: rgba(0,0,0,.1);
+      --border-divider: rgba(0,0,0,.08);
+      --border-hover: hsla(20,1%,45%,.2);
+      --border-strong: rgba(0,0,0,.2);
+      --border-secondary: rgba(9,45,78,.14);
+      --line: #e5e7eb;
+      --pill: 100px;
+      --card-radius: 24px;
+      --panel-radius: 16px;
+      --media-radius: 12px;
+      --input-radius: 10px;
+      --sm-radius: 8px;
+      --toggle-radius: 18px;
+      --font-body: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", sans-serif;
+      --font-display: system-ui, -apple-system, "system-ui", "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      --shadow-locale-active: rgba(0,0,0,0.08) 0px 1px 3px 0px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font: 16px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--border-divider); }
+    .brand { font-size: 22px; line-height: 1.3; font-weight: 500; letter-spacing: -.01em; color: var(--brand-reverse); }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--description); font-size: 12px; }
+    .context span { padding: 5px 10px; border: 1px solid var(--border-default); border-radius: var(--pill); background: var(--overlay); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--description); font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 400 46px/1.55 var(--font-display); letter-spacing: .4em; color: var(--ink-bluish); }
+    .summary { max-width: 620px; margin: 12px 0 0; color: var(--description); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 250px; padding: 14px 16px; border: 2px solid rgba(255,255,255,.25); border-radius: var(--card-radius); background: var(--input-hover); }
+    .source-language strong { display: block; margin-bottom: 5px; font-size: 12px; }
+    .source-language span { color: var(--description); font-size: 11px; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 500 18px/1.4 var(--font-body); color: var(--ink); }
+    .section-note { color: var(--description); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--border-divider); border-radius: var(--card-radius); background: var(--overlay); }
+    .color { height: 56px; background: var(--sample); border-bottom: 1px solid var(--border-divider); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--description); font-family: var(--font-mono); }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--border-divider); border-radius: var(--card-radius); background: var(--overlay); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--border-divider); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 130px 1fr 164px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border-divider); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--description); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--sm-radius); background: var(--bg-code); color: var(--description); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 16px/1.5 var(--font-body); }
+    .cjk-note { margin: 0; color: var(--description); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 120px; padding: 16px; border: 1px solid var(--border-divider); border-radius: var(--card-radius); background: var(--overlay); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--description); font-size: 10px; }
+    .glass-card { display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 4px 10px 10px; border: 2px solid rgba(255,255,255,.25); border-radius: var(--card-radius); background: var(--input-hover); }
+    .glass-input { width: 100%; min-height: 40px; padding: 12px; background: transparent; border: 0; color: var(--ink); font: 400 16px/1.4 var(--font-body); }
+    .glass-input::placeholder { color: var(--placeholder); }
+    .toggle-row { display: flex; align-items: center; gap: 8px; }
+    .toggle-btn { height: 34px; display: inline-flex; align-items: center; gap: 4px; padding: 0 12px; border: 1px solid var(--border-default); border-radius: var(--toggle-radius); background: transparent; color: var(--ink); font: 500 13px/1.5 var(--font-body); }
+    .toggle-btn.active { border-color: rgba(65,118,230,.3); background: rgba(65,118,230,.12); color: var(--brand-reverse); }
+    .send-btn { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 9999px; background: var(--brand-reverse); color: var(--inverse); font: 400 16px/1 var(--font-body); }
+    .cta-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .cta-btn { height: 44px; display: inline-flex; align-items: center; padding: 12px 20px; border: 1px solid var(--border-secondary); border-radius: var(--pill); background: rgba(255,255,255,.4); color: var(--ink); font: 500 15px/1.2 var(--font-body); text-decoration: none; }
+    .nav-btn { height: 36px; min-width: 80px; display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid transparent; border-radius: var(--pill); background: transparent; color: #121c31; font: 400 15px/1.2 var(--font-body); }
+    .locale-toggle { display: inline-flex; align-items: center; gap: 0; }
+    .locale-item { height: 24px; padding: 0 12px; display: inline-flex; align-items: center; border: 0; border-radius: var(--pill); background: transparent; color: var(--description); font: 500 12px/1.2 var(--font-body); }
+    .locale-item.active { background: var(--surface-raised); color: var(--ink); box-shadow: var(--shadow-locale-active); }
+    .mobile-menu { width: 100%; border-top: 1px solid var(--border-divider); border-bottom: 1px solid var(--border-divider); }
+    .mobile-menu-item { display: block; padding: 24px 0; border-bottom: 1px solid var(--border-divider); color: var(--ink); font: 500 18px/1.5 var(--font-body); }
+    .mobile-menu-item:last-child { border-bottom: 0; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .footer-heading { font: 500 14px/1.5 var(--font-body); color: var(--ink); }
+    .footer-caption { font: 400 14px/1.5 var(--font-body); color: var(--description); }
+    .qr-caption { font: 400 13px/1.5 var(--font-body); color: var(--secondary); text-align: center; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--border-divider); border-radius: var(--card-radius); background: var(--overlay); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--description); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 9999px; background: var(--brand-reverse); opacity: .85; }
+    .radius-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .radius-chip { width: 32px; height: 23px; border: 1px solid var(--border-default); background: var(--overlay); border-radius: var(--r); }
+    .shadow-chip { width: 52px; height: 25px; border: 1px solid var(--border-default); border-radius: var(--sm-radius); background: var(--overlay); box-shadow: var(--shadow-locale-active); }
+    .measure-values { color: var(--ink); font: 10px/1.5 var(--font-mono); margin-top: 6px; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--border-divider); color: var(--description); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      h1 { font-size: 30px; letter-spacing: .15em; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead"><div class="brand">DeepSeek</div><div class="context"><span>科技与云服务</span><span>简体中文</span><span>HTML lang: zh-CN</span></div></header>
+    <section class="intro"><div><p class="intro-label">Design language / 中文界面</p><h1>探索未至之境</h1><p class="summary">极简玻璃拟物 AI 产品首页，浅灰页底叠加半透明白色 surface，唯一强调色为 DeepSeek 蓝。Hero 仅含一句大标语、一张玻璃态聊天输入卡与三枚药丸 CTA，无广告位、无产品网格。样例用于展示设计 token，不复刻原站信息结构。</p></div><aside class="source-language"><strong>中文排版</strong><span>正文栈：DM Sans / system-ui / Noto Sans SC / PingFang SC；Hero 大标题 computed 字体不含 Host Grotesk，回退至 system-ui；HTML lang 实测为 zh-CN。</span></aside></section>
+    <section class="section"><div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div><div class="swatches"><div class="swatch"><div class="color" style="--sample:#4d6bfe"></div><div class="swatch-copy"><span class="swatch-name">品牌主色</span><code class="swatch-value">#4d6bfe</code></div></div><div class="swatch"><div class="color" style="--sample:#4176e6"></div><div class="swatch-copy"><span class="swatch-name">品牌亮蓝（实测使用）</span><code class="swatch-value">#4176e6</code></div></div><div class="swatch"><div class="color" style="--sample:#3a65c2"></div><div class="swatch-copy"><span class="swatch-name">品牌深蓝</span><code class="swatch-value">#3a65c2</code></div></div><div class="swatch"><div class="color" style="--sample:#73a3d2"></div><div class="swatch-copy"><span class="swatch-name">品牌浅蓝</span><code class="swatch-value">#73a3d2</code></div></div><div class="swatch"><div class="color" style="--sample:#1e232c"></div><div class="swatch-copy"><span class="swatch-name">主文本</span><code class="swatch-value">#1e232c</code></div></div><div class="swatch"><div class="color" style="--sample:#152443"></div><div class="swatch-copy"><span class="swatch-name">Hero 文字</span><code class="swatch-value">#152443</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(0,0,0,.7)"></div><div class="swatch-copy"><span class="swatch-name">次级文本</span><code class="swatch-value">rgba(0,0,0,.7)</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(0,0,0,.65)"></div><div class="swatch-copy"><span class="swatch-name">描述文本</span><code class="swatch-value">rgba(0,0,0,.65)</code></div></div><div class="swatch"><div class="color" style="--sample:#f9f8f8"></div><div class="swatch-copy"><span class="swatch-name">页面底色</span><code class="swatch-value">#f9f8f8</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(255,255,255,.36)"></div><div class="swatch-copy"><span class="swatch-name">玻璃卡底</span><code class="swatch-value">hsla(0,0%,100%,.36)</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(255,255,255,.4)"></div><div class="swatch-copy"><span class="swatch-name">CTA 底</span><code class="swatch-value">hsla(0,0%,100%,.4)</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(255,255,255,.45)"></div><div class="swatch-copy"><span class="swatch-name">Surface 提升</span><code class="swatch-value">hsla(0,0%,100%,.45)</code></div></div><div class="swatch"><div class="color" style="--sample:#1a1615"></div><div class="swatch-copy"><span class="swatch-name">深色底（仅声明）</span><code class="swatch-value">#1a1615</code></div></div><div class="swatch"><div class="color" style="--sample:#e5e7eb"></div><div class="swatch-copy"><span class="swatch-name">分隔线</span><code class="swatch-value">#e5e7eb</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(0,0,0,.1)"></div><div class="swatch-copy"><span class="swatch-name">默认描边</span><code class="swatch-value">rgba(0,0,0,.1)</code></div></div><div class="swatch"><div class="color" style="--sample:rgba(9,45,78,.14)"></div><div class="swatch-copy"><span class="swatch-name">CTA 描边</span><code class="swatch-value">rgba(9,45,78,.14)</code></div></div></div></section>
+    <section class="section foundations">
+      <article class="panel"><div class="panel-head"><h2>文字层级</h2></div><div class="panel-body"><div class="type-row"><span class="type-role">Hero 标语</span><strong class="type-sample" style="font:400 46px/1.55 var(--font-display); letter-spacing:.4em; color:var(--ink-bluish)">探索未至之境</strong><span class="type-value">46px / 400 / 1.55 / 0.4em</span></div><div class="type-row"><span class="type-role">Hero 标语（移动）</span><strong class="type-sample" style="font:400 38px/1.55 var(--font-display); letter-spacing:.2em; color:var(--ink-bluish)">探索未至之境</strong><span class="type-value">38px / 400 / 1.55 / 0.2em</span></div><div class="type-row"><span class="type-role">移动菜单项</span><strong class="type-sample" style="font:500 18px/1.5 var(--font-body)">DeepSeek 网页版</strong><span class="type-value">18px / 500 / 1.5</span></div><div class="type-row"><span class="type-role">正文</span><strong class="type-sample" style="font:400 16px/1.5 var(--font-body)">正文样本：中文与数字 2026</strong><span class="type-value">16px / 400 / 1.5</span></div><div class="type-row"><span class="type-role">CTA 按钮</span><strong class="type-sample" style="font:500 15px/1.2 var(--font-body)">和 DeepSeek 对话</strong><span class="type-value">15px / 500 / 1.2</span></div><div class="type-row"><span class="type-role">公告 / body-sm</span><strong class="type-sample" style="font:400 15px/1.5 var(--font-body)">能力更强、速度更快</strong><span class="type-value">15px / 400 / 1.5</span></div><div class="type-row"><span class="type-role">Hero 切换</span><strong class="type-sample" style="font:500 13px/1.5 var(--font-body)">深度思考 · 智能搜索</strong><span class="type-value">13px / 500 / 1.5</span></div><div class="type-row"><span class="type-role">页脚说明</span><strong class="type-sample" style="font:400 14px/1.5 var(--font-body); color:var(--description)">浙ICP备2023025841号</strong><span class="type-value">14px / 400 / 1.5</span></div><div class="type-row"><span class="type-role">语言切换</span><strong class="type-sample" style="font:500 12px/1.2 var(--font-body)">中文 / EN</strong><span class="type-value">12px / 500 / 1.2</span></div></div></article>
+      <article class="panel"><div class="panel-head"><h2>简体中文与中西文混排</h2></div><div class="panel-body"><div class="cjk-stack">中文字体： "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", sans-serif<br>Hero 大标题： system-ui, -apple-system, "system-ui", "Segoe UI", sans-serif<br>等宽（仅声明）： "Fragment Mono", "Roboto Mono", ui-monospace, monospace</div><p class="cjk-line">中文设计 System UI · 2026 年 9 月（¥ 128.00）</p><p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。</p></div></article>
+    </section>
+    <section class="section"><div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div><div class="specimens">
+      <div class="component"><span class="component-label">玻璃态输入卡 · 880×138px · 24px 圆角 · 2px 描边</span><div class="glass-card"><div class="glass-input" contenteditable="false">深度思考 · 智能搜索</div><div class="toggle-row"><button class="toggle-btn" type="button">深度思考</button><button class="toggle-btn active" type="button">智能搜索</button><span class="send-btn" aria-hidden="true">↑</span></div></div></div>
+      <div class="component"><span class="component-label">次级 CTA · 15px / 500 · 100px 药丸</span><div class="cta-row"><a class="cta-btn" href="#">和 DeepSeek 对话</a><a class="cta-btn" href="#">API 开放平台</a><a class="cta-btn" href="#">Harness 桌面端</a></div></div>
+      <div class="component"><span class="component-label">导航 ghost 按钮 + 语言切换</span><div class="cta-row"><button class="nav-btn" type="button">获取 APP</button><div class="locale-toggle"><span class="locale-item active">中文</span><span class="locale-item">EN</span></div></div></div>
+      <div class="component"><span class="component-label">移动菜单项 · 18px / 76px 高</span><div class="mobile-menu"><span class="mobile-menu-item">DeepSeek 网页版</span><span class="mobile-menu-item">DeepSeek Harness</span><span class="mobile-menu-item">API 开放平台</span></div></div>
+      <div class="component"><span class="component-label">页脚小标题 + 说明</span><div class="footer-row"><span class="footer-heading">产品</span><span class="footer-caption">浙ICP备2023025841号</span></div><div class="footer-row"><span class="footer-heading">研究</span><span class="qr-caption">扫码下载 DeepSeek App</span></div></div>
+      <div class="component"><span class="component-label">Hero 切换按钮 · 18px 圆角</span><div class="cta-row"><button class="toggle-btn" type="button">默认态</button><button class="toggle-btn active" type="button">激活态</button></div></div>
+    </div></section>
+    <section class="section"><div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div><div class="measurements"><div class="measure"><span class="measure-title">Spacing</span><div class="scale"><i style="--w:4px"></i><i style="--w:8px"></i><i style="--w:10px"></i><i style="--w:12px"></i><i style="--w:20px"></i><i style="--w:24px"></i></div><div class="measure-values">4 · 8 · 10 · 12 · 20 · 24 px</div></div><div class="measure"><span class="measure-title">Radius</span><div class="radius-row"><i class="radius-chip" style="--r:8px"></i><i class="radius-chip" style="--r:10px"></i><i class="radius-chip" style="--r:12px"></i><i class="radius-chip" style="--r:16px"></i><i class="radius-chip" style="--r:18px"></i><i class="radius-chip" style="--r:24px"></i><i class="radius-chip" style="--r:100px"></i></div><div class="measure-values">8 · 10 · 12 · 16 · 18 · 24 · 100 px</div></div><div class="measure"><span class="measure-title">Elevation</span><div class="shadow-chip"></div><div class="measure-values">玻璃卡：box-shadow: none<br>语言切换激活：rgba(0,0,0,.08) 0 1px 3px 0</div></div></div></section>
+    <footer class="footer"><span>来源：<a href="https://www.deepseek.com/">https://www.deepseek.com/</a> · 2026-09-30 · 公开访问 · 未登录 · 语言切换未交互</span><span>桌面 1280×720 · 移动 390×844 · document width 1280px，无横向溢出</span></footer>
+  </main>
+</body>
+</html>

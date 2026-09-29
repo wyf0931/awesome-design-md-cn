@@ -132,6 +132,21 @@
         "15px base"
       ],
       "url": "https://www.zhihu.com/"
+    },
+    {
+      "slug": "deepseek",
+      "name": "DeepSeek",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "DM Sans / system-ui / Noto Sans SC / PingFang SC",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#4176e6",
+        "radius:24px/100px",
+        "16px base"
+      ],
+      "url": "https://www.deepseek.com/"
     }
   ]
 }
