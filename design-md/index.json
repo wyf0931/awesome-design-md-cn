@@ -57,6 +57,21 @@
         "12px base"
       ],
       "url": "https://www.163.com/"
+    },
+    {
+      "slug": "wechat",
+      "name": "微信开放平台",
+      "category": "platform",
+      "categoryLabel": "平台与社交",
+      "font": "系统优先 sans-serif / Consolas 等宽（代码）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "cn",
+      "tags": [
+        "#07c160",
+        "14px base",
+        "PC OpenSDK 文档"
+      ],
+      "url": "https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html"
     }
   ]
 }
