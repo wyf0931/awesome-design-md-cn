@@ -147,6 +147,21 @@
         "16px base"
       ],
       "url": "https://www.deepseek.com/"
+    },
+    {
+      "slug": "sensetime",
+      "name": "商汤科技 SenseTime",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "Open Sans / PingFang SC / Source Han Sans SC / 思源黑体 / Microsoft YaHei",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#f02e27",
+        "radius:20px/8px",
+        "glass"
+      ],
+      "url": "https://www.sensetime.com/cn/"
     }
   ]
 }
