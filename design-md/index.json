@@ -57,6 +57,21 @@
         "12px base"
       ],
       "url": "https://www.163.com/"
+    },
+    {
+      "slug": "feishu",
+      "name": "飞书",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "PingFang SC / Helvetica Neue / Microsoft YaHei · Lark Circular（指标数字）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#1456F0",
+        "radius:6px/16px/100px",
+        "16px base"
+      ],
+      "url": "https://www.feishu.cn/"
     }
   ]
 }

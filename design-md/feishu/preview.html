@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>飞书 — Design System</title>
+  <style>
+    :root {
+      --primary: #1456F0;
+      --action-blue: #3370FF;
+      --site-blue: #4E83FD;
+      --ink: #1F2329;
+      --ink-2: #2B2F36;
+      --body-text: #1F2329;
+      --muted: #646A73;
+      --faint: #8F959E;
+      --disabled: #BBBFC4;
+      --line: #DEE0E3;
+      --line-control: #D0D3D6;
+      --canvas: #FFFFFF;
+      --surface: #FFFFFF;
+      --soft: #F5F6F7;
+      --product-surface: #F6F6FB;
+      --control-radius: 6px;
+      --card-radius: 16px;
+      --price-radius: 24px;
+      --pill-radius: 100px;
+      --card-shadow: rgba(88,103,212,0.03) 0px 12px 16px 0px;
+      --font-body: "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Tahoma, Arial;
+      --font-cjk: "PingFang SC", sans-serif;
+      --font-number: "Lark Circular", "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Tahoma, Arial;
+      --font-nav: var(--font-body);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--body-text); font: 16px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { font: 600 22px/1.3 var(--font-body); letter-spacing: -.025em; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 600 40px/48px var(--font-body); color: var(--ink); }
+    .summary { max-width: 620px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 280px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--soft); }
+    .source-language strong { display: block; margin-bottom: 5px; font-size: 12px; color: var(--ink); }
+    .source-language span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 600 16px/1.4 var(--font-body); }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
+    .color { height: 66px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 120px 1fr 164px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 600 30px/45.9px var(--font-cjk); }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 128px; padding: 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .component.product { background: var(--product-surface); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .button { min-height: 36px; padding: 0 16px; border: 1px solid var(--line-control); border-radius: var(--control-radius); background: var(--surface); color: var(--ink); font: 500 14px/1 var(--font-body); display: inline-flex; align-items: center; justify-content: center; }
+    .button.pill { border-radius: var(--pill-radius); }
+    .button.primary { border: 0; border-radius: var(--pill-radius); background: linear-gradient(90deg, #4E83FD, #3370FF); color: #fff; }
+    .button.outline-blue { border-color: var(--site-blue); background: transparent; color: var(--ink); }
+    .button.text-link { border: 0; border-radius: 6px; color: var(--action-blue); background: transparent; min-height: 22px; padding: 0; line-height: 22px; }
+    .field { height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--line-control); border-radius: var(--control-radius); color: var(--faint); font-size: 14px; background: var(--surface); }
+    .tag { display: inline-flex; align-items: center; min-height: 23px; padding: 0 8px; border-radius: 4px; background: var(--soft); color: var(--primary); font-size: 10px; }
+    .surface-sample { min-height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--product-surface); box-shadow: var(--card-shadow); font-size: 11px; color: var(--ink); }
+    .surface-sample small { color: var(--muted); font-size: 10px; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 28px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .75; }
+    .radius-row { display: flex; align-items: center; gap: 7px; }
+    .radius-chip { width: 32px; height: 23px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .shadow-chip { width: 52px; height: 25px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); box-shadow: var(--card-shadow); }
+    .measure-values { color: var(--ink); font: 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .metric { display: flex; align-items: baseline; gap: 4px; margin-top: 8px; color: var(--ink-2); }
+    .metric strong { font: 600 45px/45px var(--font-number); }
+    .metric span { font-size: 16px; color: var(--ink-2); }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">飞书</div>
+      <div class="context">
+        <span>科技与云服务</span>
+        <span>简体中文</span>
+        <span>HTML lang: zh</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于公开页面中可核实的颜色、文字、控件与表面样式。样例用于展示设计 token，不复刻飞书官网的信息结构。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>官网基础栈：Helvetica Neue / PingFang SC / Microsoft YaHei；部分标题使用 PingFang SC。指标数字观测到 Lark Circular。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#1456F0"></div><div class="swatch-copy"><span class="swatch-name">品牌色</span><code class="swatch-value">#1456F0</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#1F2329"></div><div class="swatch-copy"><span class="swatch-name">主文字</span><code class="swatch-value">#1F2329</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#646A73"></div><div class="swatch-copy"><span class="swatch-name">次级文字</span><code class="swatch-value">#646A73</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#8F959E"></div><div class="swatch-copy"><span class="swatch-name">次要信息</span><code class="swatch-value">#8F959E</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#BBBFC4"></div><div class="swatch-copy"><span class="swatch-name">禁用</span><code class="swatch-value">#BBBFC4</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#F6F6FB"></div><div class="swatch-copy"><span class="swatch-name">产品卡面</span><code class="swatch-value">#F6F6FB</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#DEE0E3"></div><div class="swatch-copy"><span class="swatch-name">卡片描边</span><code class="swatch-value">#DEE0E3</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:linear-gradient(90deg,#4E83FD,#3370FF)"></div><div class="swatch-copy"><span class="swatch-name">登录按钮</span><code class="swatch-value">gradient</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">大标题</span><strong class="type-sample" style="font:600 40px/48px var(--font-body)">界面标题样本</strong><span class="type-value">40px / 600 / 48px</span></div>
+          <div class="type-row"><span class="type-role">特征标题</span><strong class="type-sample" style="font:600 30px/45.9px var(--font-cjk)">中文标题样本</strong><span class="type-value">30px / 600 / 45.9px</span></div>
+          <div class="type-row"><span class="type-role">卡片标题</span><strong class="type-sample" style="font:600 24px/36px var(--font-cjk)">卡片标题</strong><span class="type-value">24px / 600 / 36px</span></div>
+          <div class="type-row"><span class="type-role">正文说明</span><strong class="type-sample" style="font:400 20px/30px var(--font-body); color:var(--muted)">中文说明 Sample 2026</strong><span class="type-value">20px / 400 / 30px</span></div>
+          <div class="type-row"><span class="type-role">指标数字</span><div class="type-sample"><span class="metric"><strong>5500</strong><span>万元</span></span></div><span class="type-value">45px / 600 / 45px</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">中文字体： "PingFang SC", sans-serif<br>西文 / 正文： "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Tahoma, Arial</div>
+          <p class="cjk-line">中文设计 System UI · 2026 年 9 月（¥ 128.00）</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">按钮 / 主要与次要层级</span>
+          <div class="button-row">
+            <span class="button primary pill">主要操作</span>
+            <span class="button outline-blue pill">次要操作</span>
+            <span class="button">矩形控件</span>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">输入与标签</span>
+          <div class="button-row">
+            <div class="field">输入关键词</div>
+            <span class="tag">基础标签</span>
+          </div>
+          <div class="button-row" style="margin-top:10px"><span class="button text-link">文字链接</span></div>
+        </div>
+        <div class="component product">
+          <span class="component-label">卡片表面样式</span>
+          <div class="surface-sample"><span>内容卡片样本</span><small>16px 圆角</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing</span>
+          <div class="scale"><i style="--w:8px"></i><i style="--w:12px"></i><i style="--w:16px"></i><i style="--w:24px"></i><i style="--w:60px"></i></div>
+          <div class="measure-values">8 · 12 · 16 · 24 px；header 60px</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row"><i class="radius-chip" style="--r:4px"></i><i class="radius-chip" style="--r:6px"></i><i class="radius-chip" style="--r:16px"></i><i class="radius-chip" style="--r:24px"></i><i class="radius-chip" style="--r:100px"></i></div>
+          <div class="measure-values">4px · 6px · 16px · 24px · pill</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div class="shadow-chip"></div>
+          <div class="measure-values">mobile card shadow sampled</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a> · 2026-09-29 · 中国 · 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844 · Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>
