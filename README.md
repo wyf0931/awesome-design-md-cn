@@ -71,6 +71,7 @@ python3 -m http.server 8000
 | 京东 | [JD.com](https://www.jd.com) | — | — | |
 | 淘宝 | [Taobao](https://www.taobao.com) | — | — | |
 | DeepSeek | [DeepSeek](https://www.deepseek.com/) | [DESIGN.md](design-md/deepseek/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/deepseek/preview.html) | ✅ |
+| 高德开放平台 | [Amap LBS](https://lbs.amap.com/) | [DESIGN.md](design-md/amap/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/amap/preview.html) | ✅ |
 
 ## 自动提取
 

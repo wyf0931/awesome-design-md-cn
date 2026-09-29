@@ -162,6 +162,21 @@
         "glass"
       ],
       "url": "https://www.sensetime.com/cn/"
+    },
+    {
+      "slug": "amap",
+      "name": "高德开放平台",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "PingFangSC-Regular / Microsoft YaHei / Open Sans（头部）· -apple-system / system-ui / PingFang SC（内容）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#1a66ff",
+        "radius:8px/16px/14px",
+        "grad-blue"
+      ],
+      "url": "https://lbs.amap.com/"
     }
   ]
 }
