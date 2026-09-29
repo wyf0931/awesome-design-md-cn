@@ -71,13 +71,9 @@ python3 -m http.server 8000
 
 ## 自动提取
 
-仓库提供基于浏览器采集的自动化流程：先采集桌面和移动视口下的渲染 DOM 与 computed CSS，再由 Pi 生成设计规范、预览、索引和画廊条目，并同步更新中英文 README 的进度表。
+仓库使用根目录 [AGENTS.md](AGENTS.md) 和[提取 Skill](.agents/skills/design-md-cn-extractor/SKILL.md) 描述通用工作流。使用能读取仓库指令并检查网页的 coding agent 打开仓库，然后提供目标网站 URL 并要求它遵循提取 Skill，即可继续添加品牌。无需特定模型供应商或 agent 运行时。
 
-```sh
-./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian
-```
-
-跨 agent 的工作说明见 [AGENTS.md](AGENTS.md) 和[提取 skill](.agents/skills/design-md-cn-extractor/SKILL.md)。macOS 依赖安装及可选 Chrome DevTools MCP 配置见 [docs/agent-guide.md](docs/agent-guide.md)。
+macOS 浏览器采集工具及可选依赖见[提取指南](docs/agent-guide.md)。
 
 ## 参与贡献
 

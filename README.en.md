@@ -71,13 +71,9 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 
 ## Automatic extraction
 
-The repository provides a browser-backed extractor. It captures rendered DOM and computed CSS at desktop and mobile sizes, then asks Pi to create the brand spec, preview, metadata, both README status rows, and gallery entry:
+The shared workflow lives in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). Open the repository with a coding agent that can read repository instructions and inspect web pages, then provide a target URL and ask it to follow the extractor skill. No specific model provider or agent runtime is required.
 
-```sh
-./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian
-```
-
-The workflow is documented for any coding agent in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). [docs/agent-guide.md](docs/agent-guide.md) covers macOS dependencies and the optional Chrome DevTools MCP fallback.
+See the [extractor guide](docs/agent-guide.md) for optional macOS browser capture tools and dependencies.
 
 ## Contributing
 

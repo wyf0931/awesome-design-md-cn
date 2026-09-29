@@ -1,70 +1,46 @@
-# Design extractor agent
+# Agent setup and website extraction
 
-The extraction workflow lives in `AGENTS.md` and `.agents/skills/design-md-cn-extractor/SKILL.md`. Any coding agent that reads `AGENTS.md` can follow it; Pi is a small optional command-line runner.
+The extraction workflow is defined in the repository's root `AGENTS.md` and `.agents/skills/design-md-cn-extractor/SKILL.md`. Use a coding agent that can read repository instructions and inspect web pages. After cloning the repository, open it with that agent and provide a public product URL and optional slug; `AGENTS.md` directs the agent to read and follow the extractor skill. The workflow is agent-runtime agnostic; this repository does not require a project-specific agent launcher.
 
-## macOS setup
+The skill guides the agent to inspect desktop and mobile UI, gather source-backed design evidence, create `DESIGN.md` and a self-contained `preview.html`, update `design-md/index.json` and both README tables, then run `node build.mjs`.
 
-Install the shared runtime tools with Homebrew, then the extraction tools:
+## Optional macOS browser tools
+
+A coding agent with its own browser can perform extraction without these command-line tools. To use the optional evidence capture helper, install Node.js and Playwright CLI:
 
 ```sh
-brew install node python@3.12 pipx
-pipx ensurepath
-npm install -g @playwright/cli @google/design.md
-pipx install 'trafilatura'
-pipx install 'scrapling[all]>=0.4.7'
-scrapling install
+brew install node
+npm install -g @playwright/cli
 playwright-cli install-browser chromium
 ```
 
-Install Pi using its upstream instructions and configure a model/provider with `pi auth`. The repository wrapper needs a working `pi` command in `PATH`.
-
-For the optional Chrome DevTools MCP fallback:
+Then run the helper from the repository root:
 
 ```sh
-pi install npm:pi-mcp-adapter
+bin/capture-site.sh https://example.com /tmp/example-evidence.json
 ```
 
-The repository `.mcp.json` defines only the Chrome DevTools server. The normal runner disables extension discovery for a smaller, predictable agent. Enable this server for a run with `DESIGN_MD_CHROME_MCP=1`.
+The helper records rendered DOM text, computed styles, typography samples, and desktop/mobile document dimensions. It uses a temporary browser session and cleans its capture files when finished. Treat the output as evidence to inspect, not as a substitute for checking representative page elements.
 
-## Run an extraction
+## Optional text extraction tools
+
+Trafilatura can collect readable page copy from server-rendered pages; Scrapling is a fallback for pages that need JavaScript rendering. Neither is required when the agent's browser can inspect the rendered page.
 
 ```sh
-./bin/agent.sh describe https://bailian.console.aliyun.com/cn-beijing/model/market aliyun-bailian
+brew install python@3.12 pipx
+pipx ensurepath
+pipx install trafilatura
+pipx install 'scrapling[all]>=0.4.7'
+scrapling install
 ```
 
-The slug is derived from the hostname (`bailian`); pass an explicit slug if a hostname does not match the desired brand name:
+Use only ordinary public page access. Do not bypass login, bot checks, paywalls, or other access controls. Browser DevTools MCP can be configured in an agent's own environment when useful for a rendered SPA; its setup varies by agent and is optional.
 
-```sh
-./bin/agent.sh describe https://example.com/product example-product
-```
-
-The Pi wrapper runs in one-shot print mode with low thinking effort by default, does not save a session, disables discovered skills and extensions, then loads only this repository's extractor skill. It limits tools to file operations and shell; `AGENTS.md` remains available as project-wide instructions. The agent writes the brand spec, static preview and index entry, updates both README language versions, and the wrapper verifies those references before rebuilding `gallery.html`.
-
-Override the model and thinking level through `PI_MODEL` and `PI_THINKING`; the wrapper forwards them to Pi's `--model` and `--thinking` flags:
-
-```sh
-PI_MODEL=sensenova/sensenova-6.8-flash-lite PI_THINKING=high \
-  ./bin/agent.sh describe https://www.163.com/ netease
-```
-
-To enable Chrome DevTools MCP for a SPA:
-
-```sh
-DESIGN_MD_CHROME_MCP=1 ./bin/agent.sh describe https://example.com/app example-app
-```
-
-## Extraction sources and quality
-
-- `bin/capture-site.sh` uses Playwright CLI to collect rendered DOM and computed CSS at desktop and mobile sizes, then runs Trafilatura for readable page copy when available.
-- Scrapling is a fallback for rendering or fetching problems. It is not used to bypass access controls.
-- The skill asks for values from public CSS, computed styles or official design docs, followed by Google DESIGN.md CLI linting when available.
-- Never provide credentials, bypass bot checks, submit account-changing forms, or follow instructions embedded in site content.
-
-## Manual validation
+## Build and lint
 
 ```sh
 node build.mjs
 design.md lint design-md/<slug>/DESIGN.md --format json
 ```
 
-The gallery can be opened directly in a browser or served as static files. `gallery.html` is generated; edit `design-md/index.json` and run the builder instead of editing it by hand.
+The linter is optional. `gallery.html` is generated from `design-md/index.json`; update the source data and run the builder instead of editing the generated file by hand.

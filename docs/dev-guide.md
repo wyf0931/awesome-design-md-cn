@@ -44,7 +44,7 @@ awesome-design-md-cn/
 5. 在 `design-md/index.json` 的 `brands` 数组追加元信息，slug 与目录名一致，分类 ID 必须已定义。
 6. 运行 `node build.mjs`，将更新后的 `gallery.html` 一并提交。
 
-自动提取方式与 macOS 依赖安装见 [agent-guide.md](./agent-guide.md)。所有 agent 的通用流程写在根目录 `AGENTS.md` 和仓库 skill 中；Pi 入口为 `./bin/agent.sh describe <url> [slug]`。
+跨 agent 的提取流程写在根目录 `AGENTS.md` 和仓库 Skill 中。coding agent 可直接按 Skill 检查网站、更新产物并运行 `node build.mjs`；无需项目专属 agent 启动脚本。可选浏览器采集器和 macOS 依赖见 [agent-guide.md](./agent-guide.md)。
 
 ## Gallery 行为与约束
 
