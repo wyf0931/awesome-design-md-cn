@@ -177,6 +177,21 @@
         "MiSans"
       ],
       "url": "https://www.mi.com/"
+    },
+    {
+      "slug": "meituan",
+      "name": "美团 Meituan",
+      "category": "commerce",
+      "categoryLabel": "电商与生活服务",
+      "font": "MTTiJ（Hero）/ PingFang SC / Microsoft YaHei / Source Han Sans CN",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#FFD100",
+        "radius:16px/6px",
+        "16px base"
+      ],
+      "url": "https://www.meituan.com/"
     }
   ]
 }
