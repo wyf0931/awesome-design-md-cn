@@ -50,7 +50,7 @@ python3 -m http.server 8000
 |---|---|---|---|---|
 | 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | — | |
-| 小米 | [Xiaomi](https://www.mi.com) | — | — | |
+| 小米 | [Xiaomi](https://www.mi.com) | [DESIGN.md](design-md/xiaomi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/xiaomi/preview.html) | ✅ |
 | 华为 | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |
 | 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | 腾讯 | [Tencent](https://www.tencent.com) | — | — | |
