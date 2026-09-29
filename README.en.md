@@ -55,7 +55,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Alibaba (阿里巴巴) | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | Tencent (腾讯) | [Tencent](https://www.tencent.com) | — | — | |
 | Feishu (飞书) | [Feishu](https://www.feishu.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/preview.html) | ✅ |
-| Zhihu (知乎) | [Zhihu](https://www.zhihu.com) | — | — | |
+| Zhihu (知乎) | [Zhihu](https://www.zhihu.com) | [DESIGN.md](design-md/zhihu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/zhihu/preview.html) | ✅ |
 | NetEase (网易) | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | DiDi (滴滴) | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | Meituan (美团) | [Meituan](https://www.meituan.com) | — | — | |
