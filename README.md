@@ -54,6 +54,7 @@ python3 -m http.server 8000
 | 华为 | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |
 | 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | 腾讯 | [Tencent](https://www.tencent.com) | — | — | |
+| 飞书 | [Feishu](https://www.feishu.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/preview.html) | ✅ |
 | 知乎 | [Zhihu](https://www.zhihu.com) | — | — | |
 | 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | 滴滴 | [DiDi](https://www.didiglobal.com) | — | — | |
