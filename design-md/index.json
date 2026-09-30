@@ -119,6 +119,21 @@
       "url": "https://www.didiglobal.com/"
     },
     {
+      "slug": "ctrip",
+      "name": "携程 Ctrip",
+      "category": "travel",
+      "categoryLabel": "出行与旅行",
+      "font": "PingFang SC / Helvetica / Microsoft YaHei / Heiti SC · 无自托管中文字体",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "en",
+      "tags": [
+        "#0076F5",
+        "radius:8px/12px/20px",
+        "14px base · zoom:0.8"
+      ],
+      "url": "https://www.ctrip.com/"
+    },
+    {
       "slug": "zhihu",
       "name": "知乎",
       "category": "platform",

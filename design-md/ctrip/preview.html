@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>携程旅行网 — Design System</title>
+  <style>
+    :root {
+      /* 所有值均来自 design-md/ctrip/DESIGN.md 的实测证据 */
+      --brand-blue-token: #006FF6;
+      --primary: #0076F5;
+      --primary-light: #00A7FA;
+      --primary-price: #0086F6;
+      --primary-score: #007FE9;
+      --primary-panel: #73BCFA;
+      --accent-orange: #FF7700;
+      --accent-green: #00B87A;
+      --ink: #333333;
+      --body-text: #555555;
+      --muted: #666666;
+      --faint: #999999;
+      --line: #D5D5D5;
+      --line-soft: #D1D1D1;
+      --line-blue: #D6ECFF;
+      --line-green: #BFEDDD;
+      --canvas: #FFFFFF;
+      --surface: #FFFFFF;
+      --soft: #F8FAFD;
+      --control-radius: 4px;
+      --card-radius: 8px;
+      --panel-radius: 12px;
+      --pill-radius: 20px;
+      --score-radius: 2.5px 2.5px 7.5px;
+      --card-shadow: rgba(0,0,0,0.06) 0px 4px 16px 1px;
+      --card-shadow-strong: rgba(0,0,0,0.1) 0px 4px 16px 1px;
+      --gradient-action: linear-gradient(to left, #0076F5 0%, #00A7FA 100%);
+      --gradient-action-nav: linear-gradient(90deg, #00A7FA 0%, #0076F5 100%);
+      --gradient-panel: linear-gradient(90deg, #73BCFA 0%, #FFFFFF 100%, #FFFFFF 100%);
+      --gradient-soft-blue: linear-gradient(-153.43deg, #F4FAFD 0%, #E2F2FB 100%);
+      --gradient-soft-indigo: linear-gradient(26.57deg, #E6ECFC 0%, #F4F6FD 100%);
+      --gradient-soft-sky: linear-gradient(90deg, #DCF1FE 0%, #B1DBFF 100%);
+      --font-body: "Pingfang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, "Heiti SC", sans-serif;
+      --font-cjk: "Pingfang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, "Heiti SC", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--body-text); font: 14px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: baseline; gap: 10px; }
+    .brand strong { font-size: 22px; line-height: 1.3; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+    .brand em { font-style: normal; font-size: 13px; color: var(--muted); font-family: var(--font-mono); }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 400 24px/1.2 var(--font-cjk); color: var(--ink); }
+    .summary { max-width: 620px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 270px; padding: 14px 16px; border: 1px solid var(--line-blue); border-radius: var(--panel-radius); background: var(--soft); }
+    .source-language strong { display: block; margin-bottom: 6px; font-size: 12px; color: var(--ink); font-weight: 600; }
+    .source-language span { display: block; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .source-language code { font-family: var(--font-mono); font-size: 10px; color: var(--ink); }
+
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 500 20px/1.2 var(--font-cjk); color: var(--ink); }
+    h3 { margin: 0 0 12px; font: 500 16px/1.2 var(--font-cjk); color: var(--ink); }
+    .section-note { color: var(--muted); font-size: 11px; }
+
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
+    .color { height: 58px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; color: var(--ink); }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: var(--font-mono); }
+    .swatch-sub { display: block; margin-top: 2px; font-size: 9px; color: var(--faint); line-height: 1.4; }
+
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 120px 1fr 172px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--ink); }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--muted); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 600 16px/1.55 var(--font-cjk); word-break: break-all; overflow: hidden; text-overflow: ellipsis; }
+    .cjk-line.plain { font-weight: 400; font-size: 14px; word-break: normal; text-overflow: clip; }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .flag { display: inline-block; margin-right: 6px; padding: 0 6px; border: 1px solid var(--line-soft); border-radius: 2px; color: var(--muted); font: 400 10px/16px var(--font-body); }
+
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 112px; padding: 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .row + .row { margin-top: 10px; }
+
+    /* 导航胶囊：蓝色渐变 + 20px 圆角，实测文字未反白 */
+    .nav-item { display: inline-flex; align-items: center; min-height: 34px; padding: 10px 12px; border-radius: 20px; color: #000; font: 400 14px/1 var(--font-body); }
+    .nav-item.active { background: var(--gradient-action-nav); }
+
+    /* 城市 / 条件 tab：1px 描边 + 4px 圆角 */
+    .tab { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: #000; font: 400 14px/1 var(--font-body); }
+    .tab.active { border-color: var(--primary-price); color: var(--primary-price); }
+
+    /* 主按钮：水平蓝色渐变 + 8px 圆角 */
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 0; border-radius: 8px; background: var(--gradient-action); color: #FFF; font: 500 20px/1 var(--font-body); }
+
+    /* 搜索面板：浅蓝渐变 + 1px 蓝描边 + 12px 圆角 */
+    .search-panel { border: 1px solid var(--line-blue); border-radius: 12px; background: var(--gradient-panel); padding: 18px 20px 16px; }
+    .search-panel .field-row { display: flex; gap: 10px; align-items: stretch; }
+    .field { flex: 1; min-height: 66px; display: flex; flex-direction: column; justify-content: center; padding: 12px 14px 0; border-radius: 4px; background: var(--surface); }
+    .field small { display: block; margin-bottom: 6px; color: var(--muted); font-size: 11px; }
+    .field b { display: block; color: var(--ink); font: 700 16px/1.25 var(--font-body); }
+    .search-panel .button { flex: 0 0 auto; }
+
+    .card { border-radius: 8px; box-shadow: var(--card-shadow); background: var(--surface); padding: 14px; }
+    .card h4 { margin: 0 0 8px; color: var(--ink); font: 600 16px/1.4 var(--font-cjk); word-break: break-all; overflow: hidden; text-overflow: ellipsis; }
+    .card .meta { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+    .card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+    .price { color: var(--primary-price); font: 600 20px/1.3 var(--font-body); }
+    .price-reduced { color: var(--muted); font: 400 14px/1.3 var(--font-body); text-decoration: line-through; }
+    .score-chip { display: inline-flex; align-items: center; padding: 0 6px; background: var(--primary-score); color: #FFF; font: 600 14px/1 var(--font-body); border-radius: var(--score-radius); }
+    .score-label { color: var(--primary-price); font: 600 14px/1 var(--font-body); }
+    .tag-orange { color: var(--accent-orange); font: 500 20px/1 var(--font-body); border-radius: 8px; }
+    .tag-green { color: var(--accent-green); font: 600 14px/1 var(--font-body); }
+
+    .surface-sample { min-height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: var(--card-radius); font-size: 11px; }
+    .surface-sample.flat { background: var(--canvas); border: 1px solid var(--line); color: var(--body-text); }
+    .surface-sample.lifted { background: var(--surface); box-shadow: var(--card-shadow); color: var(--body-text); }
+    .surface-sample.footer { background: var(--soft); color: var(--faint); }
+    .surface-sample small { color: var(--faint); font-size: 10px; }
+
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .75; }
+    .radius-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .radius-chip { width: 34px; height: 24px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .shadow-chip { width: 58px; height: 26px; border-radius: var(--control-radius); background: var(--surface); box-shadow: var(--card-shadow); }
+    .measure-values { margin-top: 8px; color: var(--ink); font: 10px/1.6 var(--font-mono); }
+
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations, .measurements { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens { grid-template-columns: 1fr; }
+      .search-panel .field-row { flex-direction: column; }
+      .cjk-line { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand"><strong>携程旅行网</strong><em>Ctrip / Trip.com · design-md/ctrip</em></div>
+      <div class="context"><span>出行与旅行</span><span>简体中文内容</span><span>HTML lang: en</span><span>zoom: 0.8</span></div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于携程 PC 首页公开页面中可核实的颜色、文字、控件与表面样式。样例只呈现设计 token 与通用 UI 原语，不复刻原站的导航结构、广告投放位或页面信息架构。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>中文字体：<code>"Pingfang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, "Heiti SC", sans-serif</code></span>
+        <span><code>document.fonts</code> 未加载中文字体文件，字形完全依赖本机字体；<code>letter-spacing</code> 全站为 <code>normal</code>。</span>
+        <span><code>--coreFontFamilyTripNumber</code> 已声明但首页未使用；<code>html lang="en"</code>。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#0076F5"></div><div class="swatch-copy"><span class="swatch-name">primary</span><span class="swatch-value">#0076F5</span><span class="swatch-sub">主动作渐变起点</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#00A7FA"></div><div class="swatch-copy"><span class="swatch-name">primary-light</span><span class="swatch-value">#00A7FA</span><span class="swatch-sub">主动作渐变终点</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#0086F6"></div><div class="swatch-copy"><span class="swatch-name">primary-price</span><span class="swatch-value">#0086F6</span><span class="swatch-sub">价格 / 选中态</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#007FE9"></div><div class="swatch-copy"><span class="swatch-name">primary-score</span><span class="swatch-value">#007FE9</span><span class="swatch-sub">评分胶囊底色</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#73BCFA"></div><div class="swatch-copy"><span class="swatch-name">primary-panel</span><span class="swatch-value">#73BCFA</span><span class="swatch-sub">搜索面板渐变</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#006FF6"></div><div class="swatch-copy"><span class="swatch-name">brand-blue-token</span><span class="swatch-value">#006FF6</span><span class="swatch-sub">已声明，首页未消费</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FF7700"></div><div class="swatch-copy"><span class="swatch-name">accent-orange</span><span class="swatch-value">#FF7700</span><span class="swatch-sub">运营标签文字</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#00B87A"></div><div class="swatch-copy"><span class="swatch-name">accent-green</span><span class="swatch-value">#00B87A</span><span class="swatch-sub">绿色强调文字</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#333333"></div><div class="swatch-copy"><span class="swatch-name">ink</span><span class="swatch-value">#333333</span><span class="swatch-sub">标题 / 卡片名</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#555555"></div><div class="swatch-copy"><span class="swatch-name">text-default</span><span class="swatch-value">#555555</span><span class="swatch-sub">正文默认</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#666666"></div><div class="swatch-copy"><span class="swatch-name">text-secondary</span><span class="swatch-value">#666666</span><span class="swatch-sub">原价 / 页脚链接</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#999999"></div><div class="swatch-copy"><span class="swatch-name">text-tertiary</span><span class="swatch-value">#999999</span><span class="swatch-sub">页脚版权</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FFFFFF;box-shadow:inset 0 0 0 1px #D5D5D5"></div><div class="swatch-copy"><span class="swatch-name">canvas / surface</span><span class="swatch-value">#FFFFFF</span><span class="swatch-sub">底色与卡片</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#F8FAFD"></div><div class="swatch-copy"><span class="swatch-name">footer-canvas</span><span class="swatch-value">#F8FAFD</span><span class="swatch-sub">页脚通栏</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#D5D5D5"></div><div class="swatch-copy"><span class="swatch-name">line</span><span class="swatch-value">#D5D5D5</span><span class="swatch-sub">常规 1px 描边</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#D6ECFF"></div><div class="swatch-copy"><span class="swatch-name">line-blue</span><span class="swatch-value">#D6ECFF</span><span class="swatch-sub">面板 1px 描边</span></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">Hero label</span><span class="type-sample" style="font:400 24px/1.2 var(--font-cjk);color:var(--ink)">搜索条件标签</span><span class="type-value">24px / 400 / 20px</span></div>
+          <div class="type-row"><span class="type-role">Section title</span><span class="type-sample" style="font:500 20px/1.2 var(--font-cjk);color:var(--ink)">板块标题</span><span class="type-value">20px / 500 / normal</span></div>
+          <div class="type-row"><span class="type-role">Price</span><span class="type-sample" style="font:600 20px/1.3 var(--font-body);color:var(--primary-price)">¥709 起</span><span class="type-value">20px / 600 / 26px</span></div>
+          <div class="type-row"><span class="type-role">Field value</span><span class="type-sample" style="font:700 16px/1.4 var(--font-body);color:var(--ink)">1间, 1位 · 不限</span><span class="type-value">16px / 700 / 22px</span></div>
+          <div class="type-row"><span class="type-role">Card title</span><span class="type-sample" style="font:600 16px/1.4 var(--font-cjk);color:var(--ink)">示例酒店名称</span><span class="type-value">16px / 600 / normal</span></div>
+          <div class="type-row"><span class="type-role">Body</span><span class="type-sample" style="font:400 14px/1.5 var(--font-body);color:var(--body-text)">示例正文说明文字</span><span class="type-value">14px / 400 / normal</span></div>
+          <div class="type-row"><span class="type-role">Nav item</span><span class="type-sample" style="font:400 14px/1.4 var(--font-body);color:#000">示例导航项</span><span class="type-value">14px / 400 / normal</span></div>
+          <div class="type-row"><span class="type-role">Caption</span><span class="type-sample" style="font:400 12px/1.5 var(--font-body);color:var(--muted)">示例页脚链接文字</span><span class="type-value">12px / 400 / 16px</span></div>
+          <div class="type-row"><span class="type-role">Copyright</span><span class="type-sample" style="font:400 12px/1.5 var(--font-body);color:var(--faint);text-align:center">示例版权说明</span><span class="type-value">12px / 400 / 18px</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">中文字体： "Pingfang SC", Helvetica, "Helvetica Neue", "Microsoft YaHei", Arial, "Heiti SC", sans-serif<br>行距：normal（组件内写死像素）<br>字距：normal　·　line-break: auto　·　overflow-wrap: normal</div>
+          <p class="cjk-line"><span class="flag">break-all</span>上海静安CitiGO欢阁酒店（Disney 迪士尼 2日1晚私家团）¥1242起</p>
+          <p class="cjk-line plain"><span class="flag">normal</span>1间, 1位 · 9月30日 入住 · 10-30 去 10-31 回 · 2.0折 · 4.7分| 34767人出游</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角 / 半角标点在指定字体栈中的呈现。原站同时存在半角 ¥ 与全角 ￥、半角逗号与半角竖线等混用；不表示来源网站采用了额外混排规则。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">导航胶囊 · 20px 圆角 · 水平蓝色渐变</span>
+          <div class="row"><span class="nav-item active">示例选中项</span><span class="nav-item">示例未选中</span><span class="nav-item">示例未选中</span></div>
+          <div class="row" style="font-size:10px;color:var(--muted)">实测文字色为 rgb(0,0,0)，未反白</div>
+        </div>
+        <div class="component">
+          <span class="component-label">条件 tab · 1px 描边 · 4px 圆角</span>
+          <div class="row"><span class="tab active">示例选中</span><span class="tab">示例未选中</span><span class="tab">示例未选中</span></div>
+          <div class="row"><span class="tag-orange">推荐</span><span class="tag-orange">热推</span><span class="tag-green">示例绿色标签</span></div>
+        </div>
+        <div class="component">
+          <span class="component-label">主按钮 · 8px 圆角 · 20px/500 白字</span>
+          <div class="row"><span class="button">示例主操作</span></div>
+          <div class="row" style="font-size:10px;color:var(--muted)">linear-gradient(to left, #0076F5, #00A7FA)</div>
+        </div>
+        <div class="component" style="grid-column: span 2">
+          <span class="component-label">条件面板 · 12px 圆角 · 1px #D6ECFF 描边 · 90° 浅蓝渐变</span>
+          <div class="search-panel">
+            <div class="field-row">
+              <div class="field"><small>条件项 A</small><b>9月30日 入住</b></div>
+              <div class="field"><small>条件项 B</small><b>10月1日 退房</b></div>
+              <div class="field"><small>条件项 C</small><b>1间, 1位</b></div>
+              <div class="field"><small>条件项 D</small><b>不限</b></div>
+              <span class="button">查询</span>
+            </div>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">价格与划线价</span>
+          <div class="row"><span class="price">¥709</span><span class="price-reduced">¥788</span></div>
+          <div class="row"><span class="price">¥466 起</span><span style="font-size:11px;color:var(--muted)">全角写法 ￥1564.0起</span></div>
+        </div>
+        <div class="component">
+          <span class="component-label">评分胶囊 · 2.5px 2.5px 7.5px</span>
+          <div class="row"><span class="score-chip">4.7</span><span class="score-label">超棒</span><span style="font-size:12px;color:var(--muted)">6022条点评</span></div>
+        </div>
+        <div class="component">
+          <span class="component-label">卡片 · 8px 圆角 · 0.06 投影</span>
+          <div class="card">
+            <h4>上海静安CitiGO欢阁酒店示例卡片</h4>
+            <div class="meta"><span class="score-chip">4.8</span><span class="score-label">超棒</span><span style="font-size:11px;color:var(--muted)">5597条点评</span></div>
+            <div class="row"><span class="price">¥420</span><span class="price-reduced">¥520</span></div>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">软色面板 · 8/12px 圆角 · 低饱和渐变</span>
+          <div class="row" style="flex-direction:column;align-items:stretch;gap:8px">
+            <div class="surface-sample" style="background:var(--gradient-soft-blue);border-radius:8px">示例蓝色软面板</div>
+            <div class="surface-sample" style="background:var(--gradient-soft-indigo);border-radius:8px">示例靛色软面板</div>
+            <div class="surface-sample" style="background:var(--gradient-soft-sky);border-radius:12px">示例天蓝软面板</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>表面与页脚</h2><span class="section-note">白底为主，页脚使用 #F8FAFD 通栏</span></div>
+      <div class="specimens">
+        <div class="component" style="background:var(--canvas)">
+          <span class="component-label">Canvas · #FFFFFF</span>
+          <div class="surface-sample flat">示例页面底色区域<small>#FFFFFF</small></div>
+        </div>
+        <div class="component" style="background:var(--canvas)">
+          <span class="component-label">Card · box-shadow rgba(0,0,0,.06) 0 4px 16px 1px</span>
+          <div class="surface-sample lifted">示例浮起卡片<small>0.06</small></div>
+        </div>
+        <div class="component" style="background:var(--soft)">
+          <span class="component-label">Footer · padding 40px 0 52px · max-width 1180px</span>
+          <div class="surface-sample footer"><span>示例页脚链接 · 12px / #666666</span><small>示例版权 · 12px / #999999</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing</span>
+          <div class="scale"><i style="--w:10px"></i><i style="--w:12px"></i><i style="--w:18px"></i><i style="--w:28px"></i><i style="--w:40px"></i><i style="--w:52px"></i></div>
+          <div class="measure-values">行距 10 · 列距 12 · 页边 18 · 头部 72 · 面板 264<br>页脚内边距 40 0 52 · 导航轨 165.234 · 右栏 390</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <span class="radius-chip" style="--r:2px"></span>
+            <span class="radius-chip" style="--r:4px"></span>
+            <span class="radius-chip" style="--r:8px"></span>
+            <span class="radius-chip" style="--r:12px"></span>
+            <span class="radius-chip" style="--r:20px"></span>
+            <span class="radius-chip" style="--r:var(--score-radius);width:30px;background:var(--primary-score)"></span>
+          </div>
+          <div class="measure-values">2 · 4 · 8 · 12 · 20 · 100%<br>评分胶囊 2.5px 2.5px 7.5px</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div class="radius-row" style="gap:10px"><span class="shadow-chip"></span><span class="shadow-chip" style="box-shadow:var(--card-shadow-strong)"></span></div>
+          <div class="measure-values">rgba(0,0,0,.06) 0 4px 16px 1px<br>rgba(0,0,0,.1) 0 4px 16px 1px</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.ctrip.com/">https://www.ctrip.com/</a> · 2026-09-30 · 中国大陆 · 未登录 · Playwright Headless Chromium on macOS</span>
+      <span>桌面 1280×900 / 1600×1000 / 1920×1080（body zoom 0.8）· 移动 390×844 未适配，移动端由 m.ctrip.com 承载</span>
+    </footer>
+  </main>
+</body>
+</html>
