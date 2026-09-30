@@ -65,7 +65,6 @@ python3 -m http.server 8000
 | 支付宝 | [Alipay](https://www.alipay.com) | — | — | |
 | 携程 | [Ctrip](https://www.ctrip.com/) | [DESIGN.md](design-md/ctrip/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/ctrip/preview.html) | ✅ |
 | 小红书 | [Xiaohongshu](https://www.xiaohongshu.com) | — | — | |
-| 哔哩哔哩 | [bilibili](https://www.bilibili.com) | — | — | |
 | 新浪 | [Sina](https://www.sina.com.cn) | — | — | |
 | 抖音 | [Douyin](https://www.douyin.com) | — | — | |
 | 微信开放平台 | [PC OpenSDK 接入指南](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html) | [DESIGN.md](design-md/wechat/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/wechat/preview.html) | ✅ |

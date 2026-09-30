@@ -65,7 +65,6 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Alipay (支付宝) | [Alipay](https://www.alipay.com) | — | — | |
 | Ctrip / Trip.com (携程) | [Ctrip](https://www.ctrip.com/) | [DESIGN.md](design-md/ctrip/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/ctrip/preview.html) | ✅ |
 | Xiaohongshu (小红书) | [Xiaohongshu](https://www.xiaohongshu.com) | — | — | |
-| bilibili (哔哩哔哩) | [bilibili](https://www.bilibili.com) | — | — | |
 | Sina (新浪) | [Sina](https://www.sina.com.cn) | — | — | |
 | Douyin (抖音) | [Douyin](https://www.douyin.com) | — | — | |
 | WeChat Open Platform (微信开放平台) | [PC OpenSDK Guide](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html) | [DESIGN.md](design-md/wechat/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/wechat/preview.html) | ✅ |
