@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>京东云 JD Cloud — Design System</title>
+  <style>
+    :root {
+      --primary: #e1251b;
+      --jd-red-solid: #f50000;
+      --jd-red-tag: rgba(238, 0, 0, 0.7);
+      --grad-cover-start: #ae2727;
+      --grad-cover-end: #000000;
+      --grad-hero-text: linear-gradient(-52deg, #ff76b1 0%, #9c2dff 46%, #5028fc 76%, #6c6eff 100%);
+      --ink: #262626;
+      --text-main: #333333;
+      --text-muted: #8c8c8c;
+      --text-faint: rgba(51, 51, 51, 0.85);
+      --text-on-dark: #ffffff;
+      --text-on-dark-soft: rgba(255, 255, 255, 0.9);
+      --canvas: #ffffff;
+      --surface-card: #f6f8fa;
+      --surface-carousel: #f5f5f5;
+      --surface-disabled: #d9d9d9;
+      --surface-hero-cover: #060a23;
+      --surface-footer: #000000;
+      --border-soft: rgba(17, 0, 0, 0.06);
+      --border-default: #e7e7e7;
+      --border-alt: #e9e9e9;
+      --line: #e6e8ed;
+      --soft: rgba(38, 38, 38, 0.05);
+      --control-radius: 4px;
+      --card-radius: 8px;
+      --pill-radius: 27px;
+      --badge-radius: 9px;
+      --hero-shadow: rgba(8, 20, 49, 0.1) 0 2px 8px 0;
+      --font-body: "PingFang SC", -apple-system, "system-ui", "helvetica neue", "Segoe UI", Roboto, Arial, "hiragino sans gb", "Noto Sans", "microsoft yahei", sans-serif;
+      --font-heading: "PingFang SC", sans-serif;
+      --font-num: "京东正黑 V2.1", "PingFang SC", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--text-main); font: 14px/21px var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { font: 600 22px/1.3 var(--font-heading); color: var(--ink); letter-spacing: -.01em; }
+    .brand .red { color: var(--primary); }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--canvas); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--text-muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 300 40px/56px var(--font-heading); color: var(--ink); }
+    .summary { max-width: 640px; margin: 9px 0 0; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 300px; padding: 14px 16px; border: 1px solid var(--border-default); border-radius: var(--card-radius); background: var(--surface-card); }
+    .source-language strong { display: block; margin-bottom: 5px; font: 500 12px/1.4 var(--font-body); color: var(--ink); }
+    .source-language span { color: var(--text-muted); font-size: 11px; line-height: 1.6; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 500 16px/1.4 var(--font-heading); color: var(--ink); }
+    .section-note { color: var(--text-muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--border-default); border-radius: var(--control-radius); background: var(--canvas); }
+    .color { height: 66px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--text-muted); font-family: var(--font-mono); }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--border-default); border-radius: var(--card-radius); background: var(--canvas); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--border-default); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 132px 1fr 168px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border-default); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--text-muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .grad-text { background: var(--grad-hero-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--text-muted); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 300 32px/42.56px var(--font-heading); }
+    .cjk-note { margin: 0; color: var(--text-muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 132px; padding: 16px; border: 1px solid var(--border-default); border-radius: var(--card-radius); background: var(--surface-card); }
+    .component.white { background: var(--canvas); }
+    .component.hero { background: var(--surface-hero-cover); border-color: rgba(255, 255, 255, 0.14); color: var(--text-on-dark); }
+    .component.hero .component-label { color: rgba(255, 255, 255, 0.65); }
+    .component-label { display: block; margin-bottom: 12px; color: var(--text-muted); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .button { min-height: 40px; padding: 0 14px; border: 1px solid var(--border-default); border-radius: var(--control-radius); background: var(--canvas); color: var(--ink); font: 500 14px/1 var(--font-body); display: inline-flex; align-items: center; justify-content: center; }
+    .button.cta-hero { border: 0; border-radius: 6px; min-height: 48px; padding: 0 16px; background: linear-gradient(90deg, var(--grad-cover-start) 0%, var(--grad-cover-end) 100%); color: #fff; font: 500 16.8px/23.52px var(--font-heading); width: 160px; }
+    .button.cta-free { border: 1px solid #0a0a0a; border-radius: 4px; min-height: 48px; padding: 15px 20px; background: transparent; color: #000; font: 500 18px/25.2px var(--font-heading); width: 140px; }
+    .button.cta-disabled { border: 0; border-radius: 6px; min-height: 48px; padding: 0; background: var(--surface-disabled); color: var(--text-on-dark-soft); font: 500 16.8px/23.52px var(--font-heading); width: 160px; }
+    .button.cta-red { border: 0; border-radius: 0; padding: 6px 10px; background: var(--primary); color: #fff; font: 400 14px/1 var(--font-body); }
+    .field { height: 40px; display: flex; align-items: center; padding: 4px 12px 4px 36px; border: 1px solid var(--border-soft); border-radius: var(--control-radius); color: var(--text-muted); font: 14px/21px var(--font-body); background: transparent; }
+    .tag { display: inline-flex; align-items: center; min-height: 20px; padding: 0 8px; border-radius: var(--control-radius); background: #fff; color: var(--ink); font: 400 12px/16px var(--font-body); border: 1px solid var(--border-alt); }
+    .hot-tag { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 20px; border-radius: var(--pill-radius); background: var(--jd-red-tag); color: #fff; font: 400 12px/15.6px var(--font-body); box-shadow: rgb(255, 163, 163) 1px 2px 4px 0 inset, rgba(238, 0, 0, 0.45) 0.5px 0.5px 0 inset, rgba(238, 0, 0, 0.45) -0.5px -0.5px 0 inset; }
+    .surface-sample { min-height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-radius: var(--card-radius); background: var(--surface-card); font: 400 12px/1.5 var(--font-body); color: var(--ink); }
+    .surface-sample small { color: var(--text-muted); font-size: 10px; }
+    .stat-num { font: 700 38px/55.86px var(--font-num); color: var(--ink); }
+    .stat-num .plus { font-size: 24px; }
+    .stat-caption { font: 500 24px/33.6px var(--font-heading); color: #000; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--border-default); border-radius: var(--card-radius); background: var(--canvas); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--text-muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 28px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .85; }
+    .radius-row { display: flex; align-items: center; gap: 7px; }
+    .radius-chip { width: 34px; height: 24px; border: 1px solid var(--border-default); background: var(--soft); border-radius: var(--r); }
+    .shadow-chip { width: 80px; height: 40px; border-radius: var(--control-radius); background: var(--canvas); box-shadow: var(--hero-shadow); }
+    .measure-values { margin-top: 8px; color: var(--ink); font: 10px/1.5 var(--font-mono); }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--border-default); color: var(--text-muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 96px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 24px; line-height: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">京东<span class="red">云</span> JD Cloud</div>
+      <div class="context">
+        <span>科技与云服务</span>
+        <span>简体中文</span>
+        <span>HTML lang: 未记录</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于公开页面中可核实的颜色、文字、控件与表面样式。样例用于展示设计 token，不复刻京东云官网的信息结构。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>PingFang SC 前置的中英混排栈；Hero 副标题使用 4 段粉→紫→靛蓝渐变文字；Partner 统计数字保留「京东正黑 V2.1」品牌字体；页面 lang 属性未声明。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#e1251b"></div><div class="swatch-copy"><span class="swatch-name">京东红 · primary</span><code class="swatch-value">#e1251b</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f50000"></div><div class="swatch-copy"><span class="swatch-name">徽章红</span><code class="swatch-value">#f50000</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(238,0,0,0.7)"></div><div class="swatch-copy"><span class="swatch-name">HOT 标签</span><code class="swatch-value">rgba(238,0,0,0.7)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:linear-gradient(90deg,#ae2727,#000000)"></div><div class="swatch-copy"><span class="swatch-name">CTA 渐变</span><code class="swatch-value">#ae2727 → #000000</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:linear-gradient(-52deg,#ff76b1,#9c2dff 46%,#5028fc 76%,#6c6eff)"></div><div class="swatch-copy"><span class="swatch-name">Hero 文字渐变</span><code class="swatch-value">4 stops</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#262626"></div><div class="swatch-copy"><span class="swatch-name">主文本 / 标题</span><code class="swatch-value">#262626</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#8c8c8c"></div><div class="swatch-copy"><span class="swatch-name">副标 / 描述</span><code class="swatch-value">#8c8c8c</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#060a23"></div><div class="swatch-copy"><span class="swatch-name">Hero 覆盖底</span><code class="swatch-value">#060a23</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f6f8fa"></div><div class="swatch-copy"><span class="swatch-name">卡片浅灰</span><code class="swatch-value">#f6f8fa</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f5f5f5"></div><div class="swatch-copy"><span class="swatch-name">轮播卡底</span><code class="swatch-value">#f5f5f5</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#d9d9d9"></div><div class="swatch-copy"><span class="swatch-name">禁用按钮</span><code class="swatch-value">#d9d9d9</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#000000"></div><div class="swatch-copy"><span class="swatch-name">页脚 / 整站底</span><code class="swatch-value">#000000 / #fff</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">Hero 主标题</span><strong class="type-sample" style="font:300 40px/56px var(--font-heading); color:var(--ink)">从模型调用到业务落地</strong><span class="type-value">64px / 300 / 76px</span></div>
+          <div class="type-row"><span class="type-role">Hero 渐变副标</span><strong class="type-sample grad-text" style="font:300 40px/56px var(--font-heading)">AI 应用平台</strong><span class="type-value">64px / 300 / 76px</span></div>
+          <div class="type-row"><span class="type-role">Cover 标题</span><strong class="type-sample" style="font:300 32px/45px var(--font-heading); color:var(--ink)">打造10万卡国产算力集群</strong><span class="type-value">60px / 300 / 76.02px</span></div>
+          <div class="type-row"><span class="type-role">分区标题</span><strong class="type-sample" style="font:300 28px/40px var(--font-heading); color:var(--ink)">大模型即取即用</strong><span class="type-value">40px / 300 / 56px</span></div>
+          <div class="type-row"><span class="type-role">Partner 分区</span><strong class="type-sample" style="font:300 24px/30px var(--font-heading); color:var(--ink)">值得信赖的产业 AI 伙伴</strong><span class="type-value">44px / 300 / 49.5px</span></div>
+          <div class="type-row"><span class="type-role">统计数字</span><strong class="type-sample" style="font:700 26px/35px var(--font-num); color:var(--ink)">250万<span style="font-size:20px">+</span></strong><span class="type-value">38 / 24 · 700 · 1.47</span></div>
+          <div class="type-row"><span class="type-role">卡片标题</span><strong class="type-sample" style="font:500 18px/26px var(--font-heading); color:var(--ink)">智能创作，内容一键成片</strong><span class="type-value">22px / 500 / 25.67</span></div>
+          <div class="type-row"><span class="type-role">Hero 描述</span><span class="type-sample" style="font:400 13px/18px var(--font-body); color:var(--text-muted)">百款模型一键调用，统一管理更省心</span><span class="type-value">18px / 400 / 25.2</span></div>
+          <div class="type-row"><span class="type-role">导航</span><span class="type-sample" style="font:400 12px/18px var(--font-body); color:var(--ink)">产品　解决方案　云市场　合作伙伴</span><span class="type-value">14px / 400 / 64px</span></div>
+          <div class="type-row"><span class="type-role">HOT 标签</span><span class="type-sample" style="font:400 11px/15px var(--font-body); color:var(--ink)">HOT · 12px / 400 / 15.6px</span><span class="type-value">12px / 400</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">中文字体栈： "PingFang SC", -apple-system, "system-ui", "helvetica neue", "Segoe UI", Roboto, Arial, "hiragino sans gb", "Noto Sans", "microsoft yahei", sans-serif<br>标题栈： "PingFang SC", sans-serif<br>数字栈： "京东正黑 V2.1", "PingFang SC", sans-serif<br>html lang：空字符串（未记录）</div>
+          <p class="cjk-line">从模型调用到业务落地 · <span class="grad-text">AI 应用平台</span>（¥ 128.00）</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component hero">
+          <span class="component-label">Hero「查看活动」CTA · 京东红→黑渐变</span>
+          <div class="button-row">
+            <span class="button cta-hero">查看活动</span>
+          </div>
+          <div style="margin-top:14px; font:400 12px/16px var(--font-body); color:rgba(255,255,255,0.75)">linear-gradient(90deg, #ae2727, #000000) · 6px 圆角 · 160×48</div>
+        </div>
+        <div class="component">
+          <span class="component-label">AIWork「免费体验」CTA · 深色描边</span>
+          <div class="button-row">
+            <span class="button cta-free">免费体验</span>
+          </div>
+          <div style="margin-top:14px; font:400 12px/16px var(--font-body); color:var(--text-muted)">1px solid #0a0a0a · 4px 圆角 · 140×48 · 18px/500</div>
+        </div>
+        <div class="component">
+          <span class="component-label">移动端「注册」CTA · 京东红实底</span>
+          <div class="button-row">
+            <span class="button cta-red">注册</span>
+            <span class="button cta-disabled">敬请期待</span>
+          </div>
+          <div style="margin-top:14px; font:400 12px/16px var(--font-body); color:var(--text-muted)">#e1251b 0 圆角 / #d9d9d9 6px 圆角</div>
+        </div>
+        <div class="component">
+          <span class="component-label">卡片 · 8px 圆角 · 浅灰底</span>
+          <div class="surface-sample"><span>MaaS 模型卡</span><small>395×157 · #f6f8fa</small></div>
+          <div style="margin-top:10px; display:flex; align-items:center; gap:8px">
+            <span class="hot-tag">HOT</span>
+            <span class="tag">人工智能</span>
+            <span class="tag">弹性计算</span>
+          </div>
+        </div>
+        <div class="component white">
+          <span class="component-label">搜索输入框 · 4px 圆角 · 极淡描边</span>
+          <div class="field">搜索产品、模型或文档</div>
+          <div style="margin-top:10px; font:400 11px/16px var(--font-body); color:var(--text-muted)">1px solid rgba(17,0,0,0.06) · 40px 高 · padding 4px 12px 4px 36px</div>
+        </div>
+        <div class="component">
+          <span class="component-label">Partner 统计数字 · 京东正黑 V2.1</span>
+          <div style="display:flex; align-items:flex-end; gap:24px">
+            <div><div class="stat-num">250万<span class="plus">+</span></div><div class="stat-caption">企业客户</div></div>
+            <div><div class="stat-num">1000<span class="plus">+</span></div><div class="stat-caption">大模型</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角、层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing · section padding</span>
+          <div class="scale"><i style="--w:28px"></i><i style="--w:36px"></i><i style="--w:56px"></i><i style="--w:60px"></i><i style="--w:64px"></i></div>
+          <div class="measure-values">32 / 40 / 56 / 60 / 64 px<br>header-height: 64px · container: 1280px</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <i class="radius-chip" style="--r:0px"></i>
+            <i class="radius-chip" style="--r:4px"></i>
+            <i class="radius-chip" style="--r:8px"></i>
+            <i class="radius-chip" style="--r:14px"></i>
+            <i class="radius-chip" style="--r:27px"></i>
+          </div>
+          <div class="measure-values">0 · 4px（控件）· 8px（卡片）· 27px（HOT 胶囊）</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div class="shadow-chip"></div>
+          <div class="measure-values">header: rgba(8,20,49,0.1) 0 2px 8px<br>logo: rgba(0,0,0,0.05) 0 2px 13px + inset</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.jdcloud.com/">https://www.jdcloud.com/</a> · 2026-09-30 · 中国 · 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844 · Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>
