@@ -74,6 +74,7 @@ python3 -m http.server 8000
 | DeepSeek | [DeepSeek](https://www.deepseek.com/) | [DESIGN.md](design-md/deepseek/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/deepseek/preview.html) | ✅ |
 | 高德开放平台 | [Amap LBS](https://lbs.amap.com/) | [DESIGN.md](design-md/amap/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/amap/preview.html) | ✅ |
 | 联想 | [Lenovo](https://www.lenovo.com.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/preview.html) | ✅ |
+| 简书 | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 
 ## 自动提取
 

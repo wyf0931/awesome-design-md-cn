@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>简书 — Design System</title>
+  <style>
+    :root {
+      --primary: #EA6F5A;
+      --primary-alpha: rgba(236, 97, 73, 0.7);
+      --ink: #333333;
+      --body-text: #333333;
+      --muted: #999999;
+      --placeholder: #969696;
+      --faint: #B4B4B4;
+      --faintest: #C8C8C8;
+      --line: #EEEEEE;
+      --canvas: #FFFFFF;
+      --surface: #FFFFFF;
+      --soft: #F7F7F7;
+      --control-radius: 4px;
+      --card-radius: 0px;
+      --pill-action-radius: 20px;
+      --pill-search-radius: 40px;
+      --card-shadow: none;
+      --font-body: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      --font-display: -apple-system, "SF UI Display", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--body-text); font: 17px/1.43 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .brand { font: 500 22px/1.3 var(--font-body); letter-spacing: -.01em; color: var(--ink); }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label, .section-kicker { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 700 26px/32px var(--font-display); color: var(--ink); }
+    .summary { max-width: 620px; margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 300px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .source-language strong { display: block; margin-bottom: 5px; font-size: 12px; color: var(--ink); }
+    .source-language span { color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 500 16px/1.4 var(--font-body); color: var(--ink); }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .color { height: 66px; background: var(--sample); }
+    .color.alpha-sample { background-color: #FFFFFF; border-bottom: 4px solid rgba(236, 97, 73, 0.7); }
+    .swatch-copy { min-height: 48px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; color: var(--ink); }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: var(--font-mono); }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 130px 1fr 154px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--ink); }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--control-radius); background: var(--soft); color: var(--muted); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 700 18px/1.5 var(--font-display); }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 172px; padding: 16px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .component-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .button { min-height: 40px; padding: 6px 12px; border: 1px solid transparent; border-radius: var(--pill-action-radius); background: var(--surface); color: var(--ink); font: 400 15px/24px var(--font-body); display: inline-flex; align-items: center; justify-content: center; }
+    .button.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .button.sign-up { background: transparent; color: var(--primary); border: 1px solid var(--primary-alpha); min-height: 38px; }
+    .button.log-in { background: transparent; border: 0; color: var(--placeholder); border-radius: 0; min-height: 35px; padding: 0 12px; line-height: 21px; }
+    .field { height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px 0 20px; border: 1px solid var(--line); border-radius: var(--pill-search-radius); background: var(--line); color: var(--placeholder); font: 400 14px/20px var(--font-body); }
+    .field-icon { color: var(--placeholder); }
+    .section-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-left: 5px; }
+    .section-title-row h3 { margin: 0; font: 500 16px/17.6px var(--font-body); color: var(--ink); }
+    .section-title-row .rule { flex: 1; height: 1px; background: var(--line); }
+    .article-card { padding-top: 10px; }
+    .article-title { font: 700 18px/27px var(--font-display); color: var(--ink); margin: 0 0 4px; }
+    .article-abstract { color: var(--muted); font: 400 13px/24px var(--font-body); margin: 0 0 8px; }
+    .article-meta { color: var(--faint); font: 400 12px/20px var(--font-body); }
+    .hot-list { list-style: none; margin: 0; padding: 0; }
+    .hot-list li { padding: 5px 0; margin: 2px 0; font: 400 14px/20px var(--font-body); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-card { padding: 12px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
+    .app-card-title { font: 400 15px/21.4px var(--font-body); color: var(--ink); margin: 0; }
+    .app-card-desc { font: 400 13px/18.6px var(--font-body); color: var(--muted); margin: 4px 0 0; }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--muted); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 5px; border-radius: 999px; background: var(--primary); opacity: .75; }
+    .radius-row { display: flex; align-items: center; gap: 7px; }
+    .radius-chip { width: 32px; height: 23px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .radius-chip.pill-action { border-radius: 20px; }
+    .radius-chip.pill-search { border-radius: 40px; }
+    .measure-values { color: var(--ink); font: 10px/1.5 var(--font-mono); }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 78px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">简书</div>
+      <div class="context">
+        <span>内容与媒体</span>
+        <span>简体中文</span>
+        <span>HTML lang: 未记录（空字符串）</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于简书未登录首页（www.jianshu.com/）可核实的颜色、字体与控件 token。样例用于展示设计 token，不复刻简书首页的信息结构。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>body 字体栈：-apple-system / SF UI Text / Arial / PingFang SC / Hiragino Sans GB / Microsoft YaHei / WenQuanYi Micro Hei。正文 17px；文章标题使用 SF UI Display 变体，18px / 700。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示首页有证据的色值；珊瑚橘 `#EA6F5A` 是唯一主色</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#EA6F5A"></div><div class="swatch-copy"><span class="swatch-name">主 CTA</span><code class="swatch-value">#EA6F5A</code></div></div>
+        <div class="swatch"><div class="color alpha-sample"></div><div class="swatch-copy"><span class="swatch-name">描边（alpha）</span><code class="swatch-value">rgba(236,97,73,.7)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#333333"></div><div class="swatch-copy"><span class="swatch-name">主文字</span><code class="swatch-value">#333333</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#999999"></div><div class="swatch-copy"><span class="swatch-name">Muted 摘要</span><code class="swatch-value">#999999</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#969696"></div><div class="swatch-copy"><span class="swatch-name">Placeholder</span><code class="swatch-value">#969696</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#B4B4B4"></div><div class="swatch-copy"><span class="swatch-name">Faint Meta</span><code class="swatch-value">#B4B4B4</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#C8C8C8"></div><div class="swatch-copy"><span class="swatch-name">Faintest ICP</span><code class="swatch-value">#C8C8C8</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#EEEEEE"></div><div class="swatch-copy"><span class="swatch-name">Search 底</span><code class="swatch-value">#EEEEEE</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(0,0,0,0.4)"></div><div class="swatch-copy"><span class="swatch-name">Carousel 遮罩</span><code class="swatch-value">rgba(0,0,0,.4)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FFFFFF"></div><div class="swatch-copy"><span class="swatch-name">Canvas 页面</span><code class="swatch-value">#FFFFFF</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">文章标题</span><strong class="type-sample" style="font:700 18px/27px var(--font-display)">AI不死心！强行推第二部蹭陈奕天短剧</strong><span class="type-value">18px / 700 / 27px</span></div>
+          <div class="type-row"><span class="type-role">导航链接</span><strong class="type-sample" style="font:400 17px/26px var(--font-body)">首页 · 下载App · 会员 · 影视</strong><span class="type-value">17px / 400 / 26px</span></div>
+          <div class="type-row"><span class="type-role">分区标题 H3</span><strong class="type-sample" style="font:500 16px/17.6px var(--font-body)">今日热点 · 热门阅读</strong><span class="type-value">16px / 500 / 17.6px</span></div>
+          <div class="type-row"><span class="type-role">主按钮</span><strong class="type-sample" style="font:400 15px/24px var(--font-body); color:#FFFFFF">写文章</strong><span class="type-value">15px / 400 / 24px</span></div>
+          <div class="type-row"><span class="type-role">摘要</span><strong class="type-sample" style="font:400 13px/24px var(--font-body); color:var(--muted)">本以为盗用陈奕天名字爆到 4370 万热度只是一次偶然事件…</strong><span class="type-value">13px / 400 / 24px</span></div>
+          <div class="type-row"><span class="type-role">Meta</span><strong class="type-sample" style="font:400 12px/20px var(--font-body); color:var(--faint)">八卦八卦八卦小道消息 · 0 · 0</strong><span class="type-value">12px / 400 / 20px</span></div>
+          <div class="type-row"><span class="type-role">页脚 ICP</span><strong class="type-sample" style="font:400 12px/17.14px var(--font-body); color:var(--faintest)">京ICP备2026002221号 / 京公网安备…</strong><span class="type-value">12px / 400 / 17.14px</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">中文字体： "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei"<br>西文 / 正文： -apple-system, "SF UI Text", Arial, sans-serif<br>文章标题： -apple-system, "SF UI Display", Arial, …</div>
+          <p class="cjk-line">简书 · 创作你的创作 · 2026 年 9 月</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示简书首页采用了这句文案或额外混排规则。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">按钮 / 主、次与文字层级</span>
+          <div class="button-row">
+            <span class="button primary">写文章</span>
+            <span class="button sign-up">注册</span>
+            <span class="button log-in">登录</span>
+          </div>
+          <div style="margin-top:14px; font:400 12px/1.4 var(--font-mono); color:var(--muted)">
+            primary 20px 胶囊 · sign-up 20px 描边 · log-in 无圆角
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">搜索框</span>
+          <div class="field">
+            <span>搜索输入</span>
+            <span class="field-icon">🔍</span>
+          </div>
+          <div style="margin-top:14px; font:400 12px/1.4 var(--font-mono); color:var(--muted)">
+            160×38 · 40px 胶囊 · #EEEEEE 底
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">分区标题</span>
+          <div class="section-title-row"><h3>今日热点</h3><span class="rule"></span></div>
+          <div class="section-title-row"><h3>热门阅读</h3><span class="rule"></span></div>
+          <div style="margin-top:6px; font:400 12px/1.4 var(--font-mono); color:var(--muted)">
+            16px / 500 / lh 17.6px · 左侧 padding 5px
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">文章卡</span>
+          <div class="article-card">
+            <p class="article-title">AI不死心！强行推第二部蹭陈奕天短剧</p>
+            <p class="article-abstract">本以为盗用陈奕天名字爆到 4370 万热度只是一次偶然事件，没想到 AI 短剧制作方还不死心…</p>
+            <p class="article-meta">八卦八卦八卦小道消息 · 0 · 0</p>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">热榜条目</span>
+          <ul class="hot-list">
+            <li>陈翔与毛晓彤同框，自然流露…</li>
+            <li>田栩宁与梓渝同天庆生，樱桃…</li>
+            <li>张百乔小雪互动：从综艺到生…</li>
+          </ul>
+        </div>
+        <div class="component">
+          <span class="component-label">App 下载卡片</span>
+          <div class="app-card">
+            <p class="app-card-title">下载简书手机App</p>
+            <p class="app-card-desc">随时随地发现和创作内容</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角和层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing</span>
+          <div class="scale"><i style="--w:4px"></i><i style="--w:6px"></i><i style="--w:8px"></i><i style="--w:10px"></i><i style="--w:12px"></i><i style="--w:20px"></i></div>
+          <div class="measure-values">实测间距：4 · 6 · 8 · 10 · 12 · 20 px（分区标题上/下 20/10）</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <i class="radius-chip" style="--r:0"></i>
+            <i class="radius-chip" style="--r:4px"></i>
+            <i class="radius-chip" style="--r:6px"></i>
+            <i class="radius-chip pill-action"></i>
+            <i class="radius-chip pill-search"></i>
+          </div>
+          <div class="measure-values">0 · 4px 控件 · 6px 内角 · 20px 胶囊 CTA · 40px 胶囊搜索</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:56px;height:28px;border-radius:0;background:var(--surface);border:1px solid var(--line)"></div>
+            <div style="width:56px;height:28px;border-radius:20px;background:var(--surface);border:1px solid var(--primary-alpha);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:11px">注册</div>
+            <div style="width:56px;height:28px;border-radius:20px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px">写文章</div>
+          </div>
+          <div class="measure-values" style="margin-top:6px">首页 24 样本 box-shadow 均为 none，层级靠白面 + 描边 + 圆角区分</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.jianshu.com/">https://www.jianshu.com/</a> · 2026-09-30 · 中国 · 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844（文档宽仍为 768，横向溢出）· Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>
