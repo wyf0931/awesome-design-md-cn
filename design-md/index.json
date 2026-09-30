@@ -282,6 +282,21 @@
         "14px base"
       ],
       "url": "https://www.csdn.net/"
+    },
+    {
+      "slug": "youku",
+      "name": "优酷 Youku",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "pingfang SC / Microsoft YaHei / 微软雅黑 / 系统 sans-serif · QY_Digital-SemiBold（价格高亮）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#ff4f34",
+        "dark theme",
+        "radius:4/8/18/30"
+      ],
+      "url": "https://www.youku.com/"
     }
   ]
 }

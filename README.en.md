@@ -76,6 +76,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Lenovo (联想) | [Lenovo](https://www.lenovo.com.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/preview.html) | ✅ |
 | Jianshu (简书) | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 | CSDN | [CSDN](https://www.csdn.net/) | [DESIGN.md](design-md/csdn/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/csdn/preview.html) | ✅ |
+| Youku (优酷) | [Youku](https://www.youku.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/preview.html) | ✅ |
 
 ## Automatic extraction
 
