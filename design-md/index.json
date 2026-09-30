@@ -327,6 +327,21 @@
         "radius:4/8/18/30"
       ],
       "url": "https://www.youku.com/"
+    },
+    {
+      "slug": "alipay-merchant",
+      "name": "支付宝商户",
+      "category": "finance",
+      "categoryLabel": "金融与支付",
+      "font": "PingFang SC / Microsoft YaHei（主内容）· -apple-system（Hero + Ant 组件）· Tahoma（页脚）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#005BF8",
+        "radius:6/24/28/100",
+        "14px base · Ant Design"
+      ],
+      "url": "https://b.alipay.com/page/portal/home"
     }
   ]
 }
