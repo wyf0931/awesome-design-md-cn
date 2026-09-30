@@ -342,6 +342,21 @@
         "14px base · Ant Design"
       ],
       "url": "https://b.alipay.com/page/portal/home"
+    },
+    {
+      "slug": "iqiyi",
+      "name": "爱奇艺 iQIYI",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "Harmony_Regular, PingFang SC, Microsoft YaHei · IQYHT-Bold · FZCHSJW",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#111214 暗色主题",
+        "VIP 金 #FFD026",
+        "搜索框 8 0 0 8 半圆角"
+      ],
+      "url": "https://www.iqiyi.com/"
     }
   ]
 }

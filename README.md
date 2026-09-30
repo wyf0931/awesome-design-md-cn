@@ -83,7 +83,7 @@ python3 -m http.server 8000
 | 中国工商银行 | [ICBC](https://icbc.com.cn/) | — | — | |
 | 华润 | [CRC](https://www.crc.com.cn/index.html) | — | — | |
 | 支付宝商户 | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
-| 爱奇艺 | [iQIYI](https://www.iqiyi.com/) | — | — | |
+| 爱奇艺 | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |
 
 ## 自动提取
 

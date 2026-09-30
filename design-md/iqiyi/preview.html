@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>爱奇艺 iQIYI — Design System</title>
+  <style>
+    :root {
+      /* Colors recorded in DESIGN.md */
+      --bg: #111214;
+      --white: #ffffff;
+      --white-90: rgba(255, 255, 255, 0.9);
+      --white-80: rgba(255, 255, 255, 0.8);
+      --white-70: rgba(255, 255, 255, 0.7);
+      --white-60: rgba(255, 255, 255, 0.6);
+      --white-50: rgba(255, 255, 255, 0.5);
+      --white-20: rgba(255, 255, 255, 0.2);
+      --gold-score: #FFD026;
+      --gold-accent: #FFB75C;
+      --gold-warm: #D99A4C;
+      --gold-mid: #B38139;
+      --gold-deep: #A67128;
+      --gold-deep-alt: #663800;
+      --green: #00DA5A;
+      --green-30: rgba(0, 218, 90, 0.3);
+      --green-70: rgba(0, 218, 90, 0.7);
+      --orange: #FF8500;
+      --red: #FD515F;
+      --overlay-soft: rgba(0, 0, 0, 0.3);
+      --overlay-mid: rgba(0, 0, 0, 0.5);
+      --overlay-strong: rgba(0, 0, 0, 0.8);
+      --overlay-full: rgba(0, 0, 0, 0.9);
+      --font-cjk: Harmony_Regular, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-medium: Harmony_Medium, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-bold: Harmony_Bold, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-score: "IQYHT-Bold", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-ranking: "FZCHSJW", "PingFang SC", "Microsoft YaHei", serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      --radius-search: 8px 0 0 8px;
+      --radius-btn: 4px;
+      --radius-card: 0px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #1a1a1a; font: 14px/1.5 var(--font-cjk); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; background: var(--bg); color: var(--white); }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--white-20); }
+    .brand { display: flex; align-items: baseline; gap: 10px; font: 700 22px/1.3 var(--font-bold); letter-spacing: -.02em; color: var(--white); }
+    .brand .logo { display: inline-block; width: 26px; height: 26px; background: var(--green); border-radius: 6px; align-self: center; color: #ffffff; font: 700 13px/26px var(--font-bold); text-align: center; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--white-70); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid var(--white-20); border-radius: 999px; background: var(--overlay-mid); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--white-60); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 700 40px/1.25 var(--font-bold); color: var(--white); }
+    .summary { max-width: 640px; margin: 9px 0 0; color: var(--white-70); font-size: 13px; line-height: 1.7; }
+    .summary code { background: var(--overlay-mid); padding: 1px 5px; border-radius: 3px; color: var(--gold-accent); font-family: var(--font-mono); font-size: 11px; }
+    .source-language { min-width: 280px; padding: 14px 16px; border: 1px solid var(--white-20); border-radius: 12px; background: var(--overlay-mid); }
+    .source-language strong { display: block; margin-bottom: 5px; font: 600 12px/1.4 var(--font-medium); color: var(--white); }
+    .source-language span { color: var(--white-70); font-size: 11px; line-height: 1.6; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 600 16px/1.4 var(--font-medium); color: var(--white); }
+    .section-note { color: var(--white-60); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid var(--white-20); border-radius: var(--radius-btn); background: #1a1c1f; }
+    .swatch.dark .color { background-color: #ffffff; background-image: repeating-conic-gradient(#333 0% 25%, #2a2a2a 0% 50%); background-size: 8px 8px; }
+    .color { height: 56px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; color: var(--white); }
+    .swatch-value { margin-top: 3px; color: var(--white-60); font-family: var(--font-mono); word-break: break-all; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--white-20); border-radius: 12px; background: #1a1c1f; }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--white-20); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 160px 1fr 150px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--white-20); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--white-60); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--white); }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--radius-btn); background: var(--overlay-mid); color: var(--white-70); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--white); font: 500 26px/1.45 var(--font-medium); }
+    .cjk-note { margin: 0; color: var(--white-60); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 140px; padding: 16px; border: 1px solid var(--white-20); border-radius: 12px; background: #1a1c1f; }
+    .component.gold { background: linear-gradient(180deg, #FFD875 0%, #F5B851 100%); color: var(--gold-deep-alt); border-color: transparent; }
+    .component.green { background: var(--green); color: #ffffff; border-color: transparent; }
+    .component-label { display: block; margin-bottom: 12px; color: var(--white-60); font-size: 10px; }
+    .component.gold .component-label, .component.green .component-label { color: rgba(0,0,0,0.55); }
+    .button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .button { min-height: 36px; padding: 0 14px; border: 0; border-radius: var(--radius-btn); background: var(--overlay-mid); color: var(--white); font: 500 12px/1 var(--font-medium); display: inline-flex; align-items: center; justify-content: center; cursor: default; box-sizing: border-box; }
+    .button.login { background: linear-gradient(180deg, #FFD875 0%, #F5B851 100%); color: var(--gold-deep-alt); border-radius: 18px; min-height: 36px; padding: 0 20px; font: 700 16px/1 var(--font-bold); width: 78px; }
+    .button.member { background: var(--green); color: #ffffff; border-radius: var(--radius-btn); min-height: 36px; padding: 0 14px; font: 500 12px/1 var(--font-medium); }
+    .button.score { background: transparent; color: var(--gold-score); font: 400 24px/1 var(--font-score); min-height: 36px; padding: 0 6px; }
+    .field-search { height: 34px; display: flex; align-items: center; padding: 0 12px; border: 0; border-radius: var(--radius-search); background: var(--overlay-mid); color: var(--white-60); font: 400 14px/1 var(--font-cjk); width: 260px; box-sizing: border-box; position: relative; }
+    .field-search::after { content: ""; position: absolute; right: 0; top: 0; width: 40px; height: 34px; background: var(--gold-accent); color: var(--gold-deep-alt); font: 600 12px/34px var(--font-medium); text-align: center; border-radius: 0 4px 4px 0; content: "🔍"; }
+    .tag { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: var(--radius-btn); background: var(--overlay-strong); color: var(--white-80); font: 500 11px/1 var(--font-medium); }
+    .tag.vip { background: rgba(217, 154, 76, 0.9); color: var(--gold-deep-alt); }
+    .tag.free { background: var(--green); color: #ffffff; }
+    .surface-sample { min-height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--white-20); border-radius: 12px; background: #1a1c1f; font: 500 16px/1.3 var(--font-medium); color: var(--white-90); width: 100%; }
+    .surface-sample small { color: var(--white-60); font: 400 11px/1.4 var(--font-cjk); }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid var(--white-20); border-radius: 12px; background: #1a1c1f; }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--white-60); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 32px; }
+    .scale i { display: block; height: 5px; border-radius: 999px; background: var(--gold-accent); }
+    .radius-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .radius-chip { width: 40px; height: 24px; border: 1px solid var(--white-20); background: var(--overlay-mid); border-radius: var(--r); display: inline-block; }
+    .measure-values { margin-top: 8px; color: var(--white); font: 10px/1.5 var(--font-mono); }
+    .measure-values code { color: var(--gold-accent); font-family: inherit; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--white-20); color: var(--white-60); font-size: 10px; }
+    .footer a { color: var(--gold-accent); text-decoration: none; }
+    /* Nav sample */
+    .nav-sample { display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 20px; background: var(--bg); color: var(--white); font: 400 16px/48px var(--font-cjk); border-bottom: 1px solid var(--white-20); }
+    .nav-sample .menu { display: flex; gap: 22px; }
+    .nav-sample .menu a { color: var(--white-80); text-decoration: none; font-weight: 400; font-size: 16px; }
+    .nav-sample .menu a.active { font-weight: 700; font-size: 18px; color: var(--white); }
+    .nav-sample .right { display: flex; gap: 12px; align-items: center; }
+    /* Card sample */
+    .card-sample { background: linear-gradient(135deg, #2a1a0f 0%, #111214 100%); padding: 12px 0; border-radius: var(--radius-card); min-height: 163px; }
+    .card-sample .c-title { font: 500 16px/1.4 var(--font-medium); color: var(--white-90); margin: 8px 12px 4px; }
+    .card-sample .c-meta { font: 400 12px/1.4 var(--font-cjk); color: var(--white-80); margin: 0 12px; display: flex; gap: 6px; align-items: center; }
+    .card-sample .c-score { font: 400 24px/1 var(--font-score); color: var(--gold-score); }
+    .section-title-sample { font: 600 20px/22px var(--font-medium); color: var(--white-90); margin: 0 0 12px; }
+    .ranking-sample { font: 400 18px/1.3 var(--font-ranking); color: var(--gold-warm); letter-spacing: 2px; }
+    .badge-score { display: inline-flex; align-items: center; justify-content: center; padding: 4px 8px; background: rgba(255, 208, 38, 0.15); color: var(--gold-score); font: 400 24px/1 var(--font-score); border-radius: var(--radius-btn); }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 90px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand"><span class="logo">爱</span><span>爱奇艺 iQIYI</span></div>
+      <div class="context">
+        <span>内容与媒体</span>
+        <span>简体中文</span>
+        <span>HTML lang: zh</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于公开首页可核实的颜色、文字、控件与表面样式。样例用于展示设计 token，不复刻爱奇艺首页的信息结构。站点以 <code>#111214</code> 深黑底 + 白色 alpha 文字层级 + 金色 VIP 点缀为主导语言；几乎不使用阴影，仅搜索框（半圆角）和按钮（4px）有圆角；卡片完全透明，靠封面图承载视觉。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>四种字体族并存：主体 <code>Harmony_Regular, "PingFang SC", "Microsoft YaHei"</code>；强调中粗 <code>Harmony_Medium / Bold</code>；评分数字 <code>IQYHT-Bold</code>；榜单装饰 <code>FZCHSJW</code>（方正仓帅简-威）。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch dark"><div class="color" style="--sample:#111214"></div><div class="swatch-copy"><span class="swatch-name">页面底色</span><code class="swatch-value">#111214</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">主文本</span><code class="swatch-value">#ffffff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(255,255,255,0.9);background-color:#111214"></div><div class="swatch-copy"><span class="swatch-name">Text 90%</span><code class="swatch-value">rgba(255,255,255,.9)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(255,255,255,0.6);background-color:#111214"></div><div class="swatch-copy"><span class="swatch-name">Text 60%（占位）</span><code class="swatch-value">rgba(255,255,255,.6)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FFD026"></div><div class="swatch-copy"><span class="swatch-name">评分金</span><code class="swatch-value">#FFD026</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FFB75C"></div><div class="swatch-copy"><span class="swatch-name">描边金</span><code class="swatch-value">#FFB75C</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#D99A4C"></div><div class="swatch-copy"><span class="swatch-name">榜单暖金</span><code class="swatch-value">#D99A4C</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#663800"></div><div class="swatch-copy"><span class="swatch-name">按钮文字金棕</span><code class="swatch-value">#663800</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#00DA5A"></div><div class="swatch-copy"><span class="swatch-name">会员绿</span><code class="swatch-value">#00DA5A</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FF8500"></div><div class="swatch-copy"><span class="swatch-name">支付橙</span><code class="swatch-value">#FF8500</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FD515F"></div><div class="swatch-copy"><span class="swatch-name">支付红</span><code class="swatch-value">#FD515F</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(0,0,0,0.8);background-color:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">覆盖层 80%</span><code class="swatch-value">rgba(0,0,0,.8)</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row">
+            <span class="type-role">评分数字 / Score</span>
+            <span class="type-sample cjk-line" style="font:400 24px/1 var(--font-score);color:var(--gold-score);">8.2</span>
+            <span class="type-value">IQYHT-Bold 24/24</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">章节标题 / Section</span>
+            <span class="type-sample cjk-line" style="font:600 20px/22px var(--font-medium);">正在热播</span>
+            <span class="type-value">Harmony 20/22 w600</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">导航激活 / Nav Active</span>
+            <span class="type-sample" style="font:700 18px/20px var(--font-bold);color:var(--white);">首页</span>
+            <span class="type-value">Harmony 18/20 w700</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">卡片标题 / Card Title</span>
+            <span class="type-sample" style="font:500 16px/1.4 var(--font-medium);color:var(--white-90);">雀骨 · 更新至 6 集</span>
+            <span class="type-value">Harmony 16.1 w500</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">登录按钮 / Login CTA</span>
+            <span class="type-sample" style="font:700 16px/19px var(--font-bold);color:var(--gold-deep-alt);background:linear-gradient(180deg,#FFD875,#F5B851);padding:4px 10px;border-radius:18px;">登录</span>
+            <span class="type-value">Harmony 16/19 w700</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">正文 / Body</span>
+            <span class="type-sample" style="font:400 16px/1.4 var(--font-cjk);color:var(--white);">一瓯春 6919 万热度</span>
+            <span class="type-value">Harmony 16/normal</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">搜索占位 / Search</span>
+            <span class="type-sample" style="font:400 14px/1.4 var(--font-cjk);color:var(--white-60);">搜你想看的</span>
+            <span class="type-value">Harmony 14/normal</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">榜单装饰 / Ranking</span>
+            <span class="type-sample ranking-sample">风云榜总榜</span>
+            <span class="type-value">FZCHSJW 17.86</span>
+          </div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">
+            中文字体： Harmony_Regular, "PingFang SC", "Microsoft YaHei"<br>
+            强调中粗： Harmony_Medium / Bold<br>
+            评分数字： IQYHT-Bold<br>
+            榜单装饰： FZCHSJW
+          </div>
+          <p class="cjk-line">中文设计 System · 2026 年 9 月</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在实际字体栈中的呈现。原站使用非标准的 <code>Harmony_*</code> 命名（带下划线），未在公开 CSS 中观察到 <code>@font-face</code> 声明，实际渲染可能回退到系统字体。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">顶部导航 · Nav</span>
+          <div class="nav-sample">
+            <div class="menu">
+              <a class="active" href="#">首页</a>
+              <a href="#">电视剧</a>
+              <a href="#">电影</a>
+              <a href="#">综艺</a>
+              <a href="#">动漫</a>
+            </div>
+            <div class="right">
+              <span class="button login">登录</span>
+            </div>
+          </div>
+          <div class="measure-values" style="margin-top:10px">
+            <code>18/20 w700</code> 激活 · <code>16/normal w400</code> 默认
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">搜索输入 · Search</span>
+          <div class="field-search">搜你想看的</div>
+          <div class="measure-values" style="margin-top:12px">
+            <code>width:482 · height:34</code><br>
+            <code>border-radius: 8 0 0 8</code><br>
+            <code>background: rgba(0,0,0,0.3)</code>
+          </div>
+        </div>
+
+        <div class="component gold">
+          <span class="component-label">登录按钮 · Login CTA</span>
+          <div style="text-align:center; padding:14px 0;">
+            <span class="button login">登录</span>
+          </div>
+          <div class="measure-values" style="margin-top:12px; color:rgba(0,0,0,0.55);">
+            <code>gradient #FFD875 → #F5B851</code><br>
+            <code>text: #663800</code> · <code>radius: 18</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">评分徽章 · Score Badge</span>
+          <div style="display:flex; align-items:center; gap:12px; margin:6px 0 12px;">
+            <span class="badge-score">8.2</span>
+            <span class="tag vip">VIP</span>
+            <span class="tag free">限免</span>
+            <span class="tag">广告</span>
+          </div>
+          <div class="measure-values">
+            <code>8.2 → #FFD026 · 24px IQYHT-Bold</code><br>
+            <code>VIP → #D99A4C bg · #663800 text</code><br>
+            <code>限免 → #00DA5A bg</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">卡片 · Card</span>
+          <div class="card-sample">
+            <div class="c-title">一瓯春</div>
+            <div class="c-meta">
+              <span class="c-score">8.2</span>
+              <span>6919 万热度</span>
+            </div>
+          </div>
+          <div class="measure-values" style="margin-top:8px">
+            <code>bg: transparent</code> · <code>radius: 0</code><br>
+            <code>cover: 119.5 × 163.33</code>
+          </div>
+        </div>
+
+        <div class="component green">
+          <span class="component-label">会员主题色 · Member Theme</span>
+          <div style="display:flex; gap:8px; margin:6px 0 12px;">
+            <span class="button member">开通会员</span>
+            <span class="button member" style="background:rgba(0,218,90,0.7);">7 折</span>
+          </div>
+          <div class="measure-values" style="color:rgba(255,255,255,0.75);">
+            <code>--themeColor: #00DA5A</code><br>
+            <code>变体: _04 / _30 / _70 / _90</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">章节标题 · Section Title</span>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin:4px 0 8px;">
+            <span class="section-title-sample">猜你喜欢</span>
+            <span class="button" style="background:transparent;color:var(--white-60);font:400 14px/1 var(--font-cjk);padding:0;height:auto;min-height:0;">更多 &gt;</span>
+          </div>
+          <div style="font:500 20px/1 var(--font-medium); color:var(--white-90); margin:6px 0;">正在热播</div>
+          <div class="measure-values">
+            <code>20/22 w600</code> · <code>20/20 w500</code><br>
+            <code>color: rgba(255,255,255,0.9)</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">榜单装饰 · Ranking</span>
+          <div style="text-align:center; padding:10px 0;">
+            <span class="ranking-sample">风云榜 · 总榜</span>
+          </div>
+          <div class="measure-values">
+            <code>font: FZCHSJW 17.86</code><br>
+            <code>color: #D99A4C</code> · <code>tracking: +2px</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">角标家族 · Badge Set</span>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+            <span class="tag">更新 6 集</span>
+            <span class="tag">独播</span>
+            <span class="tag">广告</span>
+            <span class="tag vip">VIP</span>
+            <span class="tag vip">会员</span>
+            <span class="tag free">限免</span>
+            <span class="tag">首播</span>
+          </div>
+          <div class="measure-values">
+            <code>radius: 4px</code> · <code>padding: 0 8</code><br>
+            <code>min-height: 22</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角、层级与玻璃</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing · header / nav / card row</span>
+          <div class="scale">
+            <i style="width:16px"></i>
+            <i style="width:20px"></i>
+            <i style="width:24px"></i>
+            <i style="width:48px"></i>
+            <i style="width:80px"></i>
+            <i style="width:160px"></i>
+          </div>
+          <div class="measure-values">
+            header 76 · nav 48 · padding-left 32<br>
+            card-cover 119.5 × 163.33 · gap 4.2
+          </div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <span class="radius-chip" style="--r:0px" title="卡片">0</span>
+            <span class="radius-chip" style="--r:4px" title="按钮/角标">4</span>
+            <span class="radius-chip" style="--r:8px 0 0 8px" title="搜索框">8/0</span>
+            <span class="radius-chip" style="--r:18px" title="登录按钮">18</span>
+          </div>
+          <div class="measure-values">
+            0 卡片 · 4 按钮/角标 · 8/0 搜索 · 18 登录
+          </div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation · 层级</span>
+          <div style="display:flex; gap:6px; margin-bottom:6px;">
+            <div style="width:56px;height:28px;background:#1a1c1f;border:1px solid var(--white-20);border-radius:6px;"></div>
+            <div style="width:56px;height:28px;background:rgba(0,0,0,0.3);border:1px solid var(--white-20);border-radius:6px;"></div>
+            <div style="width:56px;height:28px;background:rgba(0,0,0,0.5);border:1px solid var(--white-20);border-radius:6px;"></div>
+            <div style="width:56px;height:28px;background:rgba(0,0,0,0.8);border:1px solid var(--white-20);border-radius:6px;"></div>
+          </div>
+          <div class="measure-values">
+            全站 <code>box-shadow: none</code><br>
+            用 rgba(0,0,0,.3→.9) 分层
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.iqiyi.com/">https://www.iqiyi.com/</a> · 2026-09-30 · 中国 · 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844（DOM 不响应式）· Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>
