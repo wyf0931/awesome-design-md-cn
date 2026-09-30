@@ -267,6 +267,36 @@
         "14px base"
       ],
       "url": "https://www.jdcloud.com/"
+    },
+    {
+      "slug": "jianshu",
+      "name": "简书 Jianshu",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "-apple-system / SF UI Text / PingFang SC / Hiragino Sans GB / Microsoft YaHei（正文）· SF UI Display（文章标题）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#EA6F5A",
+        "radius:20px/4px",
+        "17px base"
+      ],
+      "url": "https://www.jianshu.com/"
+    },
+    {
+      "slug": "csdn",
+      "name": "CSDN",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "PingFang SC / Hiragino Sans GB / Microsoft YaHei · PingFangSC-Medium（CTA）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#FC5531",
+        "radius:20/16/8px",
+        "14px base"
+      ],
+      "url": "https://www.csdn.net/"
     }
   ]
 }
