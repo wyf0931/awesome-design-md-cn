@@ -59,6 +59,21 @@
       "url": "https://www.163.com/"
     },
     {
+      "slug": "juejin",
+      "name": "稀土掘金 Juejin",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "-apple-system / system-ui / PingFang SC / Microsoft YaHei · 16/13/12px 三档",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#1E80FF",
+        "radius:2px/4px",
+        "16px/13px/12px"
+      ],
+      "url": "https://juejin.cn/"
+    },
+    {
       "slug": "wechat",
       "name": "微信开放平台",
       "category": "platform",
@@ -297,6 +312,21 @@
         "14px base"
       ],
       "url": "https://www.csdn.net/"
+    },
+    {
+      "slug": "youku",
+      "name": "优酷 Youku",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "pingfang SC / Microsoft YaHei / 微软雅黑 / 系统 sans-serif · QY_Digital-SemiBold（价格高亮）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#ff4f34",
+        "dark theme",
+        "radius:4/8/18/30"
+      ],
+      "url": "https://www.youku.com/"
     }
   ]
 }

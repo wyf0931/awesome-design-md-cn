@@ -57,6 +57,7 @@ python3 -m http.server 8000
 | 飞书 | [Feishu](https://www.feishu.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/feishu/preview.html) | ✅ |
 | 知乎 | [Zhihu](https://www.zhihu.com) | [DESIGN.md](design-md/zhihu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/zhihu/preview.html) | ✅ |
 | 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
+| 稀土掘金 | [Juejin](https://juejin.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/juejin/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/juejin/preview.html) | ✅ |
 | 滴滴 | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | 商汤科技 | [SenseTime](https://www.sensetime.com/cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/preview.html) | ✅ |
 | 美团 | [Meituan](https://www.meituan.com) | [DESIGN.md](design-md/meituan/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/meituan/preview.html) | ✅ |
@@ -77,6 +78,7 @@ python3 -m http.server 8000
 | 京东云 | [JD Cloud](https://www.jdcloud.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jdcloud/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jdcloud/preview.html) | ✅ |
 | 简书 | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 | CSDN | [CSDN](https://www.csdn.net/) | [DESIGN.md](design-md/csdn/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/csdn/preview.html) | ✅ |
+| 优酷 | [Youku](https://www.youku.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/preview.html) | ✅ |
 
 ## 自动提取
 
