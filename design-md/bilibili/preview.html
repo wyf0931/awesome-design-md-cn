@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>哔哩哔哩 bilibili — Design System</title>
+  <style>
+    :root {
+      --primary: #FF6699;
+      --accent-blue: #00AEC4;
+      --ink: #18191C;
+      --ink-medium: #61666D;
+      --ink-light: #9499A0;
+      --bg-page: #F1F2F3;
+      --bg-pill: #F6F7F8;
+      --bg-dark-header: #1E2026;
+      --surface-white: #ffffff;
+      --surface-transparent: rgba(0, 0, 0, 0);
+      --font-sys: -apple-system, "system-ui", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      --radius-cover: 6px;
+      --radius-pill: 6px;
+      --radius-skeleton: 4px;
+      --radius-small-btn: 8px;
+      --radius-avatar: 50%;
+      --radius-card: 0px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg-page); color: var(--ink); font: 14px/1.5 var(--font-sys); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; background: var(--bg-page); }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .brand { display: flex; align-items: baseline; gap: 10px; font: 700 22px/1.3 var(--font-sys); letter-spacing: -.02em; color: var(--ink); }
+    .brand .logo { display: inline-block; width: 30px; height: 30px; background: var(--primary); border-radius: 8px; align-self: center; color: var(--surface-white); font: 700 14px/30px var(--font-sys); text-align: center; }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--ink-medium); font-size: 12px; }
+    .context span { padding: 5px 8px; border: 1px solid rgba(0,0,0,0.08); border-radius: 999px; background: var(--surface-white); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 30px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--ink-light); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 700 40px/1.25 var(--font-sys); color: var(--ink); }
+    .summary { max-width: 640px; margin: 9px 0 0; color: var(--ink-medium); font-size: 13px; line-height: 1.7; }
+    .summary code { background: var(--bg-pill); padding: 1px 5px; border-radius: 3px; color: var(--primary); font-family: var(--font-mono); font-size: 11px; }
+    .source-language { min-width: 300px; padding: 14px 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: var(--surface-white); }
+    .source-language strong { display: block; margin-bottom: 5px; font: 700 12px/1.4 var(--font-sys); color: var(--primary); }
+    .source-language span { color: var(--ink-medium); font-size: 11px; line-height: 1.6; }
+    .section { margin-top: 22px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 12px; }
+    h2 { margin: 0; font: 700 16px/1.4 var(--font-sys); color: var(--ink); }
+    .section-note { color: var(--ink-light); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .swatch { overflow: hidden; border: 1px solid rgba(0,0,0,0.08); border-radius: var(--radius-pill); background: var(--surface-white); }
+    .color { height: 56px; background: var(--sample); }
+    .swatch-copy { min-height: 46px; padding: 8px 9px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; color: var(--ink); }
+    .swatch-value { margin-top: 3px; color: var(--ink-medium); font-family: var(--font-mono); word-break: break-all; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: var(--surface-white); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 160px 1fr 150px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--ink-light); font-size: 10px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--ink); }
+    .cjk-stack { padding: 10px 12px; border-radius: var(--radius-small-btn); background: var(--bg-pill); color: var(--ink-medium); font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 15px 0 8px; color: var(--ink); font: 500 24px/1.45 var(--font-sys); }
+    .cjk-note { margin: 0; color: var(--ink-medium); font-size: 11px; line-height: 1.6; }
+    .cjk-note code { background: var(--bg-pill); padding: 1px 5px; border-radius: 3px; color: var(--primary); font-family: var(--font-mono); font-size: 10px; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 140px; padding: 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: var(--surface-white); }
+    .component.dark { background: var(--bg-dark-header); color: var(--surface-white); border-color: transparent; }
+    .component.dark .component-label { color: rgba(255,255,255,0.7); }
+    .component-label { display: block; margin-bottom: 12px; color: var(--ink-light); font-size: 10px; }
+    .button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .button { min-height: 30px; padding: 0 12px; border: 0; border-radius: var(--radius-small-btn); background: var(--bg-pill); color: var(--ink-medium); font: 400 13px/1 var(--font-sys); display: inline-flex; align-items: center; justify-content: center; cursor: default; box-sizing: border-box; }
+    .button.pill { border-radius: var(--radius-pill); background: var(--bg-pill); color: var(--ink-medium); min-height: 30px; padding: 0 12px; }
+    .button.primary { background: var(--primary); color: var(--surface-white); border-radius: var(--radius-small-btn); min-height: 36px; padding: 0 14px; font-weight: 500; }
+    .button.outline { background: var(--surface-white); color: var(--ink); border: 1px solid rgba(0,0,0,0.12); border-radius: var(--radius-small-btn); min-height: 36px; padding: 0 14px; }
+    .button.avatar { background: var(--primary); color: var(--surface-white); border-radius: var(--radius-avatar); min-height: 32px; width: 32px; padding: 0; font-weight: 500; }
+    .button.blue { background: var(--accent-blue); color: var(--surface-white); border-radius: var(--radius-small-btn); min-height: 36px; padding: 0 14px; }
+    .field-search { height: 32px; display: flex; align-items: center; padding: 0 12px; border: 1px solid rgba(0,0,0,0.12); border-radius: var(--radius-small-btn); background: var(--surface-white); color: var(--ink-light); font: 400 14px/1 var(--font-sys); width: 220px; box-sizing: border-box; }
+    .tag { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 4px; background: rgba(255,102,153,0.15); color: var(--primary); font: 400 12px/1 var(--font-sys); }
+    .tag.blue { background: rgba(0,174,196,0.12); color: var(--accent-blue); }
+    .tag.gray { background: var(--bg-pill); color: var(--ink-medium); }
+    .surface-sample { min-height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: var(--surface-white); color: var(--ink); font: 400 14px/1.4 var(--font-sys); width: 100%; }
+    .surface-sample small { color: var(--ink-light); font: 400 11px/1.4 var(--font-sys); }
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 13px 15px; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: var(--surface-white); }
+    .measure-title { display: block; margin-bottom: 9px; color: var(--ink-light); font-size: 10px; }
+    .scale { display: flex; align-items: end; gap: 7px; height: 32px; }
+    .scale i { display: block; height: 5px; border-radius: 999px; background: var(--primary); }
+    .radius-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .radius-chip { width: 44px; height: 28px; border: 1px solid rgba(0,0,0,0.08); background: var(--bg-pill); border-radius: var(--r); display: inline-block; text-align: center; line-height: 26px; color: var(--ink-medium); font: 10px var(--font-mono); }
+    .measure-values { margin-top: 8px; color: var(--ink); font: 10px/1.5 var(--font-mono); }
+    .measure-values code { color: var(--primary); font-family: inherit; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); color: var(--ink-light); font-size: 10px; }
+    .footer a { color: var(--primary); text-decoration: none; }
+    /* Top nav sample */
+    .top-nav-sample { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px; background: var(--bg-dark-header); color: var(--surface-white); }
+    .top-nav-sample .logo-nav { width: 36px; height: 36px; background: var(--primary); color: var(--surface-white); display: inline-flex; align-items: center; justify-content: center; font: 700 14px var(--font-sys); border-radius: 8px; }
+    .top-nav-sample .menu { display: flex; gap: 24px; padding: 0 32px; }
+    .top-nav-sample .menu a { color: rgba(255,255,255,0.9); text-decoration: none; font: 400 14px/64px var(--font-sys); }
+    .top-nav-sample .menu a.active { font-weight: 500; color: var(--surface-white); }
+    .top-nav-sample .right { display: flex; gap: 10px; align-items: center; }
+    /* Sub nav */
+    .sub-nav { display: flex; gap: 20px; padding: 16px 32px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .sub-nav a { color: var(--ink); text-decoration: none; font: 500 16px/1 var(--font-sys); }
+    .sub-nav a.active { color: var(--primary); font-weight: 700; }
+    /* Category pills */
+    .cat-pills { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 32px; }
+    .cat-pill { padding: 6px 12px; background: var(--bg-pill); color: var(--ink-medium); border-radius: var(--radius-pill); font: 400 13px/1.5 var(--font-sys); cursor: default; }
+    .cat-pill.active { background: var(--primary); color: var(--surface-white); }
+    /* Video card */
+    .video-card { background: var(--surface-white); border-radius: var(--radius-card); overflow: hidden; display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 12px; align-items: start; }
+    .video-cover { width: 130px; height: 84px; background: var(--bg-page); border-radius: var(--radius-cover); display: flex; align-items: center; justify-content: center; color: var(--ink-light); font: 12px var(--font-sys); position: relative; }
+    .video-cover .duration { position: absolute; right: 4px; bottom: 4px; background: rgba(0,0,0,0.7); color: var(--surface-white); padding: 2px 5px; border-radius: 3px; font: 10px var(--font-mono); }
+    .video-cover .live-badge { position: absolute; top: 4px; left: 4px; background: var(--primary); color: var(--surface-white); padding: 2px 5px; border-radius: 4px; font: 400 10px var(--font-sys); }
+    .video-info .title { font: 500 15px/1.4 var(--font-sys); color: var(--ink); margin: 0 0 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .video-info .meta { font: 400 13px/1.4 var(--font-sys); color: var(--ink-light); }
+    .video-info .stats { display: flex; gap: 12px; margin-top: 6px; color: var(--ink-light); font: 12px var(--font-sys); }
+    /* Skeleton */
+    .skeleton-card { padding: 12px; background: var(--surface-white); border-radius: var(--radius-card); display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+    .skeleton-cover { width: 130px; height: 84px; background: var(--bg-page); border-radius: var(--radius-cover); }
+    .skeleton-text { height: 14px; background: var(--bg-page); border-radius: var(--radius-skeleton); margin-bottom: 6px; }
+    .skeleton-text.short { width: 60%; }
+    /* Login panel */
+    .login-panel { background: var(--surface-white); border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 16px; }
+    .login-panel h4 { margin: 0 0 12px; font: 500 14px/1.4 var(--font-sys); color: var(--ink); }
+    .login-panel ul { margin: 0 0 12px; padding-left: 16px; color: var(--ink-medium); font: 14px/1.6 var(--font-sys); }
+    .login-panel .row { display: flex; gap: 8px; align-items: center; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 90px 1fr; gap: 5px 8px; }
+      .type-sample { white-space: normal; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measurements { grid-template-columns: 1fr; }
+      .cjk-line { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand"><span class="logo">小电视</span><span>哔哩哔哩 bilibili</span></div>
+      <div class="context">
+        <span>内容与媒体</span>
+        <span>简体中文</span>
+        <span>HTML lang: zh-CN</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于公开首页可核实的颜色、文字、控件与表面样式。样例用于展示设计 token，不复刻 bilibili 首页的信息结构。站点以 <code>#F1F2F3</code> 浅灰底 + <code>#18191C</code> 深字 + 深色顶栏 + 粉色点缀为主导语言；分类标签 <code>6px</code> 圆角、视频卡片 <code>6px</code> 圆角封面、容器 <code>0</code> 圆角；全站无阴影，靠色块和圆角分层。<strong>品牌粉 <code>#FB7299</code> 未在本次采集直接观察到</strong>，实测粉色为 <code>#FF6699</code>（"直播中" 标签）。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>全站使用系统字体栈：<code>-apple-system, "system-ui", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif</code>。未观察到 <code>@font-face</code>，无自定义品牌字体。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="section-note">只展示 DESIGN.md 中有证据的色值</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#F1F2F3"></div><div class="swatch-copy"><span class="swatch-name">页面底色</span><code class="swatch-value">#F1F2F3</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">白色 surface</span><code class="swatch-value">#FFFFFF</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#F6F7F8"></div><div class="swatch-copy"><span class="swatch-name">Pill 背景</span><code class="swatch-value">#F6F7F8</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#18191C"></div><div class="swatch-copy"><span class="swatch-name">主文本</span><code class="swatch-value">#18191C</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#61666D"></div><div class="swatch-copy"><span class="swatch-name">中灰文本</span><code class="swatch-value">#61666D</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#9499A0"></div><div class="swatch-copy"><span class="swatch-name">浅灰文本</span><code class="swatch-value">#9499A0</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FF6699"></div><div class="swatch-copy"><span class="swatch-name">直播粉 (实测)</span><code class="swatch-value">#FF6699</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#00AEC4"></div><div class="swatch-copy"><span class="swatch-name">蓝色链接</span><code class="swatch-value">#00AEC4</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#1E2026"></div><div class="swatch-copy"><span class="swatch-name">顶栏背景 (推断)</span><code class="swatch-value">dark (inferred)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#FB7299"></div><div class="swatch-copy"><span class="swatch-name">品牌粉 (未实测)</span><code class="swatch-value">#FB7299 (not observed)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(255,102,153,0.15)"></div><div class="swatch-copy"><span class="swatch-name">直播标签底</span><code class="swatch-value">rgba(255,102,153,.15)</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:rgba(0,0,0,0.7)"></div><div class="swatch-copy"><span class="swatch-name">时长标签底</span><code class="swatch-value">rgba(0,0,0,.7)</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row">
+            <span class="type-role">Hero Quote</span>
+            <span class="type-sample" style="font:400 18px/1.5 var(--font-sys);color:#ffffff;background:#1E2026;padding:4px 8px;border-radius:4px;">七夕当夜，你衣锦归来</span>
+            <span class="type-value">sys 18/26 w400</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Card Title Medium</span>
+            <span class="type-sample" style="font:400 16px/1.5 var(--font-sys);color:#18191C;">红警下集！观摩下上方百万大军交战</span>
+            <span class="type-value">sys 16/24 w400</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Card Title Bold</span>
+            <span class="type-sample" style="font:500 15px/1.5 var(--font-sys);color:#18191C;">红警下集！观摩下上方百万大军交战</span>
+            <span class="type-value">sys 15/22 w500</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Card Title</span>
+            <span class="type-sample" style="font:400 15px/1.5 var(--font-sys);color:#18191C;">红警下集！观摩下上方百万大军交战</span>
+            <span class="type-value">sys 15/22 w400</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Top Nav Link</span>
+            <span class="type-sample" style="font:400 14px/1.5 var(--font-sys);color:#ffffff;background:#1E2026;padding:4px 8px;">首页 · 番剧 · 直播</span>
+            <span class="type-value">sys 14/20 white</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Sub Nav Link</span>
+            <span class="type-sample" style="font:400 14px/1.5 var(--font-sys);color:#18191C;">动态 · 热门</span>
+            <span class="type-value">sys 14/20 dark</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Link Blue</span>
+            <span class="type-sample" style="font:400 14px/1.5 var(--font-sys);color:#00AEC4;">点我注册</span>
+            <span class="type-value">sys 14/20 blue</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Category Pill</span>
+            <span class="type-sample" style="font:400 13px/1.5 var(--font-sys);color:#61666D;background:#F6F7F8;padding:4px 10px;border-radius:6px;">番剧</span>
+            <span class="type-value">sys 13/19 pill</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Card Meta</span>
+            <span class="type-sample" style="font:400 13px/1.5 var(--font-sys);color:#9499A0;">红警HBK08 · 23小时前</span>
+            <span class="type-value">sys 13/19 gray</span>
+          </div>
+          <div class="type-row">
+            <span class="type-role">Live Tag</span>
+            <span class="type-sample" style="font:400 12px/1.5 var(--font-sys);color:#FF6699;background:rgba(255,102,153,0.15);padding:2px 8px;border-radius:4px;">直播中</span>
+            <span class="type-value">sys 12/18 pink</span>
+          </div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">
+            系统字体栈（全站统一）：<br>
+            -apple-system, "system-ui",<br>
+            "Helvetica Neue", Helvetica, Arial,<br>
+            "PingFang SC", "Hiragino Sans GB",<br>
+            "Microsoft YaHei", sans-serif
+          </div>
+          <p class="cjk-line">中文设计 System · 2026 年 9 月</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在系统字体栈中的呈现。<strong>未使用自定义品牌字体</strong>；中文渲染由系统决定（macOS 苹方、Windows 微软雅黑、Linux Noto Sans CJK）。观察到 <code>lang="zh-CN"</code>（正确的中文语言标签）。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="section-note">常见 UI 原语，仅呈现有证据支持的样式</span></div>
+      <div class="specimens">
+        <div class="component dark">
+          <span class="component-label">顶部导航 · Top Nav</span>
+          <div class="top-nav-sample">
+            <span class="logo-nav">b</span>
+            <div class="menu">
+              <a class="active" href="#">首页</a>
+              <a href="#">番剧</a>
+              <a href="#">直播</a>
+              <a href="#">游戏中心</a>
+              <a href="#">会员购</a>
+              <a href="#">漫画</a>
+            </div>
+            <div class="right">
+              <span class="button avatar">登</span>
+            </div>
+          </div>
+          <div class="measure-values" style="margin-top:10px; color:rgba(255,255,255,0.7);">
+            <code>bg: 深色（推断）</code> · <code>text: white</code><br>
+            <code>avatar: radius 50% (圆形)</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">二级导航 · Sub Nav</span>
+          <div class="sub-nav">
+            <a class="active" href="#">动态</a>
+            <a href="#">热门</a>
+          </div>
+          <div style="padding: 0 32px 12px;">
+            <span class="field-search">搜索视频 / UP主 / 话题</span>
+          </div>
+          <div class="measure-values">
+            <code>active: #FF6699 w700</code><br>
+            <code>default: #18191C w500</code><br>
+            <code>search: radius 8 · bg #fff</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">分类标签系统 · Category Pills</span>
+          <div class="cat-pills">
+            <span class="cat-pill active">番剧</span>
+            <span class="cat-pill">电影</span>
+            <span class="cat-pill">国创</span>
+            <span class="cat-pill">电视剧</span>
+            <span class="cat-pill">综艺</span>
+            <span class="cat-pill">纪录片</span>
+            <span class="cat-pill">动画</span>
+            <span class="cat-pill">游戏</span>
+            <span class="cat-pill">鬼畜</span>
+            <span class="cat-pill">音乐</span>
+            <span class="cat-pill">舞蹈</span>
+            <span class="cat-pill">影视</span>
+            <span class="cat-pill">娱乐</span>
+            <span class="cat-pill">知识</span>
+            <span class="cat-pill">科技数码</span>
+            <span class="cat-pill">资讯</span>
+            <span class="cat-pill">美食</span>
+            <span class="cat-pill">更多</span>
+            <span class="cat-pill">专栏</span>
+            <span class="cat-pill">直播</span>
+            <span class="cat-pill">活动</span>
+          </div>
+          <div class="measure-values">
+            <code>bg: #F6F7F8 · text: #61666D</code><br>
+            <code>active: bg #FF6699 · text white</code><br>
+            <code>radius: 6px</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">视频卡片（骨架屏）· Skeleton</span>
+          <div class="skeleton-card">
+            <div class="skeleton-cover"></div>
+            <div>
+              <div class="skeleton-text" style="width:90%"></div>
+              <div class="skeleton-text" style="width:75%"></div>
+              <div class="skeleton-text short"></div>
+            </div>
+          </div>
+          <div class="measure-values">
+            <code>cover: #F1F2F3 · r=6</code><br>
+            <code>text: #F1F2F3 · r=4</code><br>
+            <code>container: r=0</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">视频卡片（加载态）· Video Card</span>
+          <div class="video-card">
+            <div class="video-cover">
+              <span class="live-badge">直播中</span>
+              封面
+              <span class="duration">17:23</span>
+            </div>
+            <div class="video-info">
+              <h4 class="title">红警下集！观摩下上方百万大军交战，犀牛战灰熊！</h4>
+              <div class="meta">红警HBK08 · 23小时前</div>
+              <div class="stats">
+                <span>15.2万</span>
+                <span>632</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">标签家族 · Tags</span>
+          <div class="button-row" style="margin-bottom:10px;">
+            <span class="tag">直播中</span>
+            <span class="tag blue">推荐</span>
+            <span class="tag gray">热门</span>
+            <span class="tag">直播预告</span>
+          </div>
+          <div class="button-row">
+            <span class="button pill">推荐</span>
+            <span class="button pill">热门</span>
+            <span class="button pill">最新</span>
+          </div>
+          <div class="measure-values">
+            <code>tag: r=4 · 12/18</code><br>
+            <code>pill: r=6 · 13/19</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">登录面板 · Login Panel</span>
+          <div class="login-panel">
+            <h4>登录</h4>
+            <ul>
+              <li>免费看高清视频</li>
+              <li>多端同步播放记录</li>
+              <li>发表弹幕/评论</li>
+            </ul>
+            <div class="row">
+              <span class="button primary">立即登录</span>
+              <span style="color:#00AEC4; font: 14px var(--font-sys);">首次使用？<span style="text-decoration: underline;">点我注册</span></span>
+            </div>
+          </div>
+          <div class="measure-values" style="margin-top:10px">
+            <code>primary: bg #FF6699 · white</code><br>
+            <code>link: #00AEC4 underlined</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">按钮家族 · Buttons</span>
+          <div class="button-row" style="margin-bottom:10px;">
+            <span class="button primary">立即登录</span>
+            <span class="button outline">下载客户端</span>
+            <span class="button avatar">登</span>
+            <span class="button blue">推荐</span>
+          </div>
+          <div class="button-row">
+            <span class="button pill">推荐</span>
+            <span class="button pill">热门</span>
+            <span class="button">立即体验</span>
+          </div>
+          <div class="measure-values">
+            <code>primary: r=8 · pink</code><br>
+            <code>outline: 1px border</code><br>
+            <code>avatar: r=50% (圆形)</code>
+          </div>
+        </div>
+
+        <div class="component">
+          <span class="component-label">Hero Quote · 顶部推荐</span>
+          <div style="background:#1E2026; padding:16px 20px; border-radius:8px; margin-bottom:8px;">
+            <div style="font: 400 18px/1.5 var(--font-sys); color: #ffffff;">七夕当夜，你衣锦归来，仍是少年模样。</div>
+          </div>
+          <div class="measure-values">
+            <code>font: sys 18/26</code><br>
+            <code>color: white on dark</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="section-note">间距、圆角与层级</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing · nav / card / pill</span>
+          <div class="scale">
+            <i style="width:8px"></i>
+            <i style="width:12px"></i>
+            <i style="width:16px"></i>
+            <i style="width:24px"></i>
+            <i style="width:32px"></i>
+            <i style="width:48px"></i>
+          </div>
+          <div class="measure-values">
+            header 64 · subnav pad 32<br>
+            card cover 130×84 · gap 10<br>
+            pill pad 6/12 · gap 6
+          </div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <span class="radius-chip" style="--r:0">0</span>
+            <span class="radius-chip" style="--r:4px">4</span>
+            <span class="radius-chip" style="--r:6px">6</span>
+            <span class="radius-chip" style="--r:8px">8</span>
+            <span class="radius-chip" style="--r:50%">50%</span>
+          </div>
+          <div class="measure-values">
+            <code>0</code> 卡片容器<br>
+            <code>4</code> skeleton/tag<br>
+            <code>6</code> cover/pill<br>
+            <code>8</code> small-btn<br>
+            <code>50%</code> 头像
+          </div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation · 层级</span>
+          <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center;">
+            <div style="width:60px;height:32px;background:#F1F2F3;border:1px solid rgba(0,0,0,0.08);"></div>
+            <div style="width:60px;height:32px;background:#F6F7F8;border:1px solid rgba(0,0,0,0.08);"></div>
+            <div style="width:60px;height:32px;background:#ffffff;border:1px solid rgba(0,0,0,0.08);"></div>
+            <div style="width:60px;height:32px;background:#1E2026;"></div>
+            <div style="width:60px;height:32px;background:#FF6699;"></div>
+          </div>
+          <div class="measure-values">
+            全站 <code>box-shadow: none</code><br>
+            靠色块和圆角分层
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.bilibili.com/">https://www.bilibili.com/</a> · 2026-09-30 · 中国 · 未登录</span>
+      <span>桌面 1280×720（1280 宽，无溢出）· 移动 390×844（DOM 1100 宽，桌面优先）· Playwright Headless Chromium</span>
+    </footer>
+  </main>
+</body>
+</html>

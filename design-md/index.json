@@ -372,6 +372,21 @@
         "白底 · 无阴影"
       ],
       "url": "https://360.com/"
+    },
+    {
+      "slug": "bilibili",
+      "name": "哔哩哔哩 bilibili",
+      "category": "content",
+      "categoryLabel": "内容与媒体",
+      "font": "-apple-system, system-ui, PingFang SC, Microsoft YaHei (system stack)",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#FF6699 直播粉",
+        "浅灰底 #F1F2F3",
+        "无阴影 · 圆角分层"
+      ],
+      "url": "https://www.bilibili.com/"
     }
   ]
 }

@@ -85,6 +85,7 @@ python3 -m http.server 8000
 | 支付宝商户 | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
 | 爱奇艺 | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |
 | 360 | [360 集团](https://360.com/) | [DESIGN.md](design-md/360/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/360/preview.html) | ✅ |
+| 哔哩哔哩 | [bilibili](https://www.bilibili.com/) | [DESIGN.md](design-md/bilibili/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/bilibili/preview.html) | ✅ |
 
 ## 自动提取
 
