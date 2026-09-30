@@ -79,6 +79,10 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Jianshu (简书) | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 | CSDN | [CSDN](https://www.csdn.net/) | [DESIGN.md](design-md/csdn/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/csdn/preview.html) | ✅ |
 | Youku (优酷) | [Youku](https://www.youku.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/preview.html) | ✅ |
+| Kuaishou (快手) | [Kuaishou](https://www.kuaishou.com/?isHome=1&source=NewReco) | — | — | |
+| ICBC (中国工商银行) | [ICBC](https://icbc.com.cn/) | — | — | |
+| CRC / China Resources (华润) | [CRC](https://www.crc.com.cn/index.html) | — | — | |
+| Alipay Merchant (支付宝商户) | [Alipay Merchant](https://b.alipay.com/page/portal/home) | — | — | |
 
 ## Automatic extraction
 
