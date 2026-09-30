@@ -87,6 +87,7 @@ python3 -m http.server 8000
 | 360 | [360 集团](https://360.com/) | [DESIGN.md](design-md/360/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/360/preview.html) | ✅ |
 | 哔哩哔哩 | [bilibili](https://www.bilibili.com/) | [DESIGN.md](design-md/bilibili/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/bilibili/preview.html) | ✅ |
 | 国家电网 | [State Grid](http://www.sgcc.com.cn/) | — | — | ⚠️ 站点 JS 挑战拦截 AI Agent（Playwright 无法过验证） |
+| 快手 | [Kuaishou](https://www.kuaishou.com/) | — | — | ⚠️ 服务端检测 headless，返回 JSON 错误而非 HTML |
 | 雪球 | [Xueqiu](https://xueqiu.com/) | — | — | ⚠️ 站点安全策略拦截 AI Agent（需等待自动解封） |
 
 ## 自动提取
