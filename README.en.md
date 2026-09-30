@@ -82,7 +82,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Kuaishou (快手) | [Kuaishou](https://www.kuaishou.com/?isHome=1&source=NewReco) | — | — | |
 | ICBC (中国工商银行) | [ICBC](https://icbc.com.cn/) | — | — | |
 | CRC / China Resources (华润) | [CRC](https://www.crc.com.cn/index.html) | — | — | |
-| Alipay Merchant (支付宝商户) | [Alipay Merchant](https://b.alipay.com/page/portal/home) | — | — | |
+| Alipay Merchant (支付宝商户) | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
 
 ## Automatic extraction
 
