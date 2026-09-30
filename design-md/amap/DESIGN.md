@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: 高德开放平台
+name: 高德
 description: "从公开渲染的高德开放平台首页提取的界面设计证据与规范摘要。"
 colors:
   primary: "#1a66ff"
@@ -221,7 +221,7 @@ components:
     padding: "32px 0px 0px"
 ---
 
-# DESIGN.md — 高德开放平台
+# DESIGN.md — 高德
 
 **来源 URL**：https://lbs.amap.com/  
 **采集范围**：高德开放平台中文官网首页单页；桌面 1280×720，另检查移动视口 390×844；未登录状态；页面标题「高德开放平台 | 高德地图API」。  
