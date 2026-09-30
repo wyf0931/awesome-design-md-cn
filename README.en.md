@@ -88,6 +88,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | bilibili (哔哩哔哩) | [bilibili](https://www.bilibili.com/) | [DESIGN.md](design-md/bilibili/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/bilibili/preview.html) | ✅ |
 | State Grid (国家电网) | [State Grid](http://www.sgcc.com.cn/) | — | — | ⚠️ Blocked (site JS challenge blocks AI Agents) |
 | Kuaishou (快手) | [Kuaishou](https://www.kuaishou.com/) | — | — | ⚠️ Blocked (server detects headless, returns JSON error) |
+| Douyin (抖音) | [Douyin](https://www.douyin.com/) | — | — | ⚠️ Blocked (verification page with JS challenge) |
 | Xueqiu (雪球) | [Xueqiu](https://xueqiu.com/) | — | — | ⚠️ Blocked (site security policy blocks AI Agents) |
 
 ## Automatic extraction
