@@ -50,7 +50,7 @@ python3 -m http.server 8000
 |---|---|---|---|---|
 | 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | — | |
-| 小米 | [Xiaomi](https://www.mi.com) | — | — | |
+| 小米 | [Xiaomi](https://www.mi.com) | [DESIGN.md](design-md/xiaomi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/xiaomi/preview.html) | ✅ |
 | 华为 | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |
 | 阿里巴巴 | [Alibaba](https://www.alibabagroup.com) | — | — | |
 | 腾讯 | [Tencent](https://www.tencent.com) | — | — | |
@@ -59,7 +59,7 @@ python3 -m http.server 8000
 | 网易 | [NetEase](https://www.163.com) | [DESIGN.md](design-md/netease/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/netease/preview.html) | ✅ |
 | 滴滴 | [DiDi](https://www.didiglobal.com) | [DESIGN.md](design-md/didi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/didi/preview.html) | ✅ |
 | 商汤科技 | [SenseTime](https://www.sensetime.com/cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/sensetime/preview.html) | ✅ |
-| 美团 | [Meituan](https://www.meituan.com) | — | — | |
+| 美团 | [Meituan](https://www.meituan.com) | [DESIGN.md](design-md/meituan/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/meituan/preview.html) | ✅ |
 | 大众点评 | [Dianping](https://www.dianping.com) | — | — | |
 | 支付宝 | [Alipay](https://www.alipay.com) | — | — | |
 | 携程 | [Trip.com](https://www.trip.com) | — | — | |
@@ -72,6 +72,8 @@ python3 -m http.server 8000
 | 淘宝 | [Taobao](https://www.taobao.com) | — | — | |
 | 拼多多 | [Pinduoduo](https://www.pinduoduo.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/pinduoduo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/pinduoduo/preview.html) | ✅ |
 | DeepSeek | [DeepSeek](https://www.deepseek.com/) | [DESIGN.md](design-md/deepseek/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/deepseek/preview.html) | ✅ |
+| 高德开放平台 | [Amap LBS](https://lbs.amap.com/) | [DESIGN.md](design-md/amap/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/amap/preview.html) | ✅ |
+| 联想 | [Lenovo](https://www.lenovo.com.cn/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/lenovo/preview.html) | ✅ |
 
 ## 自动提取
 

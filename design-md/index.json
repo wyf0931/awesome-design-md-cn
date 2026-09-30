@@ -177,6 +177,66 @@
         "flat"
       ],
       "url": "https://www.pinduoduo.com/"
+    },
+    {
+      "slug": "xiaomi",
+      "name": "小米",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "MiSans / MI Lan Pro / serif · vw+rem 双单位响应式",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#ff6900",
+        "radius:0",
+        "MiSans"
+      ],
+      "url": "https://www.mi.com/"
+    },
+    {
+      "slug": "meituan",
+      "name": "美团 Meituan",
+      "category": "commerce",
+      "categoryLabel": "电商与生活服务",
+      "font": "MTTiJ（Hero）/ PingFang SC / Microsoft YaHei / Source Han Sans CN",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#FFD100",
+        "radius:16px/6px",
+        "16px base"
+      ],
+      "url": "https://www.meituan.com/"
+    },
+    {
+      "slug": "amap",
+      "name": "高德开放平台",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "PingFangSC-Regular / Microsoft YaHei / Open Sans（头部）· -apple-system / system-ui / PingFang SC（内容）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#1a66ff",
+        "radius:8px/16px/14px",
+        "grad-blue"
+      ],
+      "url": "https://lbs.amap.com/"
+    },
+    {
+      "slug": "lenovo",
+      "name": "联想 Lenovo",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "微软雅黑（Microsoft YaHei） · 输入框 arial / 宋体",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#E1140A",
+        "radius:0px",
+        "12px base"
+      ],
+      "url": "https://www.lenovo.com.cn/"
     }
   ]
 }

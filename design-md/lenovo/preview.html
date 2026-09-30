@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>联想 Lenovo — Design System</title>
+  <style>
+    :root {
+      /* Values measured from https://www.lenovo.com.cn/ on 2026-09-30. */
+      --primary: #e1140a;
+      --primary-strong: #e12726;
+      --ink: #000000;
+      --text-strong: #252525;
+      --tab-text: #454545;
+      --nav-item: #4d4d4d;
+      --nav-title: #202020;
+      --caption: #5f5f5f;
+      --muted: #606060;
+      --nav-secondary: #707070;
+      --secondary: #7b7b7b;
+      --faint: #8c8c8c;
+      --footer-text: #cccccc;
+      --on-dark: #ffffff;
+      --canvas: #ffffff;
+      --surface: #ffffff;
+      --soft: #f7f7f7;
+      --footer: #ededed;
+      --line: #d6d6d6;
+      --index-grey: #c9c9c9;
+      --control-radius: 0px;
+      --card-radius: 0px;
+      --button-radius: 4px;
+      --bullet-radius: 10px;
+      --full-radius: 100%;
+      --card-shadow: none;
+      --font-body: "Microsoft YaHei", "微软雅黑", Arial, Helvetica, sans-serif;
+      --font-cjk: "Microsoft YaHei", "微软雅黑", Arial, Helvetica, sans-serif;
+      --font-input: Arial, "Microsoft YaHei", "微软雅黑", "宋体", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font: 14px/1.5 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 22px; line-height: 1.3; font-weight: 700; letter-spacing: 0; color: var(--ink); }
+    .brand .accent { color: var(--primary); }
+    .context { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; }
+    .context span { padding: 4px 8px; border: 1px solid var(--line); background: var(--canvas); }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 28px 0 22px; }
+    .intro-label { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; font: 700 32px/40px var(--font-body); color: var(--text-strong); }
+    .summary { max-width: 620px; margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .source-language { min-width: 260px; padding: 14px 16px; border: 1px solid var(--line); background: var(--canvas); }
+    .source-language strong { display: block; margin-bottom: 6px; font-size: 12px; color: var(--text-strong); font-weight: 700; }
+    .source-language span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .section { margin-top: 26px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 14px; }
+    h2 { margin: 0; font: 700 32px/40px var(--font-body); color: var(--text-strong); }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+    .color { height: 60px; background: var(--sample); }
+    .swatch-copy { min-height: 44px; padding: 7px 8px; }
+    .swatch-name, .swatch-value { display: block; font-size: 10px; line-height: 1.4; }
+    .swatch-value { margin-top: 3px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .foundations { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .panel { border: 1px solid var(--line); background: var(--surface); }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--line); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 130px 1fr 170px; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--muted); font-size: 10px; }
+    .type-value { text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--text-strong); }
+    .cjk-stack { padding: 10px 12px; background: var(--soft); color: var(--muted); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .cjk-line { margin: 14px 0 8px; color: var(--text-strong); font: 700 22px/1.5 var(--font-cjk); }
+    .cjk-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .component { min-height: 116px; padding: 16px; border: 1px solid var(--line); background: var(--surface); }
+    .component-label { display: block; margin-bottom: 12px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* Lenovo-specific specimens */
+    .nav-strip { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--canvas); }
+    .nav-strip .logo { font: 700 18px/1 var(--font-body); color: var(--ink); letter-spacing: -.02em; }
+    .nav-strip .logo .accent { color: var(--primary); }
+    .nav-strip .links { display: flex; gap: 16px; align-items: center; font-size: 12px; color: var(--ink); }
+    .nav-strip .links .shop { font-weight: 500; letter-spacing: 1px; }
+    .nav-strip .right { font-size: 12px; color: var(--ink); }
+
+    .persona-tab { display: flex; align-items: center; justify-content: space-around; height: 56px; border-bottom: 1px solid var(--line); }
+    .persona-tab span { font: 700 20px/56px var(--font-body); color: var(--tab-text); }
+    .persona-tab span.active { color: var(--ink); }
+
+    .category-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border-bottom: 1px solid var(--line); }
+    .category { height: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: var(--soft); }
+    .category .icon { width: 22px; height: 22px; background: var(--ink); opacity: .22; }
+    .category span { font-size: 12px; color: var(--ink); }
+    .category.muted span { color: var(--nav-secondary); }
+
+    .news-row { display: flex; align-items: stretch; height: 96px; }
+    .news-row .idx { width: 66px; display: flex; align-items: center; justify-content: center; font: 700 46px/1 var(--font-body); color: var(--primary-strong); }
+    .news-row .idx.muted { color: var(--index-grey); }
+    .news-row .body { flex: 1; padding: 8px 14px; border-left: 1px solid var(--line); }
+    .news-row .title { font: 600 18px/20px var(--font-body); color: var(--text-strong); margin: 0 0 6px; }
+    .news-row .desc { font: 400 12px/18px var(--font-body); color: var(--secondary); margin: 0; }
+
+    .product-card { padding: 14px 20px; border: 1px solid var(--line); background: var(--canvas); }
+    .product-card .name { font: 700 20px/1.4 var(--font-body); color: var(--text-strong); margin: 0 0 4px; }
+    .product-card .price { font: 400 20px/18px var(--font-body); color: var(--text-strong); margin: 0 0 6px; }
+    .product-card .desc { font: 400 12px/18px var(--font-body); color: var(--caption); margin: 0; }
+
+    .input-stack { display: flex; flex-direction: column; gap: 8px; }
+    .input { height: 40px; display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--line); background: var(--canvas); color: var(--faint); font: 400 14px/40px var(--font-input); }
+    .input strong { color: var(--muted); font-weight: 400; }
+
+    .cta-link { display: inline-flex; align-items: center; height: 26px; padding: 0; background: transparent; border: 0; color: var(--primary); font: 400 16px/1 var(--font-body); text-decoration: none; }
+    .cta-link .arrow { margin-left: 6px; }
+    .cookie-consent { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; background: var(--canvas); color: #4c4c4c; border: 1px solid var(--canvas); border-radius: var(--button-radius); font: 400 12px/26px var(--font-body); }
+
+    .success-card { padding: 14px 20px 16px; border: 1px solid var(--line); background: var(--canvas); min-height: 120px; }
+    .success-card .img { height: 52px; background: var(--soft); margin-bottom: 8px; }
+    .success-card .title { font: 400 20px/1.4 var(--font-body); color: var(--text-strong); margin: 0 0 4px; }
+    .success-card .desc { font: 400 12px/18px var(--font-body); color: var(--secondary); margin: 0; }
+
+    .footer-strip { padding: 16px 20px; background: var(--footer); display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+    .footer-strip .group-title { font: 600 18px/16px var(--font-body); color: var(--text-strong); margin: 0 0 8px; }
+    .footer-strip .link { font: 400 12px/1.6 var(--font-body); color: var(--footer-text); margin: 0; }
+    .footer-strip .hotline { font: 600 13px/1 var(--font-body); color: var(--text-strong); margin-top: 2px; }
+    .footer-strip .hotline small { display: block; font: 400 12px/1.6 var(--font-body); color: var(--muted); margin-bottom: 4px; }
+
+    .measures { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+    .measure { padding: 12px 14px; border: 1px solid var(--line); background: var(--surface); }
+    .measure-title { display: block; margin-bottom: 10px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .scale { display: flex; align-items: end; gap: 8px; height: 30px; }
+    .scale i { display: block; width: var(--w); height: 5px; background: var(--ink); opacity: .8; }
+    .radius-row { display: flex; align-items: center; gap: 8px; }
+    .radius-chip { width: 40px; height: 24px; border: 1px solid var(--line); background: var(--soft); border-radius: var(--r); }
+    .radius-chip.circle { border-radius: var(--full-radius); width: 24px; height: 24px; }
+    .measure-values { color: var(--ink); font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; margin-top: 8px; }
+
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 28px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer a { color: inherit; text-decoration: none; }
+
+    @media (max-width: 1200px) {
+      .sheet { width: 100%; padding: 32px 32px; }
+      .intro { flex-direction: column; align-items: stretch; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(6, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .sheet { padding: 20px 16px; }
+      .masthead { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .context { flex-wrap: wrap; }
+      .swatches { grid-template-columns: repeat(4, 1fr); }
+      .type-row { grid-template-columns: 100px 1fr; gap: 4px 8px; }
+      .type-value { grid-column: 2; text-align: left; }
+      .specimens, .measures { grid-template-columns: 1fr; }
+      .persona-tab span { font-size: 16px; line-height: 40px; height: 40px; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .news-row .idx { font-size: 34px; width: 50px; }
+      .cjk-line { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">Lenovo<span class="accent">联想</span> · Design System</div>
+      <div class="context">
+        <span>电商 · 消费电子</span>
+        <span>简体中文</span>
+        <span>HTML lang: 未记录</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>方正 · 白底 · 品牌红点缀</h1>
+        <p class="summary">基于公开页面中可核实的颜色、文字、控件与表面样式。联想官网首页走的是编辑型官网风：白底、灰阶文本、`border-radius: 0`、`box-shadow: none`；品牌红仅作为文字色与序号点缀出现，不用于主要 CTA。样例用于展示设计 token，不复刻原站的信息结构。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>正文栈 <code>微软雅黑</code>（Microsoft YaHei）；登录 / 验证码输入框 <code>arial, 微软雅黑, 宋体, sans-serif</code>。字号 12px base，最大 46px 用于新闻序号。全页 `letter-spacing: normal`，仅「商城」主链接 1px。原站 HTML <code>lang</code> 属性为空。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>颜色角色</h2>
+        <span class="section-note">仅展示 DESIGN.md 中有证据的色值</span>
+      </div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#e1140a"></div><div class="swatch-copy"><span class="swatch-name">primary</span><span class="swatch-value">#E1140A</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#e12726"></div><div class="swatch-copy"><span class="swatch-name">primary-strong</span><span class="swatch-value">#E12726</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#000000"></div><div class="swatch-copy"><span class="swatch-name">text-primary</span><span class="swatch-value">#000000</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#252525"></div><div class="swatch-copy"><span class="swatch-name">text-strong</span><span class="swatch-value">#252525</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#4d4d4d"></div><div class="swatch-copy"><span class="swatch-name">nav-item</span><span class="swatch-value">#4D4D4D</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#7b7b7b"></div><div class="swatch-copy"><span class="swatch-name">secondary</span><span class="swatch-value">#7B7B7B</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#c9c9c9"></div><div class="swatch-copy"><span class="swatch-name">index-grey</span><span class="swatch-value">#C9C9C9</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#cccccc"></div><div class="swatch-copy"><span class="swatch-name">footer-text</span><span class="swatch-value">#CCCCCC</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff;border:1px solid #e6e6e6"></div><div class="swatch-copy"><span class="swatch-name">background</span><span class="swatch-value">#FFFFFF</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f7f7f7"></div><div class="swatch-copy"><span class="swatch-name">secondary-tab</span><span class="swatch-value">#F7F7F7</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ededed"></div><div class="swatch-copy"><span class="swatch-name">footer-bg</span><span class="swatch-value">#EDEDED</span></div></div>
+        <div class="swatch"><div class="color" style="--sample:#d6d6d6"></div><div class="swatch-copy"><span class="swatch-name">input-border</span><span class="swatch-value">#D6D6D6</span></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">新闻序号</span><span class="type-sample" style="font:700 46px/1 var(--font-body);color:var(--primary-strong);">01</span><span class="type-value">46 / 700 / 103</span></div>
+          <div class="type-row"><span class="type-role">区块标题</span><span class="type-sample" style="font:700 32px/40px var(--font-body);color:var(--text-strong);">客户案例</span><span class="type-value">32 / 700 / 40</span></div>
+          <div class="type-row"><span class="type-role">Persona Tab</span><span class="type-sample" style="font:700 20px/1.4 var(--font-body);color:var(--tab-text);">个人及家庭</span><span class="type-value">20 / 700 / 72</span></div>
+          <div class="type-row"><span class="type-role">产品名称</span><span class="type-sample" style="font:700 20px/1.4 var(--font-body);color:var(--text-strong);">斗战者 战7000P</span><span class="type-value">20 / 700</span></div>
+          <div class="type-row"><span class="type-role">价格</span><span class="type-sample" style="font:400 20px/1.4 var(--font-body);color:var(--text-strong);">￥ 6999</span><span class="type-value">20 / 400 / 18</span></div>
+          <div class="type-row"><span class="type-role">News 卡标题</span><span class="type-sample" style="font:600 18px/20px var(--font-body);color:var(--text-strong);">重庆市委书记会见联想一行</span><span class="type-value">18 / 600 / 20</span></div>
+          <div class="type-row"><span class="type-role">页脚分组标题</span><span class="type-sample" style="font:600 18px/1.2 var(--font-body);color:var(--text-strong);">关于联想</span><span class="type-value">18 / 600 / 16</span></div>
+          <div class="type-row"><span class="type-role">方案卡标题</span><span class="type-sample" style="font:400 18px/1.4 var(--font-body);color:var(--text-strong);">数字化研发平台</span><span class="type-value">18 / 400</span></div>
+          <div class="type-row"><span class="type-role">次级导航</span><span class="type-sample" style="font:400 13px/1.4 var(--font-body);color:var(--nav-item);">拯救者 Y7000P</span><span class="type-value">13 / 400</span></div>
+          <div class="type-row"><span class="type-role">Body base</span><span class="type-sample" style="font:400 12px/1.5 var(--font-body);color:var(--ink);">联想携手吉利汽车展开绿色创新</span><span class="type-value">12 / 400 / normal</span></div>
+          <div class="type-row"><span class="type-role">产品参数</span><span class="type-sample" style="font:400 12px/18px var(--font-body);color:var(--caption);">酷睿5 205H | RTX5060Ti 8G</span><span class="type-value">12 / 400 / 18</span></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">
+            中文字体：<code>微软雅黑</code>（Microsoft YaHei）<br>
+            输入框：<code>arial, 微软雅黑, 宋体, sans-serif</code><br>
+            letter-spacing: <code>normal</code>（仅「商城」主链接 1px）<br>
+            line-height: <code>normal</code>（除显式声明外）
+          </div>
+          <p class="cjk-line">联想 Lenovo · 拯救者 Y7000P · ￥ 6999</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在指定字体栈中的呈现；不表示来源网站采用了这句文案或额外混排规则。原站使用半角「￥」符号 + 空格。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>导航与 Tab</h2>
+        <span class="section-note">双行导航 + persona tab + 产品品类 tab，共同构成 272px 高的首屏导航带</span>
+      </div>
+      <div class="panel">
+        <div class="nav-strip">
+          <div class="logo">Lenovo<span class="accent">联想</span></div>
+          <div class="links">
+            <span class="shop">商城</span>
+            <span>消费产品</span>
+            <span>企业购</span>
+            <span>服务支持</span>
+            <span>合作伙伴</span>
+            <span>品牌</span>
+          </div>
+          <div class="right">门店 · 会员 · 社区 · 登录 | 注册</div>
+        </div>
+        <div class="persona-tab">
+          <span class="active">个人及家庭</span>
+          <span>中小企业</span>
+          <span>政教及大企业</span>
+        </div>
+        <div class="category-grid">
+          <div class="category"><div class="icon"></div><span>Lenovo台式机</span></div>
+          <div class="category"><div class="icon"></div><span>Lenovo笔记本</span></div>
+          <div class="category"><div class="icon"></div><span>ThinkPad电脑</span></div>
+          <div class="category muted"><div class="icon"></div><span>平板</span></div>
+          <div class="category muted"><div class="icon"></div><span>手机</span></div>
+          <div class="category muted"><div class="icon"></div><span>选件 / 服务</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>组件样本</h2>
+        <span class="section-note">常见 UI 原语，仅呈现有证据支持的样式；无阴影、无圆角</span>
+      </div>
+      <div class="specimens">
+        <article class="component">
+          <span class="component-label">News 卡（激活）</span>
+          <div class="news-row">
+            <div class="idx">01</div>
+            <div class="body">
+              <p class="title">重庆市委书记、市长会见联想集团一行</p>
+              <p class="desc">据重庆日报消息，9 月 8 日下午…</p>
+            </div>
+          </div>
+          <div class="news-row" style="border-top:1px solid var(--line);margin-top:8px;">
+            <div class="idx muted">02</div>
+            <div class="body">
+              <p class="title">联想携手吉利汽车展开绿色创新</p>
+              <p class="desc">打造卓越 HPC 平台…</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="component">
+          <span class="component-label">产品卡（热门商品）</span>
+          <div class="product-card">
+            <p class="name">斗战者 战7000P</p>
+            <p class="price">￥ 6999</p>
+            <p class="desc">酷睿5 205H | RTX5060Ti 8G</p>
+          </div>
+        </article>
+
+        <article class="component">
+          <span class="component-label">更多链接 &amp; 品牌红文字</span>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a class="cta-link" href="#">更多 <span class="arrow">›</span></a>
+            <a class="cta-link" href="#">Lenovo 笔记本 <span class="arrow">›</span></a>
+            <span class="cookie-consent">我同意</span>
+          </div>
+          <p style="font-size:10px;color:var(--muted);margin:12px 0 0;line-height:1.6;">主要 CTA 通过文字链接实现，不叠加红色实底。cookie 同意按钮是首页唯一带 4px 圆角的按钮。</p>
+        </article>
+
+        <article class="component">
+          <span class="component-label">客户案例卡</span>
+          <div class="success-card">
+            <div class="img"></div>
+            <p class="title">打造卓越 HPC 平台</p>
+            <p class="desc">宁波吉利汽车研发有限公司…</p>
+          </div>
+        </article>
+
+        <article class="component">
+          <span class="component-label">输入框</span>
+          <div class="input-stack">
+            <div class="input"><strong>用户名 / 邮箱</strong></div>
+            <div class="input"><strong>密码</strong></div>
+            <div class="input" style="color:var(--faint);"><strong>验证码</strong></div>
+          </div>
+          <p style="font-size:10px;color:var(--muted);margin:12px 0 0;line-height:1.6;">登录 / 验证码输入框 <code>border-radius: 0</code>，唯一带描边（<code>1px solid #D6D6D6</code>）的常规元素。</p>
+        </article>
+
+        <article class="component">
+          <span class="component-label">页脚 &amp; 热线</span>
+          <div class="footer-strip">
+            <div>
+              <p class="group-title">关于联想</p>
+              <p class="link">投资者关系</p>
+              <p class="link">加入我们</p>
+              <p class="link">联系我们</p>
+            </div>
+            <div>
+              <p class="group-title">联想服务</p>
+              <small style="color:var(--muted);font:400 12px/1.6 var(--font-body);">商城购买咨询：</small>
+              <p class="hotline">400 166 6666</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>几何与节奏</h2>
+        <span class="section-note">间距、圆角、层级；整站无阴影</span>
+      </div>
+      <div class="measures">
+        <div class="measure">
+          <span class="measure-title">Spacing</span>
+          <div class="scale">
+            <i style="--w:10px"></i>
+            <i style="--w:18px"></i>
+            <i style="--w:24px"></i>
+            <i style="--w:38px"></i>
+            <i style="--w:45px"></i>
+            <i style="--w:60px"></i>
+            <i style="--w:80px"></i>
+          </div>
+          <div class="measure-values">10 · 18 · 24 · 38 · 45 · 60 · 80</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius</span>
+          <div class="radius-row">
+            <span class="radius-chip" style="--r:0px"></span>
+            <span class="radius-chip" style="--r:4px"></span>
+            <span class="radius-chip" style="--r:10px"></span>
+            <span class="radius-chip circle" style="--r:100%"></span>
+          </div>
+          <div class="measure-values">0 · 4 · 10 · 100%</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Type scale</span>
+          <div class="scale">
+            <i style="--w:22px"></i>
+            <i style="--w:30px"></i>
+            <i style="--w:44px"></i>
+            <i style="--w:66px"></i>
+            <i style="--w:88px"></i>
+            <i style="--w:118px"></i>
+          </div>
+          <div class="measure-values">12 · 13 · 14 · 16 · 18 · 20 · 24 · 32 · 46</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation</span>
+          <div class="radius-row">
+            <span class="radius-chip" style="background:var(--canvas);border:1px solid var(--line)"></span>
+            <span class="radius-chip" style="background:var(--soft);border:1px solid var(--line)"></span>
+            <span class="radius-chip" style="background:var(--footer);border:1px solid var(--line)"></span>
+          </div>
+          <div class="measure-values">box-shadow: none<br>border: 1px solid #d6d6d6</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>来源：<a href="https://www.lenovo.com.cn/">https://www.lenovo.com.cn/</a> · 2026-09-30 · 中国大陆 / 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844（未启用响应式布局，860px 横向溢出）</span>
+    </footer>
+  </main>
+</body>
+</html>
