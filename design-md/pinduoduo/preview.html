@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>拼多多 Pinduoduo — Design System</title>
+  <style>
+    :root {
+      --primary: #fc475d;
+      --brand-deep: #f04055;
+      --accent-border: #ed435b;
+      --qr-tint: #ffedf1;
+      --text-primary: #363636;
+      --text-nav: #6c6c6c;
+      --text-product: #111111;
+      --text-secondary: #868686;
+      --text-muted: #686868;
+      --text-footer: #4d4d4d;
+      --text-faded: #b1b1b1;
+      --text-strikethrough: #cbcbcb;
+      --canvas: #fafafa;
+      --surface: #ffffff;
+      --footer-bar: #3f3e3e;
+      --divider: #c1c1c1;
+      --card-border: #f6f6f6;
+      --font-body: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--canvas); }
+    body { color: var(--text-primary); font: 16px/1.55 var(--font-body); -webkit-font-smoothing: antialiased; }
+    .sheet { width: 1440px; min-height: 1080px; margin: 0 auto; padding: 44px 72px 48px; }
+    /* Masthead — mimics the site's flat header with a 4px red bottom border */
+    .masthead { display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 24px; background: var(--surface); border-bottom: 4px solid var(--accent-border); }
+    .brand { font: 700 22px/1 var(--font-body); color: var(--text-primary); letter-spacing: -0.01em; }
+    .brand em { font-style: normal; color: var(--primary); }
+    .context { display: flex; align-items: center; gap: 6px; color: var(--text-nav); font-size: 14px; line-height: 20px; }
+    .context span { padding: 0 10px; border-right: 1px solid var(--text-nav); }
+    .context span:last-child { border-right: 0; padding-right: 0; }
+    .context .active { color: var(--primary); font-weight: 700; }
+    /* Intro */
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; padding: 32px 0 26px; }
+    .intro-label { margin: 0 0 8px; color: var(--text-secondary); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font: 400 40px/1.2 var(--font-body); color: var(--text-primary); }
+    .summary { max-width: 640px; margin: 12px 0 0; color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+    .source-language { min-width: 300px; padding: 16px 18px; background: var(--surface); border: 0; }
+    .source-language strong { display: block; margin-bottom: 6px; font-size: 12px; color: var(--text-primary); }
+    .source-language span { color: var(--text-nav); font-size: 12px; line-height: 1.6; display: block; }
+    /* Section headers */
+    .section { margin-top: 24px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 17px; margin-bottom: 45px; margin-top: 20px; border-bottom: 1px solid var(--divider); }
+    .section-head h2 { margin: 0; float: left; color: var(--text-primary); font: 400 20px/1.3 var(--font-body); }
+    .section-head .more { float: right; color: var(--text-secondary); font: 400 18px/22px var(--font-body); }
+    /* Color swatches */
+    .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .swatch { overflow: hidden; background: var(--surface); border: 0; border-radius: 0; }
+    .color { height: 68px; background: var(--sample); }
+    .swatch-copy { padding: 10px 12px; border-top: 1px solid var(--card-border); }
+    .swatch-name { display: block; color: var(--text-primary); font-size: 12px; line-height: 1.4; }
+    .swatch-value { display: block; margin-top: 4px; color: var(--text-nav); font: 11px/1.4 var(--font-mono); }
+    /* Foundations */
+    .foundations { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+    .panel { background: var(--surface); border: 0; border-radius: 0; }
+    .panel-head { padding: 14px 16px 11px; border-bottom: 1px solid var(--card-border); }
+    .panel-head h2 { margin: 0; font: 400 16px/1.4 var(--font-body); color: var(--text-primary); }
+    .panel-body { padding: 14px 16px; }
+    .type-row { display: grid; grid-template-columns: 132px 1fr 160px; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--card-border); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-role, .type-value { color: var(--text-nav); font-size: 11px; }
+    .type-value { text-align: right; font-family: var(--font-mono); }
+    .type-sample { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--text-primary); }
+    .cjk-stack { padding: 12px 14px; background: var(--canvas); color: var(--text-nav); font: 11px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+    .cjk-line { margin: 16px 0 8px; color: var(--text-primary); font: 700 24px/1.3 var(--font-body); }
+    .cjk-line em { font-style: normal; color: var(--primary); }
+    .cjk-note { margin: 0; color: var(--text-nav); font-size: 11px; line-height: 1.6; }
+    /* Components */
+    .specimens { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .component { padding: 16px; background: var(--surface); border: 0; border-radius: 0; min-height: 140px; }
+    .component-label { display: block; margin-bottom: 12px; color: var(--text-secondary); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    /* Site-nav mimic */
+    .site-nav { display: flex; align-items: center; height: 40px; background: var(--surface); border-bottom: 4px solid var(--accent-border); padding: 0 4px; }
+    .site-nav .item { font-size: 13px; color: var(--text-nav); padding: 0 12px; line-height: 36px; border-right: 1px solid var(--text-nav); }
+    .site-nav .item:last-child { border-right: 0; }
+    .site-nav .item.active { color: var(--primary); font-weight: 700; }
+    /* Goods tile */
+    .goods-row { display: flex; gap: 12px; margin-top: 4px; }
+    .goods-tile { flex: 1; padding: 8px 8px 10px; background: var(--surface); }
+    .goods-img { width: 100%; aspect-ratio: 1 / 1; background: var(--canvas); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 10px; }
+    .goods-title { color: var(--text-product); font-size: 12px; line-height: 18px; height: 36px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .goods-price { font-size: 12px; line-height: 30px; text-align: center; }
+    .goods-price .current { color: var(--text-product); font-size: 16px; }
+    .goods-price .strikethrough { color: var(--text-strikethrough); font-size: 14px; text-decoration: line-through; margin-left: 4px; }
+    /* More-link */
+    .more-link-demo { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0 8px; border-bottom: 1px solid var(--divider); }
+    .more-link-demo .title { color: var(--text-primary); font-size: 20px; }
+    .more-link-demo .more { color: var(--text-secondary); font-size: 18px; line-height: 22px; }
+    /* Footer */
+    .footer-mimic { margin-top: 6px; padding: 24px; background: var(--surface); }
+    .footer-nav { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+    .footer-nav .fn-item { font-size: 13px; color: var(--text-nav); padding: 0 10px; line-height: 22px; border-right: 1px solid var(--divider); }
+    .footer-nav .fn-item:last-child { border-right: 0; }
+    .footer-copyright { padding: 20px; background: var(--footer-bar); color: var(--text-faded); font-size: 12px; line-height: 1.5; text-align: center; }
+    /* QR demo */
+    .qr-row { display: flex; gap: 40px; justify-content: center; }
+    .qr-cell { width: 140px; text-align: center; }
+    .qr-box { width: 140px; height: 140px; background: var(--surface); border: 2px solid var(--qr-tint); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 10px; font-family: var(--font-mono); }
+    .qr-cell p { color: var(--text-footer); font-size: 12px; margin: 8px 0 0; line-height: 1.4; }
+    /* Measurements */
+    .measurements { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; }
+    .measure { padding: 14px 16px; background: var(--surface); border: 0; border-radius: 0; }
+    .measure-title { display: block; margin-bottom: 10px; color: var(--text-nav); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .scale { display: flex; align-items: end; gap: 6px; height: 24px; }
+    .scale i { display: block; width: var(--w); height: 4px; background: var(--primary); opacity: .9; border-radius: 0; }
+    .radius-row { display: flex; align-items: center; gap: 8px; }
+    .radius-chip { width: 40px; height: 26px; background: var(--canvas); border: 1px solid var(--divider); border-radius: 0; }
+    .measure-values { margin-top: 8px; color: var(--text-nav); font: 10px/1.55 var(--font-mono); }
+    .measure-note { margin-top: 10px; color: var(--text-muted); font-size: 10px; line-height: 1.6; }
+    /* Footer */
+    .page-footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 28px; padding-top: 12px; border-top: 1px solid var(--divider); color: var(--text-nav); font-size: 11px; }
+    .page-footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 980px) {
+      .sheet { width: 100%; padding: 28px 24px; }
+      .intro { align-items: stretch; flex-direction: column; gap: 16px; }
+      .source-language { min-width: 0; }
+      .swatches { grid-template-columns: repeat(3, 1fr); }
+      .foundations { grid-template-columns: 1fr; }
+      .specimens { grid-template-columns: 1fr; }
+      .measurements { grid-template-columns: 1fr; }
+      .page-footer { flex-direction: column; gap: 6px; }
+      .site-nav { overflow-x: auto; }
+    }
+    @media (max-width: 600px) {
+      .sheet { padding: 20px 16px; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 90px 1fr; gap: 5px 8px; }
+      .type-value { grid-column: 2; text-align: left; }
+      .cjk-line { font-size: 20px; }
+      .qr-row { flex-wrap: wrap; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="brand">拼多多 <em>Pinduoduo</em></div>
+      <div class="context">
+        <span class="active">首页</span>
+        <span>商家入驻</span>
+        <span>热点资讯</span>
+        <span>帮助中心</span>
+        <span>简体中文</span>
+        <span>HTML lang: zh-CN</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="intro-label">Design language / 中文界面</p>
+        <h1>视觉系统样本</h1>
+        <p class="summary">基于 pinduoduo.com 公开营销首页可核实的颜色、字体、控件与表面样式。样例用于展示设计 token，不复刻站点的信息结构；仅呈现有证据支持的值。</p>
+      </div>
+      <aside class="source-language">
+        <strong>中文排版</strong>
+        <span>html / body 未显式声明 <code>font-family</code>（<code>font: initial</code>）；本次在 Playwright Chromium / macOS 中文环境下 computed 为 <code>"PingFang SC"</code>。</span>
+        <span>正文 16px；分区标题 20px；商品卡标题 12px / 行高 18px；激活文字 16px bold <span style="color:var(--primary)">#fc475d</span>；Header 底部 4px <span style="color:var(--accent-border)">#ed435b</span>。</span>
+        <span>整站无圆角、无阴影；1200px 内容宽度，390 视口下 body scrollWidth 仍为 1222px（未做响应式收缩）。</span>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>颜色角色</h2><span class="more">更多 &gt;</span></div>
+      <div class="swatches">
+        <div class="swatch"><div class="color" style="--sample:#fc475d"></div><div class="swatch-copy"><span class="swatch-name">primary · 激活红</span><code class="swatch-value">#fc475d</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ed435b"></div><div class="swatch-copy"><span class="swatch-name">accent · Header 底线</span><code class="swatch-value">#ed435b</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f04055"></div><div class="swatch-copy"><span class="swatch-name">brand-deep · 全站 CTA</span><code class="swatch-value">#f04055</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffedf1"></div><div class="swatch-copy"><span class="swatch-name">qr-tint · 扫码描边</span><code class="swatch-value">#ffedf1</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#363636"></div><div class="swatch-copy"><span class="swatch-name">text-primary</span><code class="swatch-value">#363636</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#6c6c6c"></div><div class="swatch-copy"><span class="swatch-name">text-nav</span><code class="swatch-value">#6c6c6c</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#111111"></div><div class="swatch-copy"><span class="swatch-name">text-product</span><code class="swatch-value">#111111</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#868686"></div><div class="swatch-copy"><span class="swatch-name">text-secondary</span><code class="swatch-value">#868686</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#4d4d4d"></div><div class="swatch-copy"><span class="swatch-name">text-footer</span><code class="swatch-value">#4d4d4d</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#cbcbcb"></div><div class="swatch-copy"><span class="swatch-name">text-strikethrough</span><code class="swatch-value">#cbcbcb</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#b1b1b1"></div><div class="swatch-copy"><span class="swatch-name">text-faded</span><code class="swatch-value">#b1b1b1</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#fafafa"></div><div class="swatch-copy"><span class="swatch-name">background-page</span><code class="swatch-value">#fafafa</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff; border-bottom: 1px solid #f6f6f6"></div><div class="swatch-copy"><span class="swatch-name">surface-white</span><code class="swatch-value">#ffffff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#c1c1c1"></div><div class="swatch-copy"><span class="swatch-name">border-divider</span><code class="swatch-value">#c1c1c1</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#f6f6f6"></div><div class="swatch-copy"><span class="swatch-name">border-card</span><code class="swatch-value">#f6f6f6</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#3f3e3e"></div><div class="swatch-copy"><span class="swatch-name">footer-bar</span><code class="swatch-value">#3f3e3e</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">surface · 卡片</span><code class="swatch-value">#ffffff</code></div></div>
+        <div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="swatch-copy"><span class="swatch-name">surface · Header</span><code class="swatch-value">#ffffff</code></div></div>
+      </div>
+    </section>
+
+    <section class="section foundations">
+      <article class="panel">
+        <div class="panel-head"><h2>文字层级</h2></div>
+        <div class="panel-body">
+          <div class="type-row"><span class="type-role">激活项</span><strong class="type-sample" style="font:700 16px/20px var(--font-body); color:var(--primary)">首页</strong><span class="type-value">16px / 700 / 20px</span></div>
+          <div class="type-row"><span class="type-role">未激活项</span><span class="type-sample" style="font:400 16px/20px var(--font-body); color:var(--text-nav)">拼多多商家入驻</span><span class="type-value">16px / 400 / 20px</span></div>
+          <div class="type-row"><span class="type-role">分区标题</span><strong class="type-sample" style="font:400 20px/1.3 var(--font-body); color:var(--text-primary)">精彩活动</strong><span class="type-value">20px / 400</span></div>
+          <div class="type-row"><span class="type-role">"更多 &gt;" 链接</span><span class="type-sample" style="font:400 18px/22px var(--font-body); color:var(--text-secondary)">更多 &gt;</span><span class="type-value">18px / 22px</span></div>
+          <div class="type-row"><span class="type-role">商品标题</span><span class="type-sample" style="font:400 12px/18px var(--font-body); color:var(--text-product)">大腿粗必入牛仔裤夏季薄款高腰不贴腿阔腿裤</span><span class="type-value">12px / 18px</span></div>
+          <div class="type-row"><span class="type-role">商品现价</span><span class="type-sample" style="font:400 16px/30px var(--font-body); color:var(--text-product)">￥179</span><span class="type-value">16px / 30px</span></div>
+          <div class="type-row"><span class="type-role">商品原价（划线）</span><span class="type-sample" style="font:400 14px/30px var(--font-body); color:var(--text-strikethrough); text-decoration: line-through">￥359</span><span class="type-value">14px / line-through</span></div>
+          <div class="type-row"><span class="type-role">页脚导航</span><span class="type-sample" style="font:400 16px/22px var(--font-body); color:var(--text-nav)">入驻多多国际　关于我们</span><span class="type-value">16px / 400</span></div>
+          <div class="type-row"><span class="type-role">页脚联系标题</span><span class="type-sample" style="font:400 24px/24px var(--font-body); color:var(--text-footer)">联系我们</span><span class="type-value">24px / 24px</span></div>
+          <div class="type-row"><span class="type-role">页脚版权</span><span class="type-sample" style="font:400 14px/1 var(--font-body); color:var(--text-faded)">Copyright 2015-2026 pinduoduo.com</span><span class="type-value">14px / 1</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>简体中文与中西文混排</h2></div>
+        <div class="panel-body">
+          <div class="cjk-stack">html / body:  <code>font: initial;</code>  (未显式声明 font-family)<br>局部栈（CSS 声明，非首页渲染）：<br>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,<br>"Helvetica Neue", Arial, "Noto Sans", sans-serif,<br>"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",<br>"Noto Color Emoji";<br>中文栈： "Arial", "Microsoft YaHei", "\9ED1\4F53", "\5B8B\4F53", sans-serif</div>
+          <p class="cjk-line">首页 <em>·</em> 拼多多商家入驻 · App专享优惠</p>
+          <p class="cjk-note">字形样本用于查看汉字、拉丁字母、数字与全角标点在当前字体栈下的呈现；不表示来源网站采用了这句文案或额外混排规则。站点未声明 <code>font-feature-settings</code>、<code>text-spacing-trim</code> 或任何 CJK-Latin 自动加空格的 CSS 处理。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>组件样本</h2><span class="more">更多 &gt;</span></div>
+      <div class="specimens">
+        <div class="component">
+          <span class="component-label">Header · 4px 品牌红底线</span>
+          <div class="site-nav">
+            <span class="item active">首页</span>
+            <span class="item">商家入驻</span>
+            <span class="item">热点资讯</span>
+            <span class="item">招聘</span>
+            <span class="item">帮助中心</span>
+            <span class="item">查快递</span>
+          </div>
+          <div class="more-link-demo">
+            <span class="title">精彩活动</span>
+            <span class="more">更多 &gt;</span>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">Goods · 商品卡示意</span>
+          <div class="goods-row">
+            <div class="goods-tile">
+              <div class="goods-img">125×125</div>
+              <div class="goods-title">牛仔裤夏季薄款高腰不贴腿阔腿</div>
+              <div class="goods-price"><span class="current">￥179</span><span class="strikethrough">￥359</span></div>
+            </div>
+            <div class="goods-tile">
+              <div class="goods-img">125×125</div>
+              <div class="goods-title">T恤女潮流简约上衣ins风</div>
+              <div class="goods-price"><span class="current">￥49.9</span><span class="strikethrough">￥129</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="component">
+          <span class="component-label">QR · 悬浮扫码卡</span>
+          <div class="qr-row">
+            <div class="qr-cell"><div class="qr-box">2px #ffedf1</div><p>微信扫码下载</p></div>
+            <div class="qr-cell"><div class="qr-box">扫码下载</div><p>App专享优惠</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>几何与节奏</h2><span class="more">更多 &gt;</span></div>
+      <div class="measurements">
+        <div class="measure">
+          <span class="measure-title">Spacing · Header 107 · Body 1200</span>
+          <div class="scale"><i style="--w:12px"></i><i style="--w:17px"></i><i style="--w:22px"></i><i style="--w:45px"></i><i style="--w:55px"></i></div>
+          <div class="measure-values">商品 margin 12 · 卡片 margin 17 / 45 · 分区标题 padding 17 · margin 55 / 45</div>
+          <div class="measure-note">Body width: 1200px · Header height: 107px · Cat-card padding 14 · Subject-card padding 10 · QR card 162×162</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Radius · 全站 0</span>
+          <div class="radius-row">
+            <div class="radius-chip"></div>
+          </div>
+          <div class="measure-values">all-visible: 0px（Header / 卡片 / 商品 / QR / 页脚）</div>
+          <div class="measure-note">CSS 中声明的 3 / 4 / 6 / 10 / 16 / 100px 圆角仅用于非首页的 Rocket UI 表单控件与招聘页标签，本页可见组件均为直角。</div>
+        </div>
+        <div class="measure">
+          <span class="measure-title">Elevation · 全站无阴影</span>
+          <div class="footer-mimic" style="padding: 12px 16px">
+            <div class="footer-nav">
+              <span class="fn-item">入驻多多国际</span>
+              <span class="fn-item">校园招聘</span>
+              <span class="fn-item">关于我们</span>
+              <span class="fn-item">下载App</span>
+            </div>
+            <div class="footer-copyright" style="padding: 12px">Copyright 2015-2026 pinduoduo.com · 版权所有</div>
+          </div>
+          <div class="measure-values">box-shadow: none（所有可见组件）</div>
+          <div class="measure-note">层级仅靠"白卡片压浅灰底"与 4px Header 品牌红线对比实现。</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>来源：<a href="https://www.pinduoduo.com/">https://www.pinduoduo.com/</a> · 2026-09-30 · 中国 · 未登录</span>
+      <span>桌面 1280×720 · 移动 390×844 · Playwright Headless Chromium · macOS</span>
+    </footer>
+  </main>
+</body>
+</html>
