@@ -84,6 +84,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | CRC / China Resources (华润) | [CRC](https://www.crc.com.cn/index.html) | — | — | |
 | Alipay Merchant (支付宝商户) | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
 | iQIYI (爱奇艺) | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |
+| 360 Group (360) | [360](https://360.com/) | [DESIGN.md](design-md/360/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/360/preview.html) | ✅ |
 
 ## Automatic extraction
 

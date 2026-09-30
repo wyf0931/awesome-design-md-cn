@@ -357,6 +357,21 @@
         "搜索框 8 0 0 8 半圆角"
       ],
       "url": "https://www.iqiyi.com/"
+    },
+    {
+      "slug": "360",
+      "name": "360 集团",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "Arial, Helvetica, sans-serif · Microsoft YaHei · -apple-system",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "en",
+      "tags": [
+        "#1BB954 招牌绿",
+        "方正按钮 r=0",
+        "白底 · 无阴影"
+      ],
+      "url": "https://360.com/"
     }
   ]
 }
