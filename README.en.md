@@ -4,16 +4,15 @@
 
 > A community-maintained, source-backed collection of DESIGN.md references for Chinese internet products.
 
-[Gallery](#browse-the-gallery) · [Contribute](CONTRIBUTING.md) · [Extractor setup](docs/agent-guide.md) · [Open an issue](https://github.com/wyf0931/awesome-design-md-cn/issues)
+## Overview
 
-## What is DESIGN.md?
+`DESIGN.md` is a Markdown design brief that helps coding agents follow a product's visual language. The Google format uses YAML front matter for machine-readable design tokens and Markdown sections for design rationale and usage guidance. See the [Google Stitch overview](https://stitch.withgoogle.com/docs/design-md/overview) and the [open format specification](https://github.com/google-labs-code/design.md).
 
-`DESIGN.md` is a Markdown design brief that helps coding agents follow a product's visual language. The Google format supports optional YAML front matter for machine-readable tokens and Markdown sections for design rationale and usage guidance. See the [Google Stitch overview](https://stitch.withgoogle.com/docs/design-md/overview) and the [open format specification](https://github.com/google-labs-code/design.md).
+This project analyzes publicly visible Chinese product interfaces and records measured values, source pages, capture conditions, and uncertainty. It follows the Google DESIGN.md section order and expands Typography for Chinese and CJK needs such as font fallback, line breaking, Chinese–Latin text, and Simplified/Traditional language variants. The upstream format is currently marked alpha; we track its spec and validate entries with its linter.
 
-| File | Role |
-|---|---|
-| `AGENTS.md` | Tells coding agents how to work in a repository |
-| `DESIGN.md` | Describes how the product UI should look and feel |
+The project is independent and is not affiliated with Google, the referenced brands, or the referenced collections. Brand names and marks belong to their respective owners. Analysis is based on public pages and official design materials; we avoid copying marketing copy, logos, and product imagery.
+
+## Quick start
 
 Copy a brand's `DESIGN.md` into your project, then ask your coding agent to use it as the visual specification while building a page:
 
@@ -23,28 +22,26 @@ cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
 
 For example, prompt your coding agent: “Build this page using the visual rules in `DESIGN.md`.” These files are design references; they do not replace implementation instructions in `AGENTS.md`.
 
-## About this collection
+| File | Role |
+|---|---|
+| `AGENTS.md` | Tells coding agents how to work in a repository |
+| `DESIGN.md` | Describes how the product UI should look and feel |
 
-This project analyzes publicly visible Chinese product interfaces and records measured values, source pages, capture conditions, and uncertainty. It follows the [Google DESIGN.md format](https://github.com/google-labs-code/design.md), keeping its canonical eight-section order (omitting sections only when they do not apply) and expanding Typography for Chinese and CJK needs such as font fallback, line breaking, Chinese–Latin text, and Simplified/Traditional language variants. The upstream format is currently marked alpha, so we track its spec and validate entries with its linter. The Japanese collection below is a reference for CJK typography; its brand analyses are not copied here.
+## Local preview
 
-The project is independent and is not affiliated with Google, the referenced brands, or the referenced collections. Brand names and marks belong to their respective owners. Analysis is based on public pages and official design materials; we avoid copying marketing copy, logos, and product imagery.
+The gallery is a self-contained static page. Open `gallery.html` directly in a browser — no server or dependencies required — or deploy it to GitHub Pages. It supports search, category filters, and inline previews.
 
-## Browse the gallery
-
-**Online preview:** [Open the gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html). Preview links in the platform table and gallery cards use the same HTML preview service for each checked-in `preview.html`.
-
-The gallery itself is static. For local development, build and serve it with Node.js 18+ and Python 3:
+Its source data is `design-md/index.json`. After editing it, regenerate the gallery:
 
 ```sh
-node build.mjs
-python3 -m http.server 8000
+node build.mjs   # requires Node.js 18+
 ```
 
-Open <http://localhost:8000/gallery.html> in a browser. The gallery supports search, category filters, and iframe previews; brand previews inside the iframe are rendered by a third-party HTML preview service. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
+Do not edit the generated `gallery.html` by hand; see the [development guide](docs/dev-guide.md) for details.
 
 ## Candidate platforms
 
-This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Online Preview links use a third-party HTML preview service to render the checked-in `preview.html` files; you can also use the Gallery link above.
+A ✅ means the source-backed `DESIGN.md` and preview are present; blank status means the item is still planned. Preview links render each checked-in `preview.html` through a third-party HTML preview service; use the Gallery link above to browse all previews.
 
 | Platform | Website | DESIGN.md | Online Preview | Status |
 |---|---|---|---|---|
@@ -91,9 +88,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 
 ## Automatic extraction
 
-The shared workflow lives in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). Open the repository with a coding agent that can read repository instructions and inspect web pages, then provide a target URL and ask it to follow the extractor skill. No specific model provider or agent runtime is required.
-
-See the [extractor guide](docs/agent-guide.md) for optional macOS browser capture tools and dependencies.
+The shared workflow lives in [AGENTS.md](AGENTS.md) and [the extractor skill](.agents/skills/design-md-cn-extractor/SKILL.md). Open the repository with a coding agent that can read repository instructions and inspect web pages, then provide a target URL and ask it to follow the extractor skill; no specific model provider or agent runtime is required. See the [extractor guide](docs/agent-guide.md) for optional macOS browser capture tools and dependencies.
 
 ## Contributing
 

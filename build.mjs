@@ -9,7 +9,13 @@ const githubBranch = 'main';
 const htmlPreviewService = 'https://github-html-preview.dohyeon5626.com/?';
 const githubBlobUrl = (file) => `https://github.com/${githubRepo}/blob/${githubBranch}/${file}`;
 const githubHtmlPreviewUrl = (file) => `${htmlPreviewService}${githubBlobUrl(file)}`;
-const data = JSON.parse(readFileSync(resolve(root, 'design-md/index.json'), 'utf8'));
+let data;
+try {
+  data = JSON.parse(readFileSync(resolve(root, 'design-md/index.json'), 'utf8'));
+} catch (error) {
+  console.error(`Cannot read design-md/index.json: ${error.message}`);
+  process.exit(1);
+}
 const ids = new Set();
 for (const category of data.categories) {
   if (!category.id || ids.has(category.id)) throw new Error(`Invalid or duplicate category id: ${category.id}`);
@@ -57,7 +63,7 @@ const cards = data.brands.map((brand) => {
   </article>`;
 }).join('\n');
 
-const empty = data.brands.length ? '' : `<section class="empty"><span class="empty-mark">01 — 20</span><h2>画廊框架已就绪</h2><p>首批品牌设计规范正在规划中。此仓库目前不包含已提取的品牌数据。</p><a href="README.md#计划收录的平台">查看 20 个候选平台 →</a></section>`;
+const empty = data.brands.length ? '' : `<section class="empty"><h2>画廊框架已就绪</h2><p>尚未收录品牌设计规范。</p><a href="README.md#候选平台">查看候选平台 →</a></section>`;
 
 const html = `<!doctype html>
 <html lang="zh-CN">
@@ -71,7 +77,7 @@ const html = `<!doctype html>
     a{color:inherit}.shell{max-width:1440px;margin:auto;padding:36px 48px 64px}.masthead{display:flex;flex-direction:column;align-items:center;padding-bottom:22px;border-bottom:1px solid var(--line);text-align:center}.brand{font-size:25px;font-weight:750;letter-spacing:-.045em}.top-note{margin-top:7px;font-size:12px;color:var(--muted)}
     .toolbar{display:flex;justify-content:center;align-items:center;gap:16px;padding:22px 0;border:0}.filters{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:99px;background:transparent;padding:7px 13px;color:var(--muted);font:inherit;font-size:11px;cursor:pointer;transition:background .16s,border-color .16s,color .16s}.filter:hover{border-color:#b9c0ce;color:var(--ink)}.filter.active{background:var(--ink);color:white;border-color:var(--ink)}.search{width:210px;padding:8px 11px;border:1px solid var(--line);border-radius:7px;background:white;font:inherit;font-size:12px;outline:none}.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px #315efb20}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),420px));justify-content:center;gap:16px}.card{overflow:hidden;border:1px solid var(--line);border-radius:11px;background:var(--white);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px #20283d12}.preview{position:relative;display:block;width:100%;height:270px;overflow:hidden;border:0;border-bottom:1px solid var(--line);background:#eef0f4;cursor:pointer;text-align:left}.preview iframe{width:1440px;height:900px;border:0;transform:scale(.29);transform-origin:top left;pointer-events:none}.overlay{position:absolute;inset:0;display:grid;place-items:center;background:#10182800;color:#fff;font-size:13px;opacity:0;transition:.2s}.preview:hover .overlay,.preview:focus-visible .overlay{background:#10182866;opacity:1}.card-body{display:flex;justify-content:space-between;gap:14px;padding:15px 16px 13px}.card-body h2{margin:0;font-size:15px}.card-body p,.details{margin:5px 0 0;color:var(--muted);font-size:10px}.card-body .language{margin-top:3px;font-size:9px}.details{text-align:right}.tags{display:flex;justify-content:flex-end;gap:5px;margin-top:7px}.tag{padding:3px 6px;border-radius:4px;background:#f0f2f6;color:#4b5565;font-size:9px}.links{display:flex;gap:14px;padding:10px 16px;border-top:1px solid var(--line);font-size:10px}.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--accent)}
-    .empty{min-height:280px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px dashed #cfd4de;border-radius:14px;background:#fff}.empty-mark{font-size:11px;letter-spacing:.14em;color:var(--accent)}.empty h2{margin:15px 0 6px;font-size:22px;letter-spacing:-.04em}.empty p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.empty a{margin-top:18px;color:var(--accent);font-size:12px;text-decoration:none}
+    .empty{min-height:280px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px dashed #cfd4de;border-radius:14px;background:#fff}.empty h2{margin:15px 0 6px;font-size:22px;letter-spacing:-.04em}.empty p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.empty a{margin-top:18px;color:var(--accent);font-size:12px;text-decoration:none}
     .footer{display:flex;justify-content:space-between;margin-top:42px;padding-top:15px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}
     dialog{width:min(1200px,94vw);height:min(90vh,900px);padding:0;border:0;border-radius:12px;box-shadow:0 24px 90px #0004}dialog::backdrop{background:#11182799}.dialog-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);font-size:13px}.close{border:0;background:none;font-size:23px;cursor:pointer;color:var(--muted)}dialog iframe{width:100%;height:calc(100% - 52px);border:0}
     @media(max-width:980px){.shell{padding:28px 24px 48px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar{flex-direction:column;gap:12px}.search{width:min(100%,360px)}}

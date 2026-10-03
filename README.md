@@ -4,18 +4,17 @@
 
 > 面向中国互联网产品的可溯源 DESIGN.md 规范与预览集合。
 
-我们从公开网站和官方设计资料中整理设计规则，帮助设计师与 coding agent 更准确地理解、复现产品界面。
+## 简介
 
-## DESIGN.md 是什么？
+`DESIGN.md` 是供 coding agent 阅读的设计说明，描述产品界面的视觉语言。Google 定义的格式在 Markdown 顶部用 YAML front matter 存放机器可读的设计 token，正文记录设计意图与用法。详见 [Google Stitch 介绍](https://stitch.withgoogle.com/docs/design-md/overview)与[格式规范](https://github.com/google-labs-code/design.md)。
 
-`DESIGN.md` 是供 coding agent 阅读的设计说明，描述产品界面的视觉语言。Google 定义的格式允许在 Markdown 文档顶部加入 YAML front matter，提供机器可读的设计 token；正文则记录设计意图和用法。详见 [Google Stitch 介绍](https://stitch.withgoogle.com/docs/design-md/overview)和[格式规范](https://github.com/google-labs-code/design.md)。
+本项目整理公开可见的中文产品界面，记录实测值、来源页面、采集条件与不确定项。它遵循 Google DESIGN.md 的标准章节顺序，并在 Typography 一章扩展中文字体回退、断行、中英文混排与简繁语言场景。上游格式目前标记为 alpha，本项目跟进其规范，并用官方 linter 校验设计文件。
 
-| 文件 | 用途 |
-|---|---|
-| `AGENTS.md` | 告诉 coding agent 如何在仓库中工作 |
-| `DESIGN.md` | 告诉 coding agent 产品界面应有的视觉表现 |
+本项目由社区独立维护，与 Google、所收录品牌及相关参考项目均无隶属关系。品牌名称与标识归各自所有者所有；分析依据公开页面与官方设计资料，不复制营销文案、Logo 或产品图片。
 
-将某个品牌的 `DESIGN.md` 复制到自己的项目，再告诉 coding agent 按其中的视觉规则实现界面：
+## 快速开始
+
+把某个品牌的 `DESIGN.md` 复制进你的项目，再让 coding agent 参考它：
 
 ```sh
 cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
@@ -23,28 +22,26 @@ cp design-md/aliyun-bailian/DESIGN.md ./DESIGN.md
 
 例如：“请按 `DESIGN.md` 中的视觉规则构建这个页面。”`DESIGN.md` 描述视觉规范，`AGENTS.md` 描述项目工作方式，两者各有用途。
 
-## 项目介绍
+| 文件 | 用途 |
+|---|---|
+| `AGENTS.md` | 告诉 coding agent 如何在仓库中工作 |
+| `DESIGN.md` | 告诉 coding agent 产品界面应有的视觉表现 |
 
-本项目分析公开可见的中文产品界面，并记录实测值、来源页面、采集条件和不确定项。我们遵循 Google DESIGN.md 的八个标准章节顺序，并在 Typography 章节中扩展中文与 CJK 排版内容，包括字体回退、断行、中英文混排和简繁语言场景。上游格式目前标记为 alpha；本项目跟进其规范，并使用官方 linter 校验设计文件。日本版仓库为 CJK 排版提供了参考，我们不会复制其中的品牌分析。
+## 本地预览
 
-本项目由社区独立维护，与 Google、所收录品牌及相关参考项目均无隶属关系。品牌名称和标识归各自所有者所有。我们依据公开页面和官方设计资料分析，不复制营销文案、Logo 或产品图片。
+画廊是自包含的静态页面，直接用浏览器打开 `gallery.html` 即可，无需服务器或额外依赖，也可部署到 GitHub Pages；它支持搜索、分类筛选和内嵌预览。
 
-## 浏览画廊
-
-**在线预览：** [打开 Gallery](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/gallery.html)。品牌表和 gallery 卡片中的 Preview 链接会通过同一 HTML 预览服务打开仓库里的 `preview.html`。
-
-画廊本身是静态页面。需要本地开发时，使用 Node.js 18+ 和 Python 3：
+数据源是 `design-md/index.json`。修改后需重新生成 `gallery.html`：
 
 ```sh
-node build.mjs
-python3 -m http.server 8000
+node build.mjs   # 需要 Node.js 18+
 ```
 
-然后打开 <http://localhost:8000/gallery.html>。画廊支持搜索、分类筛选和 iframe 预览；iframe 中的品牌预览由第三方 HTML 预览服务渲染。卡片数据源是 `design-md/index.json`；请修改数据源后运行构建脚本，不要直接编辑生成文件 `gallery.html`。
+不要直接编辑生成文件 `gallery.html`；更多开发细节见[开发指南](docs/dev-guide.md)。
 
 ## 候选平台
 
-✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。在线 Preview 链接通过第三方 HTML 预览服务读取仓库里的 `preview.html`；也可以使用上面的 Gallery 入口查看。
+✅ 表示已有可核实的 `DESIGN.md` 和预览页；空白表示仍在计划中。Preview 链接通过第三方 HTML 预览服务读取仓库里的 `preview.html`，也可用顶部 Gallery 入口浏览全部预览。
 
 | 平台 | 网站 | DESIGN.md | 在线预览 | 状态 |
 |---|---|---|---|---|
@@ -91,9 +88,7 @@ python3 -m http.server 8000
 
 ## 自动提取
 
-仓库使用根目录 [AGENTS.md](AGENTS.md) 和[提取 Skill](.agents/skills/design-md-cn-extractor/SKILL.md) 描述通用工作流。使用能读取仓库指令并检查网页的 coding agent 打开仓库，然后提供目标网站 URL 并要求它遵循提取 Skill，即可继续添加品牌。无需特定模型供应商或 agent 运行时。
-
-macOS 浏览器采集工具及可选依赖见[提取指南](docs/agent-guide.md)。
+提取流程写在根目录 [AGENTS.md](AGENTS.md) 和[提取 Skill](.agents/skills/design-md-cn-extractor/SKILL.md)。用能读取仓库指令并检查网页的 coding agent 打开仓库，提供目标网站 URL 并让它遵循提取 Skill，即可继续添加品牌；无需特定模型供应商或 agent 运行时。macOS 浏览器采集工具与可选依赖见[提取指南](docs/agent-guide.md)。
 
 ## 参与贡献
 
