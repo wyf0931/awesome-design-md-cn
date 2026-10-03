@@ -269,6 +269,21 @@
       "url": "https://www.lenovo.com.cn/"
     },
     {
+      "slug": "vivo",
+      "name": "vivo",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "vivoSansSC / VIVO-FONT-NAV · sans-serif / 微软雅黑",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#415fff",
+        "radius:24px",
+        "vivoSansSC"
+      ],
+      "url": "https://www.vivo.com/"
+    },
+    {
       "slug": "jdcloud",
       "name": "京东云 JD Cloud",
       "category": "technology",
