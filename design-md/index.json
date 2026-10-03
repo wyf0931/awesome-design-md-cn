@@ -387,6 +387,21 @@
         "无阴影 · 圆角分层"
       ],
       "url": "https://www.bilibili.com/"
+    },
+    {
+      "slug": "oppo",
+      "name": "OPPO",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "OPPOSans-Ver2（Regular / Medium）· Helvetica / Arial / system-ui 回退",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#000000 强调",
+        "radius:0/36px",
+        "14px base"
+      ],
+      "url": "https://www.oppo.com/cn/"
     }
   ]
 }

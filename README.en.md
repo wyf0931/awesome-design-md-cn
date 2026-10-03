@@ -85,6 +85,7 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | iQIYI (爱奇艺) | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |
 | 360 Group (360) | [360](https://360.com/) | [DESIGN.md](design-md/360/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/360/preview.html) | ✅ |
 | bilibili (哔哩哔哩) | [bilibili](https://www.bilibili.com/) | [DESIGN.md](design-md/bilibili/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/bilibili/preview.html) | ✅ |
+| OPPO | [OPPO](https://www.oppo.com/cn/) | [DESIGN.md](design-md/oppo/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/oppo/preview.html) | ✅ |
 | State Grid (国家电网) | [State Grid](http://www.sgcc.com.cn/) | — | — | ⚠️ Blocked (site JS challenge blocks AI Agents) |
 | Kuaishou (快手) | [Kuaishou](https://www.kuaishou.com/) | — | — | ⚠️ Blocked (server detects headless, returns JSON error) |
 | Douyin (抖音) | [Douyin](https://www.douyin.com/) | — | — | ⚠️ Blocked (verification page with JS challenge) |
