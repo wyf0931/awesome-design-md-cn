@@ -27,6 +27,7 @@ typography:
     fontFamily: '"OPPOSans-Ver2-Regular", Helvetica, Arial, sans-serif, system-ui'
     fontSize: "32px"
     lineHeight: "40px"
+    letterSpacing: "0.5px"
   card-title:
     fontFamily: '"OPPOSans-Ver2-Medium", Helvetica, Arial, sans-serif, system-ui'
     fontSize: "24px"
@@ -40,9 +41,23 @@ typography:
     fontSize: "16px"
     lineHeight: "24px"
   nav:
-    fontFamily: '"OPPOSans-Ver2-Regular", Helvetica, Arial, sans-serif, system-ui'
+    fontFamily: '"OPPOSans-Ver2-Medium", Helvetica, Arial, sans-serif, system-ui'
     fontSize: "14px"
     lineHeight: "52px"
+    letterSpacing: "0.28px"
+  header-link:
+    fontFamily: '"OPPOSans-Ver2-Regular", Helvetica, Arial, sans-serif, system-ui'
+    fontSize: "14px"
+    lineHeight: "22px"
+  footer-link:
+    fontFamily: '"OPPOSans-Ver2-Regular", Helvetica, Arial, sans-serif, system-ui'
+    fontSize: "14px"
+    lineHeight: "22px"
+    letterSpacing: "0.5px"
+  footer-legal:
+    fontFamily: '"OPPOSans-Ver2-Regular", Helvetica, Arial, sans-serif, system-ui'
+    fontSize: "12px"
+    lineHeight: "20px"
     letterSpacing: "0.5px"
   cta:
     fontFamily: '"OPPOSans-Ver2-Medium", Helvetica, Arial, sans-serif, system-ui'
@@ -80,7 +95,7 @@ components:
     typography: "{typography.nav}"
   nav-link:
     textColor: "{colors.text-secondary}"
-    typography: "{typography.nav}"
+    typography: "{typography.header-link}"
   nav-dropdown-button:
     textColor: "{colors.text-secondary}"
     rounded: "4px"
@@ -118,7 +133,7 @@ components:
     textColor: "{colors.text-primary}"
     typography: "{typography.card-title}"
   section-header:
-    textColor: "{colors.text-strong}"
+    textColor: "{colors.text-primary}"
     typography: "{typography.section-title}"
   explore-band:
     backgroundColor: "{colors.band}"
@@ -134,7 +149,10 @@ components:
     padding: "0 0 12px"
   footer-link:
     textColor: "{colors.text-secondary}"
-    typography: "{typography.caption}"
+    typography: "{typography.footer-link}"
+  footer-legal:
+    textColor: "{colors.text-secondary}"
+    typography: "{typography.footer-legal}"
   cookie-banner:
     textColor: "{colors.text-muted}"
     typography: "{typography.caption}"
@@ -162,7 +180,7 @@ components:
 |---|---|---|---|
 | `primary` | `#000000` | 唯一强调色 / 主按钮底色 | `.new-button--primary` computed `rgb(0, 0, 0)`（“了解更多”“立即购买”） |
 | `text-primary` | `rgba(0, 0, 0, 0.95)` | 卡片标题、Hero 文案、页脚标题 | `.feature-product` 标题、`.footer-nav-title`、`.cmp__general-content-card` computed |
-| `text-strong` | `#000000` | 正文 / 链接 / 按钮文字 | `body` computed `rgb(0, 0, 0)`；“立即购买”链接、页脚语言链接 |
+| `text-strong` | `#000000` | 正文 / 链接 / 按钮文字 / “服务与支持”区标题 | `body` computed `rgb(0, 0, 0)`；“立即购买”链接、“服务与支持” `h2` |
 | `text-secondary` | `rgba(0, 0, 0, 0.55)` | 顶部导航、页脚正文与链接 | `.nav`、`.cmp-footer`、官方导航项 computed |
 | `text-muted` | `rgba(0, 0, 0, 0.7)` | Cookie 同意条说明文字 | Cookie 提示 computed |
 | `text-on-dark` | `#ffffff` | 黑底按钮文字 | `.new-button--primary` computed `rgb(255, 255, 255)` |
@@ -205,12 +223,16 @@ font-family: OPPOSans-Ver2-Medium;
 | Role | Font | Size | Weight | Line Height | Letter Spacing | 用途 / 来源 |
 |---|---|---:|---:|---:|---:|---|
 | Display（Hero 产品名） | OPPOSans-Ver2-Medium | 42px | 400 | 54px | normal | “Find X10 系列” computed（桌面） |
-| Section Title | OPPOSans-Ver2-Regular | 32px | 400 | 40px | normal | “OPPO Reno16 系列”“服务与支持” `h2` computed（桌面） |
+| Section Title（Medium） | OPPOSans-Ver2-Medium | 32px | 400 | 40px | 0.5px | “OPPO Reno16 系列” `h2` computed，颜色 `rgba(0,0,0,0.95)`（桌面） |
+| Section Title（Regular） | OPPOSans-Ver2-Regular | 32px | 400 | 40px | 0.5px | “服务与支持” `h2` computed，颜色 `rgb(0,0,0)`（桌面） |
 | Card Title | OPPOSans-Ver2-Medium | 24px | 400 | 32px | normal | “哈 苏 超 清 原 相 机” computed（桌面） |
 | Card Title（Regular 变体） | OPPOSans-Ver2-Regular | 24px | 400 | 32px | normal | “更多新品” `h2` computed（桌面） |
 | Body Strong | OPPOSans-Ver2-Medium | 20px / 16px | 400 | 28px / 24px | normal | “ColorOS 17” 20px；“您如何评价OPPO官网?” 16px |
 | Body | OPPOSans-Ver2-Regular | 16px | 400 | 24px | normal | “打开实况想象力 / 我有我的生命力”“服务中心查询及预约” |
-| Nav / Link | OPPOSans-Ver2-Regular | 14px | 400 | 22–52px | 0.5px | 顶部导航项行高 52px；正文链接行高 22px |
+| 顶部导航下拉项 | OPPOSans-Ver2-Medium | 14px | 400 | 52px | 0.28px | “OPPO 产品 / 一加产品 / 真我产品 / 关于 OPPO / ColorOS” computed |
+| 顶部导航纯链接 | OPPOSans-Ver2-Regular | 14px | 400 | 22px | normal | “官方商城 / 服务 / 企业业务” computed |
+| 页脚产品链接 | OPPOSans-Ver2-Regular | 14px | 400 | 22px | 0.5px | “Find N6 / Find X10 系列”等 computed |
+| 页脚政策链接 | OPPOSans-Ver2-Regular | 12px | 400 | 20px | 0.5px | “隐私政策”“粤ICP备08130115号” computed |
 | CTA | OPPOSans-Ver2-Medium | 14px | 400 | 40px | 0.5px | `.new-button--primary` computed |
 | Caption | OPPOSans-Ver2-Regular | 12px | 400 | 20px | 0.5px | Cookie 说明、页脚政策链接、搜索框文字 |
 
@@ -220,7 +242,7 @@ font-family: OPPOSans-Ver2-Medium;
 
 - **标题行高**：Display 42px / 54px（≈1.286）；Section Title 32px / 40px（1.25）；Card Title 24px / 32px（≈1.333）。
 - **正文行高**：16px / 24px（1.5）；Cookie 与页脚小字 12px / 20px（≈1.667）。
-- **字距**：顶部导航、正文链接、按钮、页脚小字 computed `letter-spacing` 为 `0.5px`；大标题、卡片标题 computed 为 `normal`。
+- **字距**：顶部导航下拉项为 `0.28px`、顶部纯链接为 `normal`；页脚标题与链接、按钮、正文链接为 `0.5px`；大标题、卡片标题为 `normal`。
 - **段落与列表间距**：产品卡 padding 20px（半宽卡为 `20px 20px 8px`）；分区标题 `margin-bottom: 20px`；页脚分类标题 `padding-bottom: 12px`；探索 OPPO 色带 `padding-bottom: 80px`（移动 48px）。
 
 ### 3.6 中文断行与标点禁则
@@ -281,8 +303,8 @@ font-family: OPPOSans-Ver2-Medium;
 |---|---|---|---|---:|---|---|
 | 顶部导航栏 | `#ffffff` | `rgba(0,0,0,0.55)` | none | 0 | 1280×52px，`z-index: 201` | `header.header-v2` computed |
 | 品牌 Logo | transparent | — | none | 0 | 85×22px，`margin-right: 26px` | `.logo` computed |
-| 导航项（桌面） | transparent | `rgba(0,0,0,0.55)` | none | 0 | 14px / 行高 52px，“OPPO 产品”97.36×52px | 导航 `li` + 内部文本 computed |
-| 导航下拉按钮 | transparent | `rgba(0,0,0,0.55)` | none | 4px | 14px / 行高 22px | 导航切换 `button` computed |
+| 导航下拉触发器（桌面） | transparent | `rgba(0,0,0,0.55)` | none | 4px | 14px / Medium / 52px / 0.28px，“OPPO 产品”等 5 项 | 顶部导航 `a` computed |
+| 导航纯链接（桌面） | transparent | `rgba(0,0,0,0.55)` | none | 0 | 14px / Regular / 22px / normal，“官方商城”等 3 项 | 顶部导航 `a` computed |
 | Button primary（了解更多） | `#000000` | `#ffffff` | none | 36px | 95.66×40px，padding 0 20px，14px / 40px / 0.5px | `.new-button--primary` computed |
 | Button primary（移动） | `#000000` | `#ffffff` | none | 36px | 90×32px，padding 0 16px，12px / 32px | 移动 `.new-button--primary` computed |
 | Button link（立即购买） | transparent | `#000000` | none | 0 | 55.66×22px，14px / 22px / 0.5px | `.new-button--link` computed |
@@ -291,12 +313,13 @@ font-family: OPPOSans-Ver2-Medium;
 | 全宽产品卡（Reno16） | `#e7e7ea` | `rgba(0,0,0,0.95)` | none | 0 | 1152×460px，padding 20px | `.feature-product-container` computed |
 | 半宽产品卡（A7 Pro Max / K15 Pro） | `#f6f6f6` | `rgba(0,0,0,0.95)` | none | 0 | 574×406px，padding 20px 20px 8px | `.feature-product-container.col-2` computed |
 | 产品卡图片槽 | transparent | — | none | 0 | 534×240px（半宽卡内） | `.feature-product-img` computed |
-| 分区标题（更多新品 / 服务与支持） | transparent | `#000000` | none | 0 | 32px / 40px，`margin-bottom: 20px` | `.feature-product-header` 及 `h2` computed |
+| 分区标题（Reno16 / 服务与支持） | transparent | `rgba(0,0,0,0.95)` / `#000000` | none | 0 | 32px / 40px / 0.5px，`margin-bottom: 20px` | 产品 `h2` 与“服务与支持” `h2` computed |
 | 探索 OPPO 色带 | `#e0e8ea` | `rgba(0,0,0,0.95)` | none | 0 | 整宽 1280×516.44px，`padding-bottom: 80px` | `.cmp__general-content-card` computed |
 | 探索内容轮播卡 | transparent | `rgba(0,0,0,0.95)` | none | 0 | 378.66×360.44px，间距 8px | `.swiper-slide` computed |
 | 页脚 | `#f0f0f0` | `rgba(0,0,0,0.55)` | none | 0 | 1280×833px，14px | `.cmp-footer` computed |
 | 页脚分类标题 | transparent | `rgba(0,0,0,0.95)` | none | 0 | 16px / 24px / 0.5px，`padding-bottom: 12px` | `.footer-nav-title` computed |
-| 页脚链接 | transparent | `rgba(0,0,0,0.55)` | none | 0 | 12px / 20px / 0.5px | 页脚“隐私政策”等 computed |
+| 页脚产品链接 | transparent | `rgba(0,0,0,0.55)` | none | 0 | 14px / 22px / 0.5px | 页脚“Find N6”等 computed |
+| 页脚政策链接 | transparent | `rgba(0,0,0,0.55)` | none | 0 | 12px / 20px / 0.5px | 页脚“隐私政策”“粤ICP备08130115号” computed |
 | 语言 / 地区入口 | transparent | `rgba(0,0,0,0.95)` | none | 0 | 14px / 22px | “China(简体中文)” computed |
 | Cookie 同意条 | transparent | `rgba(0,0,0,0.7)` | none | 0 | 12px / 20px；行动文字 `#000000` | Cookie 提示 computed |
 
@@ -312,7 +335,7 @@ font-family: OPPOSans-Ver2-Medium;
 - **Do** 保持“直角色面卡片 + 药丸控件”的对比：产品卡与内容带 0 圆角，按钮 36px、搜索框 32px。
 - **Do** 用四段色面建立层级：白底 `#ffffff`、产品卡 `#e7e7ea` / `#f6f6f6`、内容带 `#e0e8ea`、页脚 `#f0f0f0`，不依赖描边或阴影。
 - **Do** 区分三档文字色：`rgba(0,0,0,0.95)`（标题 / 正文强调）、`#000000`（正文 / 链接）、`rgba(0,0,0,0.55)`（导航 / 页脚 / 次级信息），Cookie 说明为 `rgba(0,0,0,0.7)`。
-- **Do** 保留品牌无衬线 `OPPOSans-Ver2` 的 Regular / Medium 两档，并保留导航与按钮上 `0.5px` 的轻微字距。
+- **Do** 保留品牌无衬线 `OPPOSans-Ver2` 的 Regular / Medium 两档，并保留顶部下拉项 `0.28px`、页脚链接与按钮 `0.5px` 的轻微字距。
 - **Don't** 把回退链中的 `Helvetica, Arial, sans-serif, system-ui` 说成实际渲染字体；本次未通过字体枚举验证 OPPOSans 或任一系统字体。
 - **Don't** 为未观测的阴影、圆角卡片、第二个强调色、断行规则、OpenType 特性、hover / focus 状态、平板断点、导航折叠动画、繁体入口或国际版页面补写规范。
 - **Accessibility**：页面提供 “Skip to main content” 跳转链接（14px）与语义化 `header` / `nav` / `footer`；未做键盘遍历、对比度、触控目标或焦点可见性验证。

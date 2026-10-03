@@ -73,7 +73,8 @@
     .btn-link { display: inline-flex; align-items: center; height: 22px; padding: 0; border: 0; background: transparent; color: var(--text); font: 400 14px/22px var(--font-medium); letter-spacing: .5px; text-decoration: none; }
     .field { height: 40px; display: flex; align-items: center; padding: 0 32px; border: 1px solid var(--line); border-radius: var(--r-search); background: var(--surface); color: var(--muted); font-size: 12px; }
     .nav-sample { display: flex; align-items: center; gap: 22px; height: 52px; padding: 0 16px; border: 1px solid var(--line); background: #fff; }
-    .nav-sample a { color: var(--muted); font: 400 14px/52px var(--font-body); letter-spacing: .5px; text-decoration: none; }
+    .nav-sample a { color: var(--muted); font: 400 14px/52px var(--font-medium); letter-spacing: .28px; text-decoration: none; }
+    .nav-sample a.plain { font-family: var(--font-body); letter-spacing: normal; }
     .nav-chip { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--r-control); color: var(--muted); font: 400 14px/22px var(--font-body); }
     .feature-full { padding: 20px; border-radius: var(--r-sharp); background: var(--surface-alt); }
     .feature-half { padding: 20px 20px 8px; border-radius: var(--r-sharp); background: var(--surface); }
@@ -172,7 +173,8 @@
           <div class="type-row"><span class="type-role">Card Title R</span><strong class="type-sample" style="font:400 24px/32px var(--font-body)">更多新品</strong><span class="type-value">24 / 32 · Regular</span></div>
           <div class="type-row"><span class="type-role">Body Strong</span><strong class="type-sample" style="font:400 20px/28px var(--font-medium)">系统名称样本</strong><span class="type-value">20 / 28 · Medium</span></div>
           <div class="type-row"><span class="type-role">Body</span><strong class="type-sample" style="font:400 16px/24px var(--font-body)">正文样本：中文与数字 2026</strong><span class="type-value">16 / 24 · Regular</span></div>
-          <div class="type-row"><span class="type-role">Nav / Link</span><strong class="type-sample" style="font:400 14px/52px var(--font-body); letter-spacing:.5px">产品分类</strong><span class="type-value">14 / 52 · ls .5px</span></div>
+          <div class="type-row"><span class="type-role">Nav（顶部）</span><strong class="type-sample" style="font:400 14px/52px var(--font-medium); letter-spacing:.28px">产品分类</strong><span class="type-value">14 / 52 · Medium · ls .28px</span></div>
+          <div class="type-row"><span class="type-role">Footer Link</span><strong class="type-sample" style="font:400 14px/22px var(--font-body); letter-spacing:.5px">产品链接样本</strong><span class="type-value">14 / 22 · ls .5px</span></div>
           <div class="type-row"><span class="type-role">CTA</span><strong class="type-sample" style="font:400 14px/40px var(--font-medium); letter-spacing:.5px">了解更多</strong><span class="type-value">14 / 40 · ls .5px</span></div>
           <div class="type-row"><span class="type-role">Caption</span><strong class="type-sample" style="font:400 12px/20px var(--font-body); letter-spacing:.5px">说明与政策链接</strong><span class="type-value">12 / 20 · ls .5px</span></div>
         </div>
@@ -192,7 +194,7 @@
       <div class="specimens">
         <div class="component"><span class="component-label">按钮家族 · 黑底药丸 36px / 纯文字链接</span><div class="button-row"><span class="btn-primary">了解更多</span><a class="btn-link" href="#">立即购买</a></div></div>
         <div class="component"><span class="component-label">搜索框 · 32px 圆角 · 1px #dcdcdc 描边</span><div class="field">搜索内容</div></div>
-        <div class="component"><span class="component-label">顶部导航 · 52px 高 · 14px / 0.5px</span><div class="nav-sample"><a href="#">产品分类</a><a href="#">系统服务</a><span class="nav-chip">更多入口</span></div></div>
+        <div class="component"><span class="component-label">顶部导航 · 52px · 14px Medium 0.28px / Regular</span><div class="nav-sample"><a href="#">产品分类</a><a class="plain" href="#">系统服务</a><span class="nav-chip">更多入口</span></div></div>
         <div class="component"><span class="component-label">全宽产品卡 · #e7e7ea · 0 圆角</span><div class="feature-full"><p class="feature-title">全宽产品卡样本</p><div class="feature-img" aria-hidden="true"></div></div></div>
         <div class="component"><span class="component-label">半宽产品卡 · #f6f6f6 · padding 20 20 8</span><div class="feature-half"><p class="feature-title">半宽卡样本</p><p class="feature-desc">说明文字样本</p><div class="feature-img" aria-hidden="true"></div></div></div>
         <div class="component"><span class="component-label">内容带 · #e0e8ea · 轮播卡 8px 间距</span><div class="band"><div class="band-row"><div class="band-slide"><strong>轮播卡一</strong><span>说明文字</span></div><div class="band-slide"><strong>轮播卡二</strong><span>说明文字</span></div><div class="band-slide"><strong>轮播卡三</strong><span>说明文字</span></div></div></div></div>
