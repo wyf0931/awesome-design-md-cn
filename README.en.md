@@ -42,7 +42,7 @@ python3 -m http.server 8000
 
 Open <http://localhost:8000/gallery.html> in a browser. The gallery supports search, category filters, and iframe previews; brand previews inside the iframe are rendered by a third-party HTML preview service. Its source data is `design-md/index.json`; edit that file and rebuild instead of editing `gallery.html` by hand.
 
-## First 20 candidate platforms
+## Candidate platforms
 
 This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` and preview are present and included in the gallery. Blank status means the item is still planned. Online Preview links use a third-party HTML preview service to render the checked-in `preview.html` files; you can also use the Gallery link above.
 
@@ -66,7 +66,6 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Ctrip / Trip.com (携程) | [Ctrip](https://www.ctrip.com/) | [DESIGN.md](design-md/ctrip/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/ctrip/preview.html) | ✅ |
 | Xiaohongshu (小红书) | [Xiaohongshu](https://www.xiaohongshu.com) | — | — | |
 | Sina (新浪) | [Sina](https://www.sina.com.cn) | — | — | |
-| Douyin (抖音) | [Douyin](https://www.douyin.com) | — | — | |
 | WeChat Open Platform (微信开放平台) | [PC OpenSDK Guide](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html) | [DESIGN.md](design-md/wechat/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/wechat/preview.html) | ✅ |
 | JD.com (京东) | [JD.com](https://www.jd.com) | — | — | |
 | Taobao (淘宝) | [Taobao](https://www.taobao.com) | — | — | |
@@ -79,8 +78,6 @@ This is the initial collection plan. A ✅ means the source-backed `DESIGN.md` a
 | Jianshu (简书) | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 | CSDN | [CSDN](https://www.csdn.net/) | [DESIGN.md](design-md/csdn/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/csdn/preview.html) | ✅ |
 | Youku (优酷) | [Youku](https://www.youku.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/preview.html) | ✅ |
-| Kuaishou (快手) | [Kuaishou](https://www.kuaishou.com/?isHome=1&source=NewReco) | — | — | |
-| ICBC (中国工商银行) | [ICBC](https://icbc.com.cn/) | — | — | |
 | CRC / China Resources (华润) | [CRC](https://www.crc.com.cn/index.html) | — | — | |
 | Alipay Merchant (支付宝商户) | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
 | iQIYI (爱奇艺) | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |

@@ -42,7 +42,7 @@ python3 -m http.server 8000
 
 然后打开 <http://localhost:8000/gallery.html>。画廊支持搜索、分类筛选和 iframe 预览；iframe 中的品牌预览由第三方 HTML 预览服务渲染。卡片数据源是 `design-md/index.json`；请修改数据源后运行构建脚本，不要直接编辑生成文件 `gallery.html`。
 
-## 首批 20 个候选平台
+## 候选平台
 
 ✅ 表示已有来源可核实的 `DESIGN.md` 和预览页，并已加入画廊；空白表示仍在计划中。在线 Preview 链接通过第三方 HTML 预览服务读取仓库里的 `preview.html`；也可以使用上面的 Gallery 入口查看。
 
@@ -66,7 +66,6 @@ python3 -m http.server 8000
 | 携程 | [Ctrip](https://www.ctrip.com/) | [DESIGN.md](design-md/ctrip/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/ctrip/preview.html) | ✅ |
 | 小红书 | [Xiaohongshu](https://www.xiaohongshu.com) | — | — | |
 | 新浪 | [Sina](https://www.sina.com.cn) | — | — | |
-| 抖音 | [Douyin](https://www.douyin.com) | — | — | |
 | 微信开放平台 | [PC OpenSDK 接入指南](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_PC_APIs/guideline.html) | [DESIGN.md](design-md/wechat/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/wechat/preview.html) | ✅ |
 | 京东 | [JD.com](https://www.jd.com) | — | — | |
 | 淘宝 | [Taobao](https://www.taobao.com) | — | — | |
@@ -79,8 +78,6 @@ python3 -m http.server 8000
 | 简书 | [Jianshu](https://www.jianshu.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/jianshu/preview.html) | ✅ |
 | CSDN | [CSDN](https://www.csdn.net/) | [DESIGN.md](design-md/csdn/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/csdn/preview.html) | ✅ |
 | 优酷 | [Youku](https://www.youku.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/youku/preview.html) | ✅ |
-| 快手 | [Kuaishou](https://www.kuaishou.com/?isHome=1&source=NewReco) | — | — | |
-| 中国工商银行 | [ICBC](https://icbc.com.cn/) | — | — | |
 | 华润 | [CRC](https://www.crc.com.cn/index.html) | — | — | |
 | 支付宝商户 | [Alipay Merchant](https://b.alipay.com/page/portal/home) | [DESIGN.md](design-md/alipay-merchant/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/alipay-merchant/preview.html) | ✅ |
 | 爱奇艺 | [iQIYI](https://www.iqiyi.com/) | [DESIGN.md](design-md/iqiyi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/iqiyi/preview.html) | ✅ |
