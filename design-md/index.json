@@ -417,6 +417,21 @@
         "纯黑胶囊 CTA · radius 24/48px"
       ],
       "url": "https://www.honor.com/cn/"
+    },
+    {
+      "slug": "oppo",
+      "name": "OPPO",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "OPPOSans-Ver2（Regular / Medium）· Helvetica / Arial / system-ui 回退",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#000000 强调",
+        "radius:0/36px",
+        "14px base"
+      ],
+      "url": "https://www.oppo.com/cn/"
     }
   ]
 }
