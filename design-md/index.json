@@ -387,6 +387,21 @@
         "无阴影 · 圆角分层"
       ],
       "url": "https://www.bilibili.com/"
+    },
+    {
+      "slug": "honor",
+      "name": "荣耀 HONOR",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "HONOR Sans Brand / HONOR Sans TC / HONOR Sans World（自托管字族）· vw 流式排版",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#00b1ff 品牌青蓝",
+        "青紫品红渐变 #00b1ff→#bd00fe→#ff00d0",
+        "纯黑胶囊 CTA · radius 24/48px"
+      ],
+      "url": "https://www.honor.com/cn/"
     }
   ]
 }
