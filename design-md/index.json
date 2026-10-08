@@ -432,6 +432,21 @@
         "14px base"
       ],
       "url": "https://www.oppo.com/cn/"
+    },
+    {
+      "slug": "dji",
+      "name": "DJI 大疆创新",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "Open Sans / PingFang SC / Microsoft YaHei / 系统 sans-serif",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh-CN",
+      "tags": [
+        "#0070d5",
+        "胶囊 CTA · radius:64px",
+        "14px 导航 / 16px 正文"
+      ],
+      "url": "https://www.dji.com/cn"
     }
   ]
 }
