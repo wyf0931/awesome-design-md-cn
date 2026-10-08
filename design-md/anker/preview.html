@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>安克创新 Anker — Design System</title>
+  <style>
+    :root { --ink:#1d1d1f; --muted:#86868c; --paper:#fff; --dark:#000; --line:#d1d5db; --cyan:#05b7e0; --font:"Harmony","Mont For Anker",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f4f4f4; color:var(--ink); font:16px/1.5 var(--font); }
+    main { max-width:1120px; margin:0 auto; padding:32px 16px 24px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid var(--line); }
+    .brand { font-family:"Mont For Anker",var(--font); font-weight:700; }
+    .meta { color:var(--muted); font-size:14px; }
+    .hero { margin-top:24px; padding:48px 24px; background:#1d1d1f; color:#fff; text-align:center; }
+    h1 { margin:0; font-size:32px; }
+    .hero p { max-width:686px; margin:8px auto 0; font-size:14px; font-weight:600; line-height:18px; }
+    section { margin-top:24px; }
+    h2 { margin:0 0 12px; font-size:20px; }
+    .swatches,.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .swatch,.card { overflow:hidden; border:1px solid var(--line); background:var(--paper); }
+    .color { height:54px; background:var(--sample); }
+    .label { padding:8px 10px; font-size:14px; }
+    .dark-card { padding:16px; background:var(--dark); color:#e5e7eb; }
+    .field { margin-top:10px; padding:8px 12px; border:1px solid var(--line); background:var(--dark); color:#e5e7eb; font-size:14px; }
+    .area { min-height:68px; padding:12px 16px; }
+    .button { display:inline-block; margin-top:12px; padding:11px 20px 10px; border:1px solid #fff; border-radius:4px; background:transparent; color:#fff; font:14px var(--font); }
+    .nav-sample { display:flex; align-items:center; justify-content:space-between; height:60px; padding:0 16px; background:#fff; color:var(--ink); }
+    .nav-links { display:flex; gap:20px; font-size:14px; font-weight:600; }
+    .hover-line { height:3px; margin-top:12px; background:linear-gradient(90deg,#05b7e0,#110b44,#6d1835); }
+    footer { margin-top:24px; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    @media(max-width:700px) { main { padding:20px 16px; } header { align-items:flex-start; flex-direction:column; gap:6px; } .swatches,.grid { grid-template-columns:1fr; } .nav-links { gap:8px; flex-wrap:wrap; } .hero { padding:36px 16px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="brand">Anker · 界面样式样本</div><div class="meta">简体中文 · HTML lang：未记录</div></header>
+    <div class="hero"><h1>品牌标题样本</h1><p>用于展示公开 CSS 中可核实的横幅文字层级与白色前景，不复刻官网内容。</p></div>
+    <section><h2>颜色角色</h2><div class="swatches">
+      <div class="swatch"><div class="color" style="--sample:#1d1d1f"></div><div class="label">导航文字 · #1D1D1F</div></div>
+      <div class="swatch"><div class="color" style="--sample:#ffffff"></div><div class="label">导航背景 · #FFFFFF</div></div>
+      <div class="swatch"><div class="color" style="--sample:#000000"></div><div class="label">联系字段背景 · #000000</div></div>
+      <div class="swatch"><div class="color" style="--sample:#d1d5db"></div><div class="label">字段边框 · #D1D5DB</div></div>
+      <div class="swatch"><div class="color" style="--sample:#05b7e0"></div><div class="label">渐变 hover 起点 · #05B7E0</div></div>
+      <div class="swatch"><div class="color" style="--sample:#86868c"></div><div class="label">弱化文本声明 · #86868C</div></div>
+    </div></section>
+    <section><h2>导航与排版</h2><div class="card nav-sample"><strong>Anker</strong><div class="nav-links"><span>认识我们</span><span>我们的品牌</span><span>媒体中心</span></div></div><div class="card label">中文字体声明：Harmony, sans-serif；西文品牌字体：Mont For Anker, sans-serif</div></section>
+    <section class="grid"><div class="dark-card"><h2>联系字段</h2><div class="field">姓名</div><div class="field area">简要说明</div></div><div class="dark-card"><h2>按钮</h2><button class="button" type="button">继续</button></div><div class="card label"><h2>渐变交互色</h2><div class="hover-line"></div><p>CSS 声明用于 hover 效果，不能据此断言为全站主色。</p></div></section>
+    <footer>来源：https://www.anker.com.cn/ · 2026-10-08 · 中国大陆公开页面，未登录<br>桌面 DOM 可见；视口尺寸未读取 · 手机视口未实际渲染核验。样例为中性控件，不复制品牌文案或产品图像。</footer>
+  </main>
+</body>
+</html>
