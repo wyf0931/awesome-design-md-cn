@@ -44,6 +44,21 @@
       "url": "https://bailian.console.aliyun.com/cn-beijing/model/market"
     },
     {
+      "slug": "anker",
+      "name": "安克创新 Anker",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "Harmony（中文条件栈）/ Mont For Anker（西文品牌字）",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "",
+      "tags": [
+        "#1D1D1F",
+        "radius:4px",
+        "14px navigation"
+      ],
+      "url": "https://www.anker.com.cn/"
+    },
+    {
       "slug": "netease",
       "name": "网易",
       "category": "content",
