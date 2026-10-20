@@ -34,15 +34,15 @@ components:
 # DESIGN.md — 火山引擎 AI Hub
 
 **目标站点**：https://ai.volcengine.com/  
-**采集范围**：桌面端首页截图与 SSR HTML/CSS；模型广场 DOM/CSS；文档首页 HTML/CSS；已登录 API Key 页 DOM。账单和订阅地址均已请求，但当前可读响应为登录页，主体未取得。地区为中国大陆。
-**采集日期**：2026-10-20  
-**证据环境**：Chrome，macOS；浏览器视口尺寸未记录。移动视口未验证。
+**采集范围**：桌面端首页截图与 SSR HTML/CSS；模型广场 DOM/CSS；文档首页 HTML/CSS；已登录 API Key 与订阅页 DOM / 截图。账单路由已打开，但页面内容未从订阅视图切换成功。地区为中国大陆。
+**采集日期**：2026-10-20 至 2026-10-21
+**证据环境**：Chrome，macOS；订阅页截图窗口为 1348 × 768（包含浏览器栏）。移动视口未验证。
 
 ## Overview
 
 - **视觉气质**：开发者工具风格，浅色页面配近黑色主要操作；首页以居中 Hero 和代码接入区开场，模型目录另以分组卡片呈现。
 - **目标用户 / 场景**：模型列表可见模型名称、输入输出模态、价格与上下文信息，面向模型发现和 API 接入。
-- **信息密度**：中高；筛选区与多个模型品类、参数同时呈现。
+- **信息密度**：模型目录中高；控制台订阅和 API Key 页面留白较多，空状态居中。
 - **设计关键词**：开发者工具、浅色、近黑主操作、数据密集。
 
 ## Colors
@@ -152,6 +152,8 @@ font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, Bl
 | Button secondary | white | `#0b0b0f` | `#d2d1e0` | 4px | 未确认 | 模型页 CSS 中性表面与边框规则 |
 | Input | white | `#737a87` | `#d2d1e0` | 4px | 未确认 | 全局控件样式声明，模型筛选可见 |
 | Card | white | `#0b0b0f` | `#d2d1e0` | 8px | 未确认 | 模型页 CSS 圆角变量及卡片结构 |
+| Subscription empty state | white | `#0b0b0f` | `#d2d1e0` | 未确认 | 页面居中显示日历图标、“暂无订阅套餐”及“立即订阅”黑色按钮；Chrome 截图与登录态 DOM，2026-10-21 |
+| API Key empty state | white | `#0b0b0f` | `#d2d1e0` | 未确认 | 通用 Key 卡片内显示“暂无 API Key”；创建按钮可见但未点击，登录态 DOM / 截图，2026-10-20 |
 
 ## Do's and Don'ts
 
@@ -165,10 +167,11 @@ font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, Bl
 - [AI Hub 首页](https://ai.volcengine.com/) — 2026-10-20；登录态 Chrome/macOS 截图可见近黑主 CTA、浅灰次 CTA、白底与代码样本区。
 - [AI Hub 模型广场](https://ai.volcengine.com/model) — 2026-10-20；桌面 AX 树确认页标题、筛选、模型卡片、模态与价格信息。
 - [AI Hub 文档首页](https://ai.volcengine.com/docs/home) — 2026-10-20；HTML 可读，显示入门 Hero、创建 API Key / 模型列表入口与代码示例。该页面 HTML 未记录 `lang`。
-- [AI Hub API Key](https://ai.volcengine.com/console/apikey) — 登录态桌面 DOM 显示 Key 说明、专属 Key / 通用 Key 区块、创建按钮及空列表状态；未点击创建。
-- [AI Hub 账单](https://ai.volcengine.com/console/billing) 与 [订阅](https://ai.volcengine.com/console/subscriptions) — 2026-10-20 已请求路由；未登录的静态请求返回“豆包账号”登录外壳，登录浏览器中的主体内容未能取得，故未从这两页提取视觉细节。
+- [AI Hub API Key](https://ai.volcengine.com/console/apikey) — 登录态桌面 DOM / 截图显示 Key 说明、专属 Key / 通用 Key 区块、创建按钮及空列表状态；未点击创建。
+- [AI Hub 订阅](https://ai.volcengine.com/console/subscriptions) — 2026-10-21；登录态桌面 DOM / 截图显示订阅说明、空状态和“立即订阅”按钮；没有订阅套餐，未点击 CTA。
+- [AI Hub 账单](https://ai.volcengine.com/console/billing) — 2026-10-21；通过侧栏打开后地址栏变为账单 URL，但主体仍显示订阅视图；未获取到账单页渲染内容，因此不推断账单组件样式。
 - [模型页样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/async/__ssr_without_user/model/page.d7d6c1ed.css) — 2026-10-20；用于颜色、字体、布局和组件声明。
 - [首页全局样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/main.88485982.css) 与 [首页页面样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/async/__ssr_without_user/__home/page.d7522c3a.css) — 2026-10-20；CTA 规则分别声明 `#0b0b0f` 底色和 `#3f3f51` 悬停色。全局 CSS 中的 `--primary-6: #5252ff` 未证明应用于主要 CTA。
 - [文档首页页面样式表](https://res.gcloudcache.com/volc-fe/doccenter/static/css/async/docs/home/layout.b71d2fa3.css) — 2026-10-20；文档布局样式来源。
-- **采集限制**：账单和订阅页面主体、移动视口及键盘状态未验证。`#5252ff` 是全局样式表中存在的变量，但没有证据表明它是当前页面主要操作的颜色；preview 只用实测到的近黑主 CTA 样式。
+- **采集限制**：账单页面主体、移动视口及键盘状态未验证。`#5252ff` 是全局样式表中存在的变量，但没有证据表明它是当前页面主要操作的颜色；preview 只用实测到的近黑主 CTA 样式。
 - **推断项**：整体视觉气质和信息密度由已观察首页、文档、API Key 与模型目录归纳；不同页面存在独立 CSS 和变量，色彩、排版应以已记录页面范围为准。
