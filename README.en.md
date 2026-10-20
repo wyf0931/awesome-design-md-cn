@@ -46,6 +46,7 @@ A ✅ means the source-backed `DESIGN.md` and preview are present; blank status 
 | Platform | Website | DESIGN.md | Online Preview | Status |
 |---|---|---|---|---|
 | Alibaba Cloud Bailian (阿里云百炼) | [Model Marketplace](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
+| Volcano Engine AI Hub (火山引擎) | [AI Hub](https://ai.volcengine.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/volcengine-ai-hub/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/volcengine-ai-hub/preview.html) | ✅ |
 | Baidu (百度) | [Baidu](https://www.baidu.com) | — | — | |
 | Xiaomi (小米) | [Xiaomi](https://www.mi.com) | [DESIGN.md](design-md/xiaomi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/xiaomi/preview.html) | ✅ |
 | Huawei (华为) | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |

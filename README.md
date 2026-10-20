@@ -46,6 +46,7 @@ node build.mjs   # 需要 Node.js 18+
 | 平台 | 网站 | DESIGN.md | 在线预览 | 状态 |
 |---|---|---|---|---|
 | 阿里云百炼 | [模型广场](https://bailian.console.aliyun.com/cn-beijing/model/market) | [DESIGN.md](design-md/aliyun-bailian/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/aliyun-bailian/preview.html) | ✅ |
+| 火山引擎 AI Hub | [AI Hub](https://ai.volcengine.com/) | [DESIGN.md](https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/volcengine-ai-hub/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/volcengine-ai-hub/preview.html) | ✅ |
 | 百度 | [Baidu](https://www.baidu.com) | — | — | |
 | 小米 | [Xiaomi](https://www.mi.com) | [DESIGN.md](design-md/xiaomi/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/xiaomi/preview.html) | ✅ |
 | 华为 | [Huawei](https://www.huawei.com/cn/) | [DESIGN.md](design-md/huawei/DESIGN.md) | [Preview](https://github-html-preview.dohyeon5626.com/?https://github.com/wyf0931/awesome-design-md-cn/blob/main/design-md/huawei/preview.html) | ✅ |

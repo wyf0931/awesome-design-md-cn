@@ -447,6 +447,21 @@
         "14px base"
       ],
       "url": "https://www.oppo.com/cn/"
+    },
+    {
+      "slug": "volcengine-ai-hub",
+      "name": "火山引擎 AI Hub",
+      "category": "technology",
+      "categoryLabel": "科技与云服务",
+      "font": "PingFang SC / Microsoft YaHei / Noto Sans SC · 系统 sans-serif",
+      "writingSystem": "简体中文",
+      "sourceHtmlLang": "zh",
+      "tags": [
+        "#5252ff",
+        "radius:4px/8px",
+        "14px body"
+      ],
+      "url": "https://ai.volcengine.com/"
     }
   ]
 }
