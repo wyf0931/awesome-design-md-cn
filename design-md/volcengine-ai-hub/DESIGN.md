@@ -1,10 +1,10 @@
 ---
 version: alpha
 name: "火山引擎 AI Hub"
-description: "AI 模型与开发者控制台，浅色界面以蓝紫色作为主要交互色。"
+description: "AI 模型与开发者控制台，浅色界面以近黑色作为主要交互色。"
 colors:
-  primary: "#5252ff"
-  primary-hover: "#3f3fe0"
+  primary: "#0b0b0f"
+  primary-hover: "#3f3f51"
   text-primary: "#0b0b0f"
   text-secondary: "#3f3f51"
   text-muted: "#737a87"
@@ -26,7 +26,7 @@ rounded:
   control: "4px"
   card: "8px"
 components:
-  button-primary: "#5252ff / white / 4px"
+  button-primary: "#0b0b0f / white / 4px"
   card: "white / #d2d1e0 / 8px"
   input: "white / #d2d1e0 / 4px"
 ---
@@ -34,23 +34,23 @@ components:
 # DESIGN.md — 火山引擎 AI Hub
 
 **目标站点**：https://ai.volcengine.com/  
-**采集范围**：桌面端已登录模型广场（可访问性树）；模型页公开 CSS。其他给定控制台路由未能在本轮复核。地区为中国大陆。  
+**采集范围**：桌面端首页截图与 SSR HTML/CSS；模型广场 DOM/CSS；文档首页 HTML/CSS；已登录 API Key 页 DOM。账单和订阅地址均已请求，但当前可读响应为登录页，主体未取得。地区为中国大陆。
 **采集日期**：2026-10-20  
 **证据环境**：Chrome，macOS；浏览器视口尺寸未记录。移动视口未验证。
 
 ## Overview
 
-- **视觉气质**：高密度开发者控制台，白色与近白色表面配合蓝紫色动作色；模型目录以分组卡片呈现。
+- **视觉气质**：开发者工具风格，浅色页面配近黑色主要操作；首页以居中 Hero 和代码接入区开场，模型目录另以分组卡片呈现。
 - **目标用户 / 场景**：模型列表可见模型名称、输入输出模态、价格与上下文信息，面向模型发现和 API 接入。
 - **信息密度**：中高；筛选区与多个模型品类、参数同时呈现。
-- **设计关键词**：开发者工具、浅色、蓝紫交互、数据密集。
+- **设计关键词**：开发者工具、浅色、近黑主操作、数据密集。
 
 ## Colors
 
 | Token | Value | 用途 / 状态 | 来源与证据 |
 |---|---|---|---|
-| `primary` | `#5252ff` | 主操作、强调 | 模型页样式表 `--primary-6` |
-| `primary-hover` | `#3f3fe0` | 主色深阶 | 模型页样式表 `--primary-7` |
+| `primary` | `#0b0b0f` | 首页主要 CTA、主要操作 | 全局 CSS `.hero-cta.btn-primary` 与 `.btn-primary`；首页截图中主 CTA 为近黑底白字 |
+| `primary-hover` | `#3f3f51` | 主按钮悬停 | 全局 CSS `.hero-cta.btn-primary:hover` |
 | `text-primary` | `#0b0b0f` | 强调文本 | 模型页 CSS `--text-1` |
 | `text-secondary` | `#3f3f51` | 次级文本 | 模型页 CSS `--text-2` |
 | `text-muted` | `#737a87` | 辅助文本 | 模型页 CSS `--text-3` |
@@ -122,7 +122,7 @@ font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, Bl
 
 ### 3.10 简繁与地区语言切换
 
-- **支持的语言标签**：本次访问的 HTML 壳层 `zh`。
+- **支持的语言标签**：首页及模型页 HTML 壳层为 `zh`；文档页与登录页外壳未记录 `lang`。
 - **切换入口与行为**：未核实。
 - **字体和字形选择**：见 3.1；未确认地区切换行为。
 - **不同地区差异**：未核实。
@@ -148,23 +148,27 @@ font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, Bl
 
 | Component / State | Background | Text | Border | Radius | Size / Spacing | Source |
 |---|---|---|---|---|---|---|
-| Button primary | `#5252ff` | white | 主色 | 4px | 未确认 | 主色 token 与模型页可见“API 接入”操作；具体计算样式未读取 |
+| Button primary | `#0b0b0f` | white | `#0b0b0f` | 4px | 44px 高，水平 padding 28px | 全局 CSS `.hero-cta.btn-primary`；首页截图可见近黑底白字主 CTA |
 | Button secondary | white | `#0b0b0f` | `#d2d1e0` | 4px | 未确认 | 模型页 CSS 中性表面与边框规则 |
 | Input | white | `#737a87` | `#d2d1e0` | 4px | 未确认 | 全局控件样式声明，模型筛选可见 |
 | Card | white | `#0b0b0f` | `#d2d1e0` | 8px | 未确认 | 模型页 CSS 圆角变量及卡片结构 |
 
 ## Do's and Don'ts
 
-- **Do**：使用清晰的蓝紫色区分主要操作；这是根据样式表主色变量和模型页 API 接入操作的视觉角色整理。
+- **Do**：用近黑底白字呈现首页主要 CTA；全局 `.hero-cta.btn-primary` CSS 和首页截图均支持这一处理。
 - **Do**：模型名、模态、价格等结构化信息保持分组，模型广场 DOM 中可见品类分区。
 - **Don't**：不要仅凭 CSS 栈将 macOS 的 PingFang SC 宣称为所有终端的实际渲染字体。
 - **Accessibility**：本次仅检查可访问性树文本；键盘顺序、对比度、触控目标均未验证。
 
 ## Sources and Notes
 
-- [AI Hub 模型广场](https://ai.volcengine.com/model) — 2026-10-20；中国大陆；Chrome/macOS；登录态浏览器。桌面 AX 树确认页标题、筛选、模型卡片、模态与价格信息。
+- [AI Hub 首页](https://ai.volcengine.com/) — 2026-10-20；登录态 Chrome/macOS 截图可见近黑主 CTA、浅灰次 CTA、白底与代码样本区。
+- [AI Hub 模型广场](https://ai.volcengine.com/model) — 2026-10-20；桌面 AX 树确认页标题、筛选、模型卡片、模态与价格信息。
+- [AI Hub 文档首页](https://ai.volcengine.com/docs/home) — 2026-10-20；HTML 可读，显示入门 Hero、创建 API Key / 模型列表入口与代码示例。该页面 HTML 未记录 `lang`。
+- [AI Hub API Key](https://ai.volcengine.com/console/apikey) — 登录态桌面 DOM 显示 Key 说明、专属 Key / 通用 Key 区块、创建按钮及空列表状态；未点击创建。
+- [AI Hub 账单](https://ai.volcengine.com/console/billing) 与 [订阅](https://ai.volcengine.com/console/subscriptions) — 2026-10-20 已请求路由；未登录的静态请求返回“豆包账号”登录外壳，登录浏览器中的主体内容未能取得，故未从这两页提取视觉细节。
 - [模型页样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/async/__ssr_without_user/model/page.d7d6c1ed.css) — 2026-10-20；用于颜色、字体、布局和组件声明。
-- [AI Hub 全局样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/main.88485982.css) — 2026-10-20；用于主色、语义色和全局字体等声明。
-- [文档首页](https://ai.volcengine.com/docs/home)、[账单](https://ai.volcengine.com/console/billing)、[API Key](https://ai.volcengine.com/console/apikey)、[订阅](https://ai.volcengine.com/console/subscriptions)、[模型](https://ai.volcengine.com/model) — 用户指定的范围；除模型页外，本轮未取得页面渲染证据。
-- **采集限制**：浏览器自动化在继续切换标签时发生捕捉错误；未验证给定其他路由、移动视口和控件状态。样式表值反映声明，不等同于所有目标元素的最终 computed style。
-- **推断项**：视觉气质、主操作角色与信息密度是基于可见模型目录和 CSS token 的归纳。
+- [首页全局样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/main.88485982.css) 与 [首页页面样式表](https://portal.volccdn.com/obj/volcfe-scm/ai/static/css/async/__ssr_without_user/__home/page.d7522c3a.css) — 2026-10-20；CTA 规则分别声明 `#0b0b0f` 底色和 `#3f3f51` 悬停色。全局 CSS 中的 `--primary-6: #5252ff` 未证明应用于主要 CTA。
+- [文档首页页面样式表](https://res.gcloudcache.com/volc-fe/doccenter/static/css/async/docs/home/layout.b71d2fa3.css) — 2026-10-20；文档布局样式来源。
+- **采集限制**：账单和订阅页面主体、移动视口及键盘状态未验证。`#5252ff` 是全局样式表中存在的变量，但没有证据表明它是当前页面主要操作的颜色；preview 只用实测到的近黑主 CTA 样式。
+- **推断项**：整体视觉气质和信息密度由已观察首页、文档、API Key 与模型目录归纳；不同页面存在独立 CSS 和变量，色彩、排版应以已记录页面范围为准。
